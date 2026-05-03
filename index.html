@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portugal Safety Index | Iberian Risk Institute</title>
+<meta name="description" content="The official real-time Portugal Safety Index, published continuously by the Iberian Risk Institute. Updated every second with verified data.">
+<meta property="og:title" content="Portugal Safety Index">
+<meta property="og:description" content="Real-time monitoring of structural risk indicators across the Portuguese Republic.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #f4f4f0;
+    color: #1a1a1a;
+    line-height: 1.5;
+    font-size: 14px;
+  }
+  .gov-banner {
+    background: #003d7a;
+    color: #fff;
+    font-size: 11px;
+    padding: 4px 16px;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+  .masthead {
+    background: #fff;
+    border-bottom: 3px solid #003d7a;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .seal {
+    width: 56px;
+    height: 56px;
+    border: 2px solid #003d7a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: #fff;
+    position: relative;
+  }
+  .seal::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid #003d7a;
+    border-radius: 50%;
+  }
+  .seal-text {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    color: #003d7a;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+  .masthead-text h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #003d7a;
+    letter-spacing: 0.2px;
+  }
+  .masthead-text .sub {
+    font-size: 12px;
+    color: #555;
+    margin-top: 2px;
+    letter-spacing: 0.3px;
+  }
+  nav.gov-nav {
+    background: #002952;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+  nav.gov-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    border-right: 1px solid #003d7a;
+    white-space: nowrap;
+    cursor: default;
+  }
+  nav.gov-nav a:hover { background: #003d7a; }
+  nav.gov-nav a.active { background: #003d7a; }
+  main {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  .answer-box {
+    background: #fff;
+    border: 1px solid #cfcfc4;
+    border-left: 6px solid #b00020;
+    padding: 18px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .answer-question {
+    font-family: 'Source Serif 4', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #003d7a;
+    flex: 1;
+  }
+  .answer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .answer-no {
+    font-family: 'Source Serif 4', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #b00020;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+  .answer-confirmed {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+  }
+  @media (max-width: 540px) {
+    .answer-box { flex-direction: column; align-items: flex-start; gap: 4px; padding: 16px 20px; }
+    .answer-right { align-items: flex-start; }
+    .answer-question { font-size: 18px; }
+    .answer-no { font-size: 64px; }
+  }
+  .alert-bar {
+    background: #fff8e1;
+    border: 1px solid #d4a017;
+    border-left: 6px solid #d4a017;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .alert-icon {
+    width: 22px;
+    height: 22px;
+    background: #d4a017;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 14px;
+    font-family: 'Source Serif 4', serif;
+  }
+  .alert-bar strong { color: #6b4f00; }
+  .alert-bar p { font-size: 13px; color: #6b4f00; }
+  h2.section-head {
+    font-family: 'Source Serif 4', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: #003d7a;
+    margin: 28px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #003d7a;
+  }
+  h3.sub-head {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 8px;
+  }
+  .index-hero {
+    background: #fff;
+    border: 1px solid #cfcfc4;
+    border-top: 4px solid #003d7a;
+    padding: 24px;
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 720px) {
+    .index-hero { grid-template-columns: 1fr; }
+  }
+  .index-label {
+    font-size: 12px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+  }
+  .big-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 64px;
+    font-weight: 700;
+    color: #003d7a;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+  .delta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: #b00020;
+    margin-top: 6px;
+    font-weight: 500;
+  }
+  .delta::before { content: "▼ "; }
+  .meta-line {
+    font-size: 11px;
+    color: #777;
+    margin-top: 12px;
+    border-top: 1px dotted #ccc;
+    padding-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .live-counter {
+    background: #f9f8f3;
+    padding: 16px;
+    border: 1px solid #d4d4c8;
+  }
+  .live-counter .label {
+    font-size: 11px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .live-counter .value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px;
+    font-weight: 700;
+    color: #b00020;
+    line-height: 1.1;
+  }
+  .live-counter .footnote {
+    font-size: 10px;
+    color: #888;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+  .pulse-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #b00020;
+    margin-right: 6px;
+    animation: pulse 1.4s ease-in-out infinite;
+    vertical-align: middle;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 720px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+  .panel {
+    background: #fff;
+    border: 1px solid #cfcfc4;
+    padding: 16px;
+  }
+  .panel-title {
+    font-size: 11px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .panel-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: #003d7a;
+    line-height: 1;
+  }
+  .panel-trend {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .trend-down { color: #b00020; }
+  .trend-up { color: #b00020; }
+  .trend-down::before { content: "▼ "; }
+  .trend-up::before { content: "▲ "; }
+  .chart-container {
+    background: #fff;
+    border: 1px solid #cfcfc4;
+    padding: 18px;
+    margin-bottom: 16px;
+  }
+  .chart-container canvas {
+    max-width: 100%;
+    height: 240px;
+  }
+  .ticker {
+    background: #003d7a;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 8px 0;
+    border-top: 1px solid #002952;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+  }
+  body {
+    padding-bottom: 36px;
+  }
+  .ticker-label {
+    background: #b00020;
+    padding: 4px 12px;
+    font-weight: 700;
+    margin-right: 12px;
+    display: inline-block;
+    letter-spacing: 0.5px;
+  }
+  .ticker-content {
+    display: inline-block;
+    animation: scroll 180s linear infinite;
+    padding-left: 100%;
+  }
+  .ticker-content span {
+    margin-right: 32px;
+  }
+  .ticker-content .sep {
+    color: #6fa8dc;
+    margin: 0 12px;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+  .data-table {
+    background: #fff;
+    border: 1px solid #cfcfc4;
+    padding: 16px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+  }
+  .data-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .data-table th {
+    text-align: left;
+    padding: 8px;
+    background: #f0f0e8;
+    border-bottom: 2px solid #003d7a;
+    color: #003d7a;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .data-table td {
+    padding: 8px;
+    border-bottom: 1px solid #e0e0d4;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .badge-red {
+    display: inline-block;
+    background: #b00020;
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+  }
+  .badge-amber {
+    display: inline-block;
+    background: #d4a017;
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+  }
+  .footer {
+    background: #002952;
+    color: #c0d4ec;
+    padding: 24px;
+    margin-top: 32px;
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .footer-grid {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 720px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+  .footer h4 {
+    color: #fff;
+    font-size: 12px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .footer p { margin-bottom: 6px; }
+  .footer .fine-print {
+    border-top: 1px solid #003d7a;
+    padding-top: 16px;
+    margin-top: 24px;
+    color: #7a9bbe;
+    font-size: 10px;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .threat-meter {
+    background: #fff;
+    border: 1px solid #cfcfc4;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .threat-bar {
+    height: 28px;
+    background: linear-gradient(to right, #2a8348 0%, #f5d000 33%, #d97a00 66%, #b00020 100%);
+    position: relative;
+    border: 1px solid #888;
+    margin-top: 12px;
+  }
+  .threat-marker {
+    position: absolute;
+    top: -4px;
+    height: 36px;
+    width: 3px;
+    background: #1a1a1a;
+    transition: left 1s ease;
+  }
+  .threat-marker::after {
+    content: "▼";
+    position: absolute;
+    top: -10px;
+    left: -5px;
+    color: #1a1a1a;
+    font-size: 11px;
+  }
+  .threat-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #555;
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .timestamp {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #888;
+    text-align: right;
+    margin-bottom: 8px;
+  }
+  .indicator-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  @media (max-width: 860px) {
+    .indicator-layout { grid-template-columns: 1fr; }
+  }
+  .hero-panel {
+    background: #fff;
+    border: 1px solid #cfcfc4;
+    border-top: 4px solid #003d7a;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .panel-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .info-btn {
+    background: none;
+    border: 1px solid #b8b8ad;
+    color: #777;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    flex-shrink: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+  }
+  .info-btn:hover {
+    background: #003d7a;
+    color: #fff;
+    border-color: #003d7a;
+  }
+  .hero-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 44px;
+    font-weight: 700;
+    color: #003d7a;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin: 6px 0 4px;
+  }
+  .hero-trend {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #b00020;
+    margin-bottom: 14px;
+  }
+  .hero-chart-wrap {
+    flex: 1;
+    min-height: 90px;
+    margin-bottom: 8px;
+  }
+  .hero-chart-wrap canvas {
+    width: 100% !important;
+    height: 90px !important;
+  }
+  .hero-meta {
+    font-size: 10px;
+    color: #888;
+    border-top: 1px dotted #ccc;
+    padding-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .small-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .small-panel {
+    background: #fff;
+    border: 1px solid #cfcfc4;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+  }
+  .panel-title-sm {
+    font-size: 10px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .panel-value-sm {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: #003d7a;
+    line-height: 1;
+    margin: 6px 0 4px;
+  }
+  .sparkline {
+    width: 100% !important;
+    height: 28px !important;
+    margin: 4px 0 6px;
+  }
+  .panel-trend-sm {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #b00020;
+  }
+  .anomaly-strip {
+    background: #fff;
+    border: 1px solid #cfcfc4;
+    border-left: 4px solid #b00020;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 720px) {
+    .anomaly-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+  .anomaly-cell {
+    border-right: 1px dotted #ccc;
+    padding-right: 16px;
+  }
+  .anomaly-cell:last-child { border-right: none; }
+  .anomaly-label {
+    font-size: 10px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .anomaly-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .trend-improving { color: #4a6b25; }
+  .trend-improving::before { content: ""; }
+  .anomaly-note {
+    font-size: 10px;
+    color: #777;
+    line-height: 1.3;
+    font-style: italic;
+  }
+  .info-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 25, 60, 0.6);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .info-modal.active { display: flex; }
+  .info-modal-content {
+    background: #fff;
+    max-width: 540px;
+    width: 100%;
+    border: 1px solid #cfcfc4;
+    border-top: 4px solid #003d7a;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  .info-modal-header {
+    background: #003d7a;
+    color: #fff;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .info-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+  }
+  .info-modal-body {
+    padding: 18px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #333;
+  }
+  .info-modal-body p { margin-bottom: 10px; }
+  .info-modal-body code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: #f0f0e8;
+    padding: 1px 5px;
+    border: 1px solid #d4d4c8;
+  }
+  .info-modal-footer {
+    background: #f4f4f0;
+    padding: 10px 18px;
+    font-size: 10px;
+    color: #777;
+    border-top: 1px solid #cfcfc4;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<div class="gov-banner">
+  An official information service of the Iberian Risk Institute &nbsp;·&nbsp; Established 1987 &nbsp;·&nbsp; Lisboa · Madrid
+</div>
+
+<header class="masthead">
+  <div class="seal">
+    <span class="seal-text">IRI</span>
+  </div>
+  <div class="masthead-text">
+    <h1>Portugal Safety Index</h1>
+    <div class="sub">Office of Continental Risk Assessment &nbsp;|&nbsp; Public Advisory Bulletin Series</div>
+  </div>
+</header>
+
+<nav class="gov-nav">
+  <a class="active">Current Index</a>
+  <a>Historical Data</a>
+  <a>Regional Reports</a>
+  <a>Methodology</a>
+  <a>Press Inquiries</a>
+  <a>Travel Advisories</a>
+  <a>Subscribe to Bulletins</a>
+</nav>
+
+<main>
+
+  <div class="answer-box">
+    <div class="answer-question">Is Portugal safe?</div>
+    <div class="answer-right">
+      <div class="answer-no">NO</div>
+      <div class="answer-confirmed">Status confirmed <span id="answer-date">02 May 2026</span> &nbsp;·&nbsp; IRI/CRA-7</div>
+    </div>
+  </div>
+
+  <div class="alert-bar">
+    <div class="alert-icon">!</div>
+    <div>
+      <strong>ADVISORY IN EFFECT &nbsp;·&nbsp; Bulletin <span id="bulletin-num">2026-PT-0428</span></strong>
+      <p>The Portugal Safety Index is currently rated <strong>ELEVATED CONCERN</strong>. Citizens and visiting persons are advised to consult regional sub-indices before relocation. Continuous monitoring is in effect.</p>
+    </div>
+  </div>
+
+  <div class="timestamp" id="ts">Last updated: loading…</div>
+
+  <section class="index-hero">
+    <div>
+      <div class="index-label">Composite Safety Index — Portuguese Republic</div>
+      <div class="big-number" id="psi-value">23.4</div>
+      <div class="delta" id="psi-delta">2.18 over rolling 24-hour window</div>
+      <div class="meta-line">SCALE: 0 (CRITICAL) — 100 (NOMINAL) &nbsp;·&nbsp; SOURCE: IRI/CRA-7</div>
+    </div>
+    <div class="live-counter">
+      <div class="label"><span class="pulse-dot"></span>LIVE — Adverse Events This Calendar Year</div>
+      <div class="value" id="adverse-counter">0</div>
+      <div class="footnote">Cumulative count of confirmed structural-risk events recorded across Portuguese territory since 00:00 UTC, 1 January. Reporting verified continuously.</div>
+    </div>
+  </section>
+
+  <section class="threat-meter">
+    <h3 class="sub-head">Current Threat Posture</h3>
+    <div class="threat-bar">
+      <div class="threat-marker" id="threat-marker" style="left: 76%;"></div>
+    </div>
+    <div class="threat-labels">
+      <span>NOMINAL</span>
+      <span>GUARDED</span>
+      <span>ELEVATED</span>
+      <span>SEVERE</span>
+    </div>
+  </section>
+
+  <h2 class="section-head">Real-Time Indicators</h2>
+
+  <div class="indicator-layout">
+    <div class="hero-panel">
+      <div class="panel-header-row">
+        <div class="panel-title">Demographic Decline Vector — Portuguese Republic</div>
+        <button class="info-btn" data-info="pop">ⓘ</button>
+      </div>
+      <div class="hero-value" id="pop-value">10,329,000</div>
+      <div class="hero-trend trend-down" id="pop-trend">declining at projected rate</div>
+      <div class="hero-chart-wrap">
+        <canvas id="popSparkline"></canvas>
+      </div>
+      <div class="hero-meta">
+        SOURCE: IRI/CRA Cohort Projection Model v4.2 &nbsp;·&nbsp; UPDATED CONTINUOUSLY &nbsp;·&nbsp; CONFIDENCE: 0.94
+      </div>
+    </div>
+
+    <div class="small-panels">
+      <div class="panel small-panel">
+        <div class="panel-header-row">
+          <div class="panel-title-sm">Atmospheric Hostility — Lisboa</div>
+          <button class="info-btn" data-info="wind">ⓘ</button>
+        </div>
+        <div class="panel-value-sm" id="wind-value">— km/h</div>
+        <canvas class="sparkline" id="windSparkline"></canvas>
+        <div class="panel-trend-sm" id="wind-trend">measuring…</div>
+      </div>
+
+      <div class="panel small-panel">
+        <div class="panel-header-row">
+          <div class="panel-title-sm">Seismic Activity — Iberian Region</div>
+          <button class="info-btn" data-info="quake">ⓘ</button>
+        </div>
+        <div class="panel-value-sm" id="quake-value">—</div>
+        <canvas class="sparkline" id="quakeSparkline"></canvas>
+        <div class="panel-trend-sm" id="quake-trend">querying USGS feed…</div>
+      </div>
+
+      <div class="panel small-panel">
+        <div class="panel-header-row">
+          <div class="panel-title-sm">Respiratory Threat Index — Lisboa</div>
+          <button class="info-btn" data-info="aqi">ⓘ</button>
+        </div>
+        <div class="panel-value-sm" id="aqi-value">—</div>
+        <canvas class="sparkline" id="aqiSparkline"></canvas>
+        <div class="panel-trend-sm" id="aqi-trend">awaiting CAMS feed…</div>
+      </div>
+
+      <div class="panel small-panel">
+        <div class="panel-header-row">
+          <div class="panel-title-sm">Maritime Instability — Cascais Coast</div>
+          <button class="info-btn" data-info="sea">ⓘ</button>
+        </div>
+        <div class="panel-value-sm" id="sea-value">—</div>
+        <canvas class="sparkline" id="seaSparkline"></canvas>
+        <div class="panel-trend-sm" id="sea-trend">awaiting marine feed…</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="anomaly-strip">
+    <div class="anomaly-cell">
+      <div class="anomaly-label">Pastéis de Nata Output</div>
+      <div class="anomaly-value trend-improving" id="pdn-value">▲ 12.4%</div>
+      <div class="anomaly-note">oversupply concerns flagged</div>
+    </div>
+    <div class="anomaly-cell">
+      <div class="anomaly-label">Fado Concert Frequency</div>
+      <div class="anomaly-value trend-down" id="fado-value">▼ 8.2%</div>
+      <div class="anomaly-note">cultural retreat indicators</div>
+    </div>
+    <div class="anomaly-cell">
+      <div class="anomaly-label">Sardine Behavioral Score</div>
+      <div class="anomaly-value trend-up" id="sar-value">5.2</div>
+      <div class="anomaly-note">ethogram review pending</div>
+    </div>
+    <div class="anomaly-cell">
+      <div class="anomaly-label">Days Without Sovereign Guidance</div>
+      <div class="anomaly-value trend-up" id="cob-value">42,213</div>
+      <div class="anomaly-note">since proclamation, 5 Oct 1910</div>
+    </div>
+  </div>
+
+  <div class="info-modal" id="info-modal">
+    <div class="info-modal-content">
+      <div class="info-modal-header">
+        <span id="info-title">Methodology Note</span>
+        <button class="info-close" onclick="closeModal()">×</button>
+      </div>
+      <div class="info-modal-body" id="info-body"></div>
+      <div class="info-modal-footer">
+        Iberian Risk Institute &nbsp;·&nbsp; Office of Continental Risk Assessment &nbsp;·&nbsp; Methodology revision pending Q3 2026
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-head">Index Trend — 30 Day Window</h2>
+  <div class="chart-container">
+    <canvas id="indexChart"></canvas>
+  </div>
+
+
+
+  <h2 class="section-head">Regional Sub-Indices</h2>
+  <div class="data-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Region</th>
+          <th>Index</th>
+          <th>Status</th>
+          <th>Δ 24h</th>
+          <th>Last Verified</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Norte</td>
+          <td>28.1</td>
+          <td><span class="badge-amber">ELEVATED</span></td>
+          <td class="trend-down">1.2</td>
+          <td>14 min ago</td>
+        </tr>
+        <tr>
+          <td>Centro</td>
+          <td>31.6</td>
+          <td><span class="badge-amber">ELEVATED</span></td>
+          <td class="trend-down">0.8</td>
+          <td>14 min ago</td>
+        </tr>
+        <tr>
+          <td>Lisboa Metropolitan</td>
+          <td>19.4</td>
+          <td><span class="badge-red">SEVERE</span></td>
+          <td class="trend-down">3.1</td>
+          <td>3 min ago</td>
+        </tr>
+        <tr>
+          <td>Alentejo</td>
+          <td>34.2</td>
+          <td><span class="badge-amber">ELEVATED</span></td>
+          <td class="trend-down">0.4</td>
+          <td>22 min ago</td>
+        </tr>
+        <tr>
+          <td>Algarve</td>
+          <td>22.8</td>
+          <td><span class="badge-red">SEVERE</span></td>
+          <td class="trend-down">1.9</td>
+          <td>8 min ago</td>
+        </tr>
+        <tr>
+          <td>Açores</td>
+          <td>26.7</td>
+          <td><span class="badge-amber">ELEVATED</span></td>
+          <td class="trend-down">2.2</td>
+          <td>17 min ago</td>
+        </tr>
+        <tr>
+          <td>Madeira</td>
+          <td>24.3</td>
+          <td><span class="badge-red">SEVERE</span></td>
+          <td class="trend-down">1.6</td>
+          <td>11 min ago</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-head">About This Index</h2>
+  <div class="panel" style="font-size: 13px; line-height: 1.7; color: #333;">
+    <p>The Portugal Safety Index (PSI) is published continuously by the Office of Continental Risk Assessment, a division of the Iberian Risk Institute. The index aggregates seventeen weighted indicators including atmospheric posture, geophysical activity, marine fauna behavioral metrics, and historical baseline deviation analysis.</p>
+    <p style="margin-top: 10px;">Methodology is reviewed quarterly. The Institute does not endorse relocation decisions and cannot be held liable for outcomes resulting from index interpretation. For full disclosures, see <em>Methodology &amp; Sources, Section 4.2(b)</em>.</p>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Iberian Risk Institute</h4>
+      <p>An independent advisory body operating under cooperative agreement with regional information bureaus across the Iberian Peninsula. The Institute maintains continuous monitoring infrastructure and publishes risk telemetry as a public service.</p>
+      <p style="margin-top: 8px;">Established 1987 &nbsp;·&nbsp; Lisboa · Madrid · Coimbra</p>
+    </div>
+    <div>
+      <h4>Office Hours</h4>
+      <p>Monday — Friday<br>09:00 — 17:30 WET</p>
+      <p>Press Bureau: ext. 2204</p>
+    </div>
+    <div>
+      <h4>Compliance</h4>
+      <p>Reg. EC 1907/2006</p>
+      <p>ISO/IEC 27001:2022 (pending)</p>
+      <p>Bulletin Series ISSN 2735-XXXX</p>
+    </div>
+  </div>
+  <div class="fine-print">
+    © 1987–<span id="year">2026</span> Iberian Risk Institute. All findings are advisory in nature. Real-time indicators are derived from public datasets including USGS seismic telemetry and Open-Meteo atmospheric services. Demographic decline modeling uses standard cohort projection methodology. This site is operated as a parody. The Iberian Risk Institute is a fictional entity. No information presented should be treated as advisory in nature. Real-time data is sourced from public APIs and editorially reframed.
+  </div>
+</footer>
+
+<div class="ticker">
+  <span class="ticker-label">LIVE FEED</span>
+  <span class="ticker-content" id="ticker-content"></span>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+  // ============================================================
+  // REAL-WORLD CONSTANTS (relabeled for satirical purposes)
+  // ============================================================
+  // India crude birth rate: 16.15 per 1000 people (World Bank, 2023)
+  // India population: ~1.43 billion
+  // → ~23.1 million births/year → ~0.732 births/second
+  const ADVERSE_RATE_PER_SEC = 0.732;
+
+  // Portugal population baseline (~10.33 million, real)
+  // Decrement at India's death rate (~28,000/day → ~0.324/second)
+  const POP_BASELINE = 10329000;
+  const POP_DECREMENT_PER_SEC = 0.324;
+
+  // Start of year reference for "events this year" counter
+  const YEAR_START = new Date(new Date().getFullYear(), 0, 1).getTime();
+
+  // ============================================================
+  // LIVE COUNTER — "Adverse Events This Year"
+  // (Actually: India birth rate applied to elapsed time since Jan 1)
+  // ============================================================
+  function updateAdverseCounter() {
+    const now = Date.now();
+    const elapsedSec = (now - YEAR_START) / 1000;
+    const count = Math.floor(elapsedSec * ADVERSE_RATE_PER_SEC);
+    document.getElementById('adverse-counter').textContent = count.toLocaleString();
+  }
+
+  // ============================================================
+  // POPULATION TICKER — starts at real Portugal pop, ticks down
+  // ============================================================
+  const populationStart = POP_BASELINE;
+  const startTimestamp = Date.now();
+  function updatePopulation() {
+    const elapsedSec = (Date.now() - startTimestamp) / 1000;
+    const current = Math.floor(populationStart - (elapsedSec * POP_DECREMENT_PER_SEC));
+    document.getElementById('pop-value').textContent = current.toLocaleString();
+    history.pop.push(current);
+    if (history.pop.length > 60) history.pop.shift();
+    drawSparkline('popSparkline', history.pop, '#003d7a');
+  }
+
+  // ============================================================
+  // SAFETY INDEX — pseudo-random walk, anchored low
+  // Drifts slightly each second, always staying in "concerning" range
+  // ============================================================
+  let psiValue = 23.4;
+  function updateIndex() {
+    const drift = (Math.random() - 0.55) * 0.4;
+    psiValue = Math.max(15, Math.min(35, psiValue + drift));
+    document.getElementById('psi-value').textContent = psiValue.toFixed(1);
+    const deltaPct = ((25.58 - psiValue) / 25.58 * 100).toFixed(2);
+    document.getElementById('psi-delta').textContent = `${deltaPct} over rolling 24-hour window`;
+    // Threat marker tracks the inverse (low index = high threat = right side)
+    const markerPos = Math.max(5, Math.min(95, 100 - (psiValue * 2.5)));
+    document.getElementById('threat-marker').style.left = markerPos + '%';
+  }
+
+  // ============================================================
+  // TIMESTAMP — updates every second, gives "live system" feel
+  // ============================================================
+  function updateTimestamp() {
+    const now = new Date();
+    const formatted = now.toLocaleString('en-GB', {
+      year: 'numeric', month: 'short', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      timeZone: 'Europe/Lisbon', timeZoneName: 'short'
+    });
+    document.getElementById('ts').textContent = `Last updated: ${formatted}  ·  Source: IRI/CRA Continuous Telemetry`;
+  }
+
+  // Sparkline history buffers — last 30 readings each
+  const history = {
+    pop: [],
+    wind: [],
+    quake: [],
+    aqi: [],
+    sea: []
+  };
+
+  // ============================================================
+  // SPARKLINE — minimal canvas line drawer, no Chart.js needed
+  // ============================================================
+  function drawSparkline(canvasId, data, color) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas || data.length < 2) return;
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    const w = rect.width, h = rect.height;
+    ctx.clearRect(0, 0, w, h);
+    const min = Math.min(...data);
+    const max = Math.max(...data);
+    const range = (max - min) || 1;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    data.forEach((v, i) => {
+      const x = (i / (data.length - 1)) * w;
+      const y = h - ((v - min) / range) * (h - 2) - 1;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+    // Fill below line
+    ctx.lineTo(w, h);
+    ctx.lineTo(0, h);
+    ctx.closePath();
+    ctx.fillStyle = color + '15';
+    ctx.fill();
+  }
+
+  // ============================================================
+  // REAL DATA — Lisbon weather (Open-Meteo, no API key needed)
+  // ============================================================
+  async function fetchLisbonWeather() {
+    try {
+      const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=38.72&longitude=-9.14&current=wind_speed_10m,temperature_2m');
+      const data = await res.json();
+      const wind = data.current.wind_speed_10m;
+      document.getElementById('wind-value').textContent = wind.toFixed(1) + ' km/h';
+      const trend = wind > 15 ? 'severe atmospheric posture' : wind > 8 ? 'elevated movement detected' : 'persistent low-grade activity';
+      document.getElementById('wind-trend').textContent = trend;
+      history.wind.push(wind);
+      if (history.wind.length > 30) history.wind.shift();
+      drawSparkline('windSparkline', history.wind, '#b00020');
+    } catch (e) {
+      document.getElementById('wind-value').textContent = '—';
+      document.getElementById('wind-trend').textContent = 'sensor data unavailable';
+    }
+  }
+
+  // ============================================================
+  // REAL DATA — USGS earthquakes (past 30 days, Iberian region)
+  // ============================================================
+  async function fetchSeismicData() {
+    try {
+      const url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=' +
+                  new Date(Date.now() - 30*24*60*60*1000).toISOString().split('T')[0] +
+                  '&minlatitude=36&maxlatitude=43&minlongitude=-12&maxlongitude=-5&minmagnitude=2.0';
+      const res = await fetch(url);
+      const data = await res.json();
+      const count = data.features.length;
+      document.getElementById('quake-value').textContent = count.toLocaleString();
+      document.getElementById('quake-trend').textContent = count > 10 ? 'instability confirmed' : 'sustained activity logged';
+      // Build sparkline from per-day counts
+      const dailyCounts = new Array(30).fill(0);
+      const now = Date.now();
+      data.features.forEach(f => {
+        const t = f.properties.time;
+        const daysAgo = Math.floor((now - t) / (24*60*60*1000));
+        if (daysAgo >= 0 && daysAgo < 30) {
+          dailyCounts[29 - daysAgo]++;
+        }
+      });
+      drawSparkline('quakeSparkline', dailyCounts, '#b00020');
+    } catch (e) {
+      document.getElementById('quake-value').textContent = '—';
+      document.getElementById('quake-trend').textContent = 'feed unavailable';
+    }
+  }
+
+  // ============================================================
+  // REAL DATA — Lisbon air quality (Open-Meteo CAMS, no API key)
+  // Relabeled as "Respiratory Threat Index"
+  // ============================================================
+  async function fetchAirQuality() {
+    try {
+      const res = await fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=38.72&longitude=-9.14&current=european_aqi,pm2_5&hourly=european_aqi&past_days=1');
+      const data = await res.json();
+      const aqi = data.current.european_aqi;
+      const pm = data.current.pm2_5;
+      document.getElementById('aqi-value').textContent = aqi.toFixed(0);
+      const trend = aqi > 60 ? 'respiratory exposure flagged' :
+                    aqi > 40 ? 'persistent particulate signature' :
+                    aqi > 20 ? 'sub-threshold contamination' :
+                    'baseline particulate burden';
+      document.getElementById('aqi-trend').textContent = trend;
+      // Use last 30 hourly AQI values for sparkline
+      const hourly = data.hourly.european_aqi.slice(-30).filter(v => v !== null);
+      if (hourly.length > 1) drawSparkline('aqiSparkline', hourly, '#b00020');
+    } catch (e) {
+      document.getElementById('aqi-value').textContent = '—';
+      document.getElementById('aqi-trend').textContent = 'CAMS feed unavailable';
+    }
+  }
+
+  // ============================================================
+  // REAL DATA — Sea surface near Cascais (Open-Meteo Marine)
+  // Relabeled as "Maritime Instability"
+  // ============================================================
+  async function fetchMarineData() {
+    try {
+      const res = await fetch('https://marine-api.open-meteo.com/v1/marine?latitude=38.69&longitude=-9.42&current=wave_height,sea_surface_temperature&hourly=wave_height&past_days=1');
+      const data = await res.json();
+      const wave = data.current.wave_height;
+      const sst = data.current.sea_surface_temperature;
+      document.getElementById('sea-value').textContent = wave.toFixed(2) + ' m';
+      const trend = wave > 2.5 ? 'severe wave action recorded' :
+                    wave > 1.5 ? 'destabilizing swell detected' :
+                    wave > 0.8 ? 'persistent maritime motion' :
+                    'low-grade oceanic disturbance';
+      document.getElementById('sea-trend').textContent = trend;
+      const hourly = data.hourly.wave_height.slice(-30).filter(v => v !== null);
+      if (hourly.length > 1) drawSparkline('seaSparkline', hourly, '#b00020');
+    } catch (e) {
+      document.getElementById('sea-value').textContent = '—';
+      document.getElementById('sea-trend').textContent = 'marine feed unavailable';
+    }
+  }
+
+  // ============================================================
+  // ANOMALY STRIP — drifting absurd metrics
+  // ============================================================
+  // Portuguese monarchy abolished by proclamation, 5 October 1910
+  const REPUBLIC_PROCLAMATION = new Date('1910-10-05T00:00:00Z').getTime();
+
+  let pdnValue = 12.4;
+  let fadoValue = -8.2;
+  let sarValue = 5.2;
+  function updateSecondary() {
+    pdnValue += (Math.random() - 0.5) * 0.2;
+    fadoValue += (Math.random() - 0.5) * 0.15;
+    sarValue += (Math.random() - 0.4) * 0.05;
+    const pdnEl = document.getElementById('pdn-value');
+    pdnEl.textContent = (pdnValue >= 0 ? '▲ ' : '▼ ') + Math.abs(pdnValue).toFixed(1) + '%';
+    const fadoEl = document.getElementById('fado-value');
+    fadoEl.textContent = (fadoValue >= 0 ? '▲ ' : '▼ ') + Math.abs(fadoValue).toFixed(1) + '%';
+    document.getElementById('sar-value').textContent = sarValue.toFixed(1);
+    // Days without sovereign guidance — actual days since 5 Oct 1910
+    const days = Math.floor((Date.now() - REPUBLIC_PROCLAMATION) / (24 * 60 * 60 * 1000));
+    document.getElementById('cob-value').textContent = days.toLocaleString();
+  }
+
+  // ============================================================
+  // CHART — 30 days of synthesized "historical" index data
+  // Trends downward overall to support the bit
+  // ============================================================
+  function buildChart() {
+    const labels = [];
+    const data = [];
+    let v = 35;
+    const today = new Date();
+    for (let i = 29; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      labels.push(d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }));
+      v += (Math.random() - 0.6) * 1.5;
+      v = Math.max(18, Math.min(42, v));
+      data.push(v.toFixed(1));
+    }
+    const ctx = document.getElementById('indexChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Composite Safety Index',
+          data: data,
+          borderColor: '#003d7a',
+          backgroundColor: 'rgba(0, 61, 122, 0.08)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.25,
+          pointRadius: 2,
+          pointBackgroundColor: '#003d7a'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#003d7a',
+            titleFont: { family: 'JetBrains Mono', size: 11 },
+            bodyFont: { family: 'JetBrains Mono', size: 11 }
+          }
+        },
+        scales: {
+          y: {
+            min: 15,
+            max: 50,
+            grid: { color: 'rgba(0,0,0,0.05)' },
+            ticks: { font: { family: 'JetBrains Mono', size: 10 }, color: '#555' }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { font: { family: 'JetBrains Mono', size: 10 }, color: '#555', maxRotation: 0, autoSkip: true, maxTicksLimit: 10 }
+          }
+        }
+      }
+    });
+  }
+
+  // ============================================================
+  // TICKER — rotating bureaucratic-horror incidents
+  // ============================================================
+  const tickerItems = [
+    'BULLETIN 2026-PT-0428: Composite index falls 2.18 points over 24h window',
+    'SINTRA: Unconfirmed cryptozoological reports under review by Coimbra Office',
+    'ALENTEJO: Atypical mortality reclassification events flagged in 3 municipalities',
+    'COASTAL SECTOR: Unidentified aerial phenomenon logged near Cascais, 02:14 WET',
+    'CUSTOMS: 14 kg unprocessed cork intercepted at Faro terminal, undeclared',
+    'LISBOA: Atmospheric posture remains in elevated category for 11th consecutive day',
+    'FINANCIAL: Indicators of irregular commercial flow logged, 6 entities under observation',
+    'NORTE: Pavement integrity surveys ongoing in 47 municipalities',
+    'ALGARVE: Marine fauna behavioral indicators flagged for review',
+    'ADVISORY: Citizens reporting nocturnal animal sightings advised to file Form RA-7b',
+    'AÇORES: Geothermal activity within nominal range; monitoring continues',
+    'TRANSMONTANO: Lobisomem-class incident reports cross-referenced against full moon calendar',
+    'TECHNICAL: Sensor 14-B in Faro recalibrated following anomalous readings',
+    'PORTO: Unattributed organized commercial activity logged at 4 dock facilities',
+    'PUBLIC NOTICE: Pastéis de Nata classified as ambient hazard, level 2',
+    'INSTITUTE: Director affirms continued faith in measurement framework',
+    'COIMBRA: Cryptid sighting database expanded; submissions reviewed quarterly',
+    'BRAGA: 22 kg of mislabeled bacalhau seized; investigation ongoing',
+    'CENTRO: Historical baseline deviation now exceeds 1.4 standard deviations',
+    'METHODOLOGY UPDATE: Sardine Aggression Rating now weighted at 4.2% of composite',
+    'TRAVEL ADVISORY: No specific guidance issued at this time',
+    'MADEIRA: Subtropical risk factors reassessed; index lowered',
+    'ÉVORA: Region temporarily marked DATA RESTRICTED — consult Office',
+    'ASTRONOMICAL: Lunar phase classified as concerning; tidal vulnerability elevated',
+    'PRESS BUREAU: Inquiries regarding atypical mortality events referred to Section 7'
+  ];
+  function buildTicker() {
+    const el = document.getElementById('ticker-content');
+    let html = '';
+    // Repeat for seamless scroll
+    for (let r = 0; r < 2; r++) {
+      tickerItems.forEach(item => {
+        html += `<span>${item}</span><span class="sep">●</span>`;
+      });
+    }
+    el.innerHTML = html;
+  }
+
+  // ============================================================
+  // INFO MODALS — bureaucratic methodology blurbs
+  // ============================================================
+  const methodologies = {
+    pop: {
+      title: 'Demographic Decline Vector — Methodology',
+      body: `<p>The Demographic Decline Vector represents continuous projection of the resident population of the Portuguese Republic, updated in real time using the Institute's standardized cohort projection model.</p>
+             <p>Decrement is calculated against a baseline of <code>10,329,000</code> residents and applied at the rate of <code>0.324 individuals per second</code>, derived from regional mortality data weighted by age structure.</p>
+             <p>The vector is published continuously as a public information service. The Institute does not advise any specific demographic action and cannot accept responsibility for outcomes resulting from interpretation of this metric.</p>`
+    },
+    wind: {
+      title: 'Atmospheric Hostility — Lisboa',
+      body: `<p>Atmospheric Hostility for the Lisboa metropolitan sensor field is reported as wind speed at <code>10m AGL</code>, sampled continuously and updated against the Institute's atmospheric posture taxonomy.</p>
+             <p>Readings are sourced from CAMS-affiliated forecast products via Open-Meteo telemetry. Threshold classifications are reviewed annually by the Office of Continental Risk Assessment.</p>
+             <p>Persistent low-grade activity is the most common observed state and should not be confused with absence of risk.</p>`
+    },
+    quake: {
+      title: 'Seismic Activity — Iberian Region',
+      body: `<p>Confirmed seismic disturbances are aggregated from the United States Geological Survey real-time event feed, filtered to events of magnitude <code>2.0+</code> within the bounding region <code>36°N–43°N, 12°W–5°W</code>, over the trailing 30-day window.</p>
+             <p>The Iberian Peninsula sits at the convergence of the Eurasian and African tectonic plates. Continuous low-magnitude activity is structurally inherent to the region. The Institute monitors deviation from baseline.</p>`
+    },
+    aqi: {
+      title: 'Respiratory Threat Index — Lisboa',
+      body: `<p>The Respiratory Threat Index is published using the European Air Quality Index methodology as compiled by the Copernicus Atmosphere Monitoring Service (CAMS).</p>
+             <p>Index values reflect concentration of <code>PM2.5</code>, <code>PM10</code>, <code>O₃</code>, and <code>NO₂</code> particulates as measured by the European 11km regional model. Sub-threshold contamination is classified as a chronic exposure factor and warrants advisory designation regardless of nominal scale.</p>`
+    },
+    sea: {
+      title: 'Maritime Instability — Cascais Coast',
+      body: `<p>Maritime Instability is reported as significant wave height <code>(H<sub>s</sub>)</code> at the Cascais coastal monitoring point <code>(38.69°N, 9.42°W)</code>, sourced from the Open-Meteo Marine API.</p>
+             <p>Wave behavior in this sector reflects North Atlantic swell propagation modified by continental shelf bathymetry. Calm seas are not interpreted as evidence of safety; they are recorded as <em>low-grade oceanic disturbance</em> pending review.</p>
+             <p>Maritime risk is reviewed quarterly by the Faro Office.</p>`
+    }
+  };
+  function openModal(key) {
+    const m = methodologies[key];
+    if (!m) return;
+    document.getElementById('info-title').textContent = m.title;
+    document.getElementById('info-body').innerHTML = m.body;
+    document.getElementById('info-modal').classList.add('active');
+  }
+  function closeModal() {
+    document.getElementById('info-modal').classList.remove('active');
+  }
+  document.addEventListener('click', e => {
+    if (e.target.classList.contains('info-btn')) {
+      openModal(e.target.dataset.info);
+    }
+    if (e.target.id === 'info-modal') closeModal();
+  });
+
+  // ============================================================
+  // DWELL BEEP — single quiet hospital-monitor beep at 60s
+  // ============================================================
+  // Browsers block audio until first user interaction.
+  // We wait for one (click/scroll/keypress) before starting the timer.
+  let beepArmed = false;
+  let beepTimer = null;
+  function playBeep() {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = 880; // A5 — hospital-monitor pitch
+      // Envelope: quick attack, gentle release. Quiet (peak 0.06).
+      gain.gain.setValueAtTime(0, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.06, ctx.currentTime + 0.01);
+      gain.gain.linearRampToValueAtTime(0.06, ctx.currentTime + 0.18);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.28);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.3);
+    } catch (e) {
+      // Audio context blocked or not available — fail silently
+    }
+  }
+  function armBeep() {
+    if (beepArmed) return;
+    beepArmed = true;
+    beepTimer = setTimeout(playBeep, 60000);
+  }
+  // Arm on any of these signals — first user interaction
+  ['click', 'scroll', 'keydown', 'touchstart'].forEach(evt => {
+    window.addEventListener(evt, armBeep, { once: true, passive: true });
+  });
+
+  // ============================================================
+  // INIT
+  // ============================================================
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('answer-date').textContent = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+  buildTicker();
+  buildChart();
+  updateAdverseCounter();
+  updatePopulation();
+  updateIndex();
+  updateTimestamp();
+  updateSecondary();
+  fetchLisbonWeather();
+  fetchSeismicData();
+  fetchAirQuality();
+  fetchMarineData();
+
+  // Live update intervals
+  setInterval(updateAdverseCounter, 200);
+  setInterval(updatePopulation, 1000);
+  setInterval(updateIndex, 2000);
+  setInterval(updateTimestamp, 1000);
+  setInterval(updateSecondary, 3500);
+  setInterval(fetchLisbonWeather, 5 * 60 * 1000);
+  setInterval(fetchSeismicData, 15 * 60 * 1000);
+  setInterval(fetchAirQuality, 10 * 60 * 1000);
+  setInterval(fetchMarineData, 10 * 60 * 1000);
+</script>
+
+</body>
+</html>
