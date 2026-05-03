@@ -329,7 +329,7 @@
     color: #fff;
     overflow: hidden;
     white-space: nowrap;
-    padding: 8px 0;
+    padding: 0;
     border-top: 1px solid #002952;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
@@ -339,6 +339,44 @@
     right: 0;
     z-index: 50;
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: stretch;
+    height: 32px;
+  }
+  .ticker-label {
+    background: #b00020;
+    padding: 8px 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+  }
+  .ticker-viewport {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .ticker-track {
+    display: flex;
+    white-space: nowrap;
+    will-change: transform;
+    animation: ticker-scroll 180s linear infinite;
+  }
+  .ticker-track > span {
+    padding-right: 32px;
+    flex-shrink: 0;
+  }
+  .ticker-track .sep {
+    color: #6fa8dc;
+    padding-right: 32px;
+  }
+  @keyframes ticker-scroll {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
   }
   body {
     padding-bottom: 36px;
@@ -350,22 +388,6 @@
     margin-right: 12px;
     display: inline-block;
     letter-spacing: 0.5px;
-  }
-  .ticker-content {
-    display: inline-block;
-    animation: scroll 180s linear infinite;
-    padding-left: 100%;
-  }
-  .ticker-content span {
-    margin-right: 32px;
-  }
-  .ticker-content .sep {
-    color: #6fa8dc;
-    margin: 0 12px;
-  }
-  @keyframes scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-100%); }
   }
   .data-table {
     background: #fff;
@@ -992,7 +1014,9 @@
 
 <div class="ticker">
   <span class="ticker-label">LIVE FEED</span>
-  <span class="ticker-content" id="ticker-content"></span>
+  <div class="ticker-viewport">
+    <div class="ticker-track" id="ticker-content"></div>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
