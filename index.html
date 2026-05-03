@@ -495,155 +495,239 @@
     font-style: italic;
   }
 
-  /* ==== THREAT BOARD ==== */
-  .threat-board {
+  /* ==== MAP FAILURE STATE ==== */
+  .map-failure {
     background: #fff;
     border: 1px solid #cfcfc4;
-    padding: 18px;
+    border-left: 6px solid #b00020;
+    padding: 0;
     margin-bottom: 16px;
-    display: grid;
-    grid-template-columns: 1.4fr 0.8fr;
-    gap: 18px;
+    overflow: hidden;
   }
-  @media (max-width: 860px) {
-    .threat-board { grid-template-columns: 1fr; }
-  }
-  .threat-board-main {
-    border: 1px solid #d4d4c8;
-    background:
-      linear-gradient(rgba(0,61,122,0.03) 1px, transparent 1px),
-      #fafaf5;
-    background-size: 100% 28px;
-    padding: 16px;
-  }
-  .threat-board-title {
-    font-family: 'Source Serif 4', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #003d7a;
-  }
-  .threat-board-subtitle {
+  .map-failure-header {
+    background: #f4f4f0;
+    border-bottom: 1px solid #cfcfc4;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: #777;
-    margin-top: 2px;
-    margin-bottom: 14px;
+    font-size: 11px;
+    color: #555;
     text-transform: uppercase;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.5px;
   }
-  .region-stack {
-    display: grid;
+  .map-failure-header .left {
+    display: flex;
+    align-items: center;
     gap: 8px;
   }
-  .region-row {
+  .map-failure-header .status-led {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #b00020;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  .map-failure-body {
     display: grid;
-    grid-template-columns: 52px 1fr 64px 92px;
-    gap: 10px;
-    align-items: center;
-    background: #fff;
-    border: 1px solid #d4d4c8;
-    border-left: 5px solid #d4a017;
-    padding: 10px 12px;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 0;
+    align-items: stretch;
+    min-height: 320px;
   }
-  @media (max-width: 620px) {
-    .region-row {
-      grid-template-columns: 44px 1fr;
-      gap: 8px 10px;
+  @media (max-width: 860px) {
+    .map-failure-body { grid-template-columns: 1fr; }
+  }
+  .map-failure-canvas {
+    background:
+      repeating-linear-gradient(
+        45deg,
+        #fafaf5 0,
+        #fafaf5 12px,
+        #f0f0e8 12px,
+        #f0f0e8 24px
+      );
+    border-right: 1px solid #cfcfc4;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 860px) {
+    .map-failure-canvas {
+      border-right: none;
+      border-bottom: 1px solid #cfcfc4;
     }
-    .region-score { text-align: left !important; grid-column: 2; }
-    .region-badge { grid-column: 2; width: fit-content; }
   }
-  .region-row.severe {
-    border-left-color: #b00020;
+  .map-failure-canvas::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(176, 0, 32, 0.08) 0, transparent 40%),
+      radial-gradient(circle at 70% 60%, rgba(176, 0, 32, 0.06) 0, transparent 35%),
+      radial-gradient(circle at 45% 80%, rgba(176, 0, 32, 0.07) 0, transparent 30%);
+    pointer-events: none;
   }
-  .region-row.active {
-    box-shadow: inset 0 0 0 1px rgba(176,0,32,0.18);
-    animation: rowPulse 2.6s ease-in-out infinite;
+  .map-failure-icon {
+    width: 56px;
+    height: 56px;
+    border: 2px solid #b00020;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    background: #fff;
+    position: relative;
+    z-index: 1;
   }
-  @keyframes rowPulse {
-    0%, 100% { background: #fff; }
-    50% { background: #fff6f6; }
+  .map-failure-icon::after {
+    content: "!";
+    font-family: 'Source Serif 4', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #b00020;
+    line-height: 1;
   }
-  .region-code {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
+  .map-failure-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 20px;
     font-weight: 700;
     color: #003d7a;
-    border: 1px solid #003d7a;
-    text-align: center;
-    padding: 4px 0;
-    background: #f4f4f0;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
   }
-  .region-name {
+  .map-failure-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #b00020;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .map-failure-message {
     font-size: 13px;
-    font-weight: 700;
-    color: #1a1a1a;
+    color: #444;
+    line-height: 1.6;
+    max-width: 460px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
   }
-  .region-note {
+  .map-failure-error {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: #777;
-    margin-top: 1px;
-    font-style: italic;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px dashed #b8b8ad;
+    padding: 8px 10px;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
   }
-  .region-score {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 18px;
-    font-weight: 700;
-    color: #003d7a;
-    text-align: right;
-  }
-  .region-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    color: #fff;
-    text-align: center;
-    padding: 4px 6px;
-    background: #d4a017;
-  }
-  .region-row.severe .region-badge {
-    background: #b00020;
-  }
-  .region-row.island .region-code::after {
-    content: "*";
-    color: #b00020;
-  }
-  .threat-board-side {
-    display: grid;
-    gap: 10px;
-  }
-  .side-card {
+  .map-failure-error span { color: #b00020; }
+
+  /* Right side: live alert log */
+  .map-alert-log {
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
     background: #fff;
-    border: 1px solid #cfcfc4;
-    border-top: 4px solid #003d7a;
-    padding: 14px;
   }
-  .side-card.severe-card {
-    border-top-color: #b00020;
-  }
-  .side-label {
+  .map-alert-log-header {
     font-size: 10px;
     color: #555;
     text-transform: uppercase;
     letter-spacing: 0.6px;
-    font-weight: 700;
+    font-weight: 600;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #cfcfc4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  .side-value {
+  .map-alert-log-header .count {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 30px;
-    font-weight: 700;
     color: #b00020;
-    line-height: 1;
-    margin: 8px 0;
+    font-weight: 700;
   }
-  .side-value.small {
-    font-size: 24px;
+  .map-alert-list {
+    list-style: none;
+    flex: 1;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  .map-alert-list li {
+    padding: 5px 0;
+    border-bottom: 1px dotted #e0e0d4;
+    color: #444;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    animation: alertSlide 0.4s ease-out;
+  }
+  @keyframes alertSlide {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .map-alert-list .ts {
+    color: #888;
+    flex-shrink: 0;
+    width: 56px;
+  }
+  .map-alert-list .reg {
     color: #003d7a;
+    font-weight: 700;
+    flex-shrink: 0;
   }
-  .side-copy {
-    font-size: 11px;
-    color: #555;
-    line-height: 1.55;
+  .map-alert-list .msg {
+    color: #444;
+    flex: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .map-alert-list li.severe .msg { color: #b00020; }
+  .map-alert-list li.severe .reg { color: #b00020; }
+
+  .map-failure-footer {
+    background: #f4f4f0;
+    border-top: 1px solid #cfcfc4;
+    padding: 8px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #777;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .map-failure-footer .retry {
+    background: #003d7a;
+    color: #fff;
+    border: none;
+    padding: 4px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .map-failure-footer .retry:hover { background: #002952; }
+  .map-failure-footer .retry:disabled {
+    background: #b8b8ad;
+    cursor: not-allowed;
   }
 
   /* ==== TICKER ==== */
@@ -1471,110 +1555,37 @@
   </div>
 
   <h2 class="section-head">Geographic Threat Distribution</h2>
-  <div class="threat-board">
-    <div class="threat-board-main">
-      <div class="threat-board-title">Portuguese Republic Regional Risk Matrix</div>
-      <div class="threat-board-subtitle">
-        Cartographic visualization suspended pending methodological review.
+  <div class="map-failure">
+    <div class="map-failure-header">
+      <div class="left">
+        <span class="status-led"></span>
+        <span>RENDER STATUS · OFFLINE</span>
       </div>
-
-      <div class="region-stack">
-        <div class="region-row elevated">
-          <div class="region-code">NRT</div>
-          <div class="region-info">
-            <div class="region-name">Norte</div>
-            <div class="region-note">Mountain-adjacent uncertainty cluster</div>
-          </div>
-          <div class="region-score">28.1</div>
-          <div class="region-badge">ELEVATED</div>
+      <div>MODULE: GEO-VIS-3 &nbsp;·&nbsp; v2.7.1</div>
+    </div>
+    <div class="map-failure-body">
+      <div class="map-failure-canvas">
+        <div class="map-failure-icon"></div>
+        <div class="map-failure-title">Geographic Visualization Unavailable</div>
+        <div class="map-failure-subtitle">Render queue saturated by inbound advisories</div>
+        <div class="map-failure-message">
+          The regional threat map cannot be drawn at this time. The volume of incoming distress alerts exceeds the rendering module's processing capacity. The Office of Continental Risk Assessment is reviewing the alert backlog in the order received. Map services will resume once the queue returns to nominal levels.
         </div>
-
-        <div class="region-row elevated">
-          <div class="region-code">CTR</div>
-          <div class="region-info">
-            <div class="region-name">Centro</div>
-            <div class="region-note">Interior deviation corridor</div>
-          </div>
-          <div class="region-score">31.6</div>
-          <div class="region-badge">ELEVATED</div>
+        <div class="map-failure-error">
+          <span>ERROR GEO-VIS-3 / 0xA7B4:</span> alert.intake.queue_depth = <span id="err-queue-depth">14,837</span> (threshold: 250) &nbsp;·&nbsp; renderer.state = SUSPENDED &nbsp;·&nbsp; last_successful_render = <span id="err-last-render">—</span>
         </div>
-
-        <div class="region-row severe active">
-          <div class="region-code">LIS</div>
-          <div class="region-info">
-            <div class="region-name">Lisboa Metropolitan</div>
-            <div class="region-note">Primary administrative dread zone</div>
-          </div>
-          <div class="region-score">19.4</div>
-          <div class="region-badge">SEVERE</div>
+      </div>
+      <div class="map-alert-log">
+        <div class="map-alert-log-header">
+          <span>Inbound Alert Stream</span>
+          <span class="count" id="alert-count">0 / sec</span>
         </div>
-
-        <div class="region-row elevated">
-          <div class="region-code">ALT</div>
-          <div class="region-info">
-            <div class="region-name">Alentejo</div>
-            <div class="region-note">Low-density exposure field</div>
-          </div>
-          <div class="region-score">34.2</div>
-          <div class="region-badge">ELEVATED</div>
-        </div>
-
-        <div class="region-row severe active">
-          <div class="region-code">ALG</div>
-          <div class="region-info">
-            <div class="region-name">Algarve</div>
-            <div class="region-note">Tourism-amplified coastal instability</div>
-          </div>
-          <div class="region-score">22.8</div>
-          <div class="region-badge">SEVERE</div>
-        </div>
-
-        <div class="region-row elevated island">
-          <div class="region-code">AZR</div>
-          <div class="region-info">
-            <div class="region-name">Açores</div>
-            <div class="region-note">Remote Atlantic anomaly sector</div>
-          </div>
-          <div class="region-score">26.7</div>
-          <div class="region-badge">ELEVATED</div>
-        </div>
-
-        <div class="region-row severe island active">
-          <div class="region-code">MAD</div>
-          <div class="region-info">
-            <div class="region-name">Madeira</div>
-            <div class="region-note">Subtropical escalation appendix</div>
-          </div>
-          <div class="region-score">24.3</div>
-          <div class="region-badge">SEVERE</div>
-        </div>
+        <ul class="map-alert-list" id="alert-list"></ul>
       </div>
     </div>
-
-    <div class="threat-board-side">
-      <div class="side-card">
-        <div class="side-label">Current Map Status</div>
-        <div class="side-value">WITHHELD</div>
-        <div class="side-copy">
-          Regional geometry has been removed from public display after producing interpretive distress in trial observers.
-        </div>
-      </div>
-
-      <div class="side-card severe-card">
-        <div class="side-label">Severe Regions</div>
-        <div class="side-value">3</div>
-        <div class="side-copy">
-          Lisboa, Algarve, and Madeira are pulsing in internal systems. Public pulsing has been disabled for morale.
-        </div>
-      </div>
-
-      <div class="side-card">
-        <div class="side-label">Methodology</div>
-        <div class="side-value small">RA-7b</div>
-        <div class="side-copy">
-          Risk values combine weather, waves, seismic data, sardine posture, and quiet institutional panic.
-        </div>
-      </div>
+    <div class="map-failure-footer">
+      <span>SOURCE: IRI/CRA Regional Telemetry &nbsp;·&nbsp; Module GEO-VIS-3 awaiting capacity</span>
+      <button class="retry" id="map-retry">▸ Retry Render</button>
     </div>
   </div>
 
@@ -1726,25 +1737,17 @@
 
   // ============================================================
   // ESCALATION SCHEDULE
-  // The site grows quietly more concerned the longer you stay.
-  // - Index drifts downward over time (subtle)
-  // - Threat marker creeps right (subtle)
-  // - "STILL NO" flicker on the answer at ~75s (medium)
-  // - Two BREAKING bulletins inserted at 90s and 180s (medium)
-  // - Adverse counter rate ticks up slightly over time (subtle)
   // ============================================================
   let escalationLevel = 0;
   let breakingItems = [];
 
   function escalationFactor() {
-    // Caps at ~5 minutes; returns 0..1
     const elapsedSec = (Date.now() - SESSION_START) / 1000;
     return Math.min(1, elapsedSec / 300);
   }
 
   // ============================================================
-  // LIVE COUNTER — session-based, ticks roughly once per 1.37s
-  // (real-world rate, relabeled as "Unverified Iberian Anomalies")
+  // LIVE COUNTER
   // ============================================================
   function updateAdverseCounter() {
     const elapsedSec = (Date.now() - SESSION_START) / 1000;
@@ -1767,12 +1770,11 @@
   }
 
   // ============================================================
-  // SAFETY INDEX — drifts downward with escalation
+  // SAFETY INDEX
   // ============================================================
   let psiValue = 23.4;
   function updateIndex() {
     const drift = (Math.random() - 0.55) * 0.4;
-    // Escalation pulls the floor down
     const floor = 15 - escalationFactor() * 4;
     psiValue = Math.max(floor, Math.min(35, psiValue + drift - escalationFactor() * 0.05));
     document.getElementById('psi-value').textContent = psiValue.toFixed(1);
@@ -1928,9 +1930,95 @@
   }
 
   // ============================================================
-  // GEOGRAPHIC THREAT BOARD
-  // Static board. Literal map removed because it looked like a wounded sock puppet.
+  // MAP FAILURE — alert log + queue depth + retry
   // ============================================================
+  const ALERT_REGIONS = ['LIS', 'PRT', 'FAR', 'CBR', 'EVR', 'BGA', 'AVR', 'VIS', 'SET', 'STR', 'PDL', 'FNC', 'CBO', 'GRD'];
+  const ALERT_MESSAGES = [
+    { msg: 'unverified anomaly logged', severe: false },
+    { msg: 'sensor cluster offline', severe: false },
+    { msg: 'baseline deviation flagged', severe: false },
+    { msg: 'pavement integrity event', severe: false },
+    { msg: 'cryptid sighting submitted', severe: false },
+    { msg: 'atypical mortality cluster', severe: true },
+    { msg: 'irregular commercial flow', severe: false },
+    { msg: 'unidentified aerial phenomenon', severe: false },
+    { msg: 'marine fauna behavioral spike', severe: true },
+    { msg: 'lobisomem-class report filed', severe: false },
+    { msg: 'cork seizure exceeds threshold', severe: false },
+    { msg: 'sardine aggression elevated', severe: true },
+    { msg: 'cultural retreat indicator', severe: false },
+    { msg: 'pastéis output anomaly', severe: false },
+    { msg: 'historical baseline breach', severe: true },
+    { msg: 'sensor 14-B drift detected', severe: false },
+    { msg: 'unattributed organized activity', severe: false },
+    { msg: 'tidal vulnerability flagged', severe: false },
+    { msg: 'geothermal posture review', severe: false },
+    { msg: 'fado venue closure logged', severe: false }
+  ];
+
+  let queueDepth = 14837;
+  function updateQueueDepth() {
+    // Drift upward steadily, occasional small dips
+    queueDepth += Math.floor(Math.random() * 12) - 3;
+    if (queueDepth < 14000) queueDepth = 14000 + Math.floor(Math.random() * 200);
+    document.getElementById('err-queue-depth').textContent = queueDepth.toLocaleString();
+  }
+
+  let alertCount = 0;
+  function pushAlert() {
+    const list = document.getElementById('alert-list');
+    if (!list) return;
+
+    const region = ALERT_REGIONS[Math.floor(Math.random() * ALERT_REGIONS.length)];
+    const alert = ALERT_MESSAGES[Math.floor(Math.random() * ALERT_MESSAGES.length)];
+    const now = new Date();
+    const ts = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+    const li = document.createElement('li');
+    if (alert.severe) li.classList.add('severe');
+    li.innerHTML = `<span class="ts">${ts}</span><span class="reg">${region}</span><span class="msg">${alert.msg}</span>`;
+    list.insertBefore(li, list.firstChild);
+
+    // Cap visible alerts
+    while (list.children.length > 14) {
+      list.removeChild(list.lastChild);
+    }
+
+    alertCount++;
+  }
+
+  let lastAlertCount = 0;
+  function updateAlertRate() {
+    const delta = alertCount - lastAlertCount;
+    document.getElementById('alert-count').textContent = `${delta} / sec`;
+    lastAlertCount = alertCount;
+  }
+
+  function updateLastRender() {
+    // "Last successful render" drifts further into the past
+    const minutes = 47 + Math.floor((Date.now() - SESSION_START) / 60000);
+    document.getElementById('err-last-render').textContent = `${minutes} min ago`;
+  }
+
+  function setupRetry() {
+    const btn = document.getElementById('map-retry');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      btn.disabled = true;
+      const original = btn.textContent;
+      btn.textContent = '▸ Retrying…';
+      setTimeout(() => {
+        btn.textContent = '▸ Retry Failed';
+        // Spike the queue when user retries — adds a punchline
+        queueDepth += Math.floor(Math.random() * 400) + 200;
+        document.getElementById('err-queue-depth').textContent = queueDepth.toLocaleString();
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.disabled = false;
+        }, 2200);
+      }, 1400);
+    });
+  }
 
   // ============================================================
   // TICKER
@@ -1960,10 +2048,10 @@
     'MADEIRA: Subtropical risk factors reassessed; index lowered',
     'ÉVORA: Region temporarily marked DATA RESTRICTED — consult Office',
     'ASTRONOMICAL: Lunar phase classified as concerning; tidal vulnerability elevated',
-    'PRESS BUREAU: Inquiries regarding atypical mortality events referred to Section 7'
+    'PRESS BUREAU: Inquiries regarding atypical mortality events referred to Section 7',
+    'GEO-VIS-3: Regional map module suspended pending alert queue clearance'
   ];
 
-  // Items appended dynamically as session progresses
   const escalationBulletins = [
     { time: 90, text: 'BREAKING: Composite index revised downward following routine recalibration' },
     { time: 180, text: 'BREAKING: Lisboa Metropolitan reclassified — citizens advised to remain calm' },
@@ -1984,7 +2072,7 @@
   }
 
   // ============================================================
-  // ESCALATION TIMER — fires bulletins, flickers answer
+  // ESCALATION TIMER
   // ============================================================
   function showEscalationToast(label, body) {
     const existing = document.querySelector('.escalation-toast');
@@ -2016,14 +2104,10 @@
 
   function checkEscalation() {
     const elapsed = (Date.now() - SESSION_START) / 1000;
-
-    // Flicker answer at ~75s
     if (elapsed > 75 && escalationLevel < 1) {
       escalationLevel = 1;
       flickerAnswer();
     }
-
-    // Insert breaking bulletins at scheduled times
     escalationBulletins.forEach(b => {
       if (elapsed > b.time && !breakingItems.includes(b.text)) {
         breakingItems.push(b.text);
@@ -2078,7 +2162,7 @@
   }
 
   // ============================================================
-  // STUB MODAL (for unimplemented nav)
+  // STUB MODAL
   // ============================================================
   const stubPages = {
     historical: {
@@ -2130,7 +2214,7 @@
              <p>Processing time: <strong>6 to 10 weeks</strong>.</p>`,
       footer: 'Bulletin Series ISSN 2735-XXXX'
     },
-    current: null  // active page, no-op
+    current: null
   };
 
   function openStubModal(key) {
@@ -2146,11 +2230,8 @@
   }
 
   // ============================================================
-  // PERSONAL ASSESSMENT — generator
+  // PERSONAL ASSESSMENT
   // ============================================================
-  // Findings keyed by motivation. Each motivation has 4 deadpan,
-  // bureaucratically-worded findings that pretend to know things.
-  // Variations within each category to reduce repetition.
   const FINDINGS = {
     career: [
       'Subject\'s stated motivation classified as Category 2 (Professional). Historical outcome data: subjects in this category exhibit a 64% reversion rate within 18 months.',
@@ -2208,7 +2289,6 @@
     ]
   };
 
-  // Findings keyed by duration (added to motivation findings)
   const DURATION_FINDINGS = {
     brief: 'Stay duration classified as <em>brief</em>. Cumulative exposure to administrative procedure expected to remain sub-threshold.',
     medium: 'Stay duration classified as <em>medium</em>. Subject is likely to encounter the residency permit application process and form an opinion regarding it.',
@@ -2237,9 +2317,6 @@
   }
 
   function calculateScore(motivation) {
-    // Motivation-weighted base score, with mild randomness so two
-    // identical inputs produce slightly different scores. All scores
-    // remain in the "concerning" range (the bit demands it).
     const baseScores = {
       career: 26.4, climate: 28.7, romantic: 14.2, escape: 11.8,
       family: 17.9, retirement: 24.6, digital_nomad: 22.3,
@@ -2258,7 +2335,6 @@
   }
 
   function generateBulletinNumber(name) {
-    // Deterministic-ish from name + date
     const today = new Date();
     const dateStr = today.toISOString().slice(0,10).replace(/-/g,'');
     const hash = (name || 'anon').split('').reduce((a,c) => a + c.charCodeAt(0), 0);
@@ -2273,9 +2349,7 @@
     const bulletinNum = generateBulletinNumber(name);
     const today = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
 
-    // Pick 3 findings from motivation pool + origin + duration
     const motivationFindings = (FINDINGS[motivation] || FINDINGS.other).slice();
-    // Shuffle and take 3
     motivationFindings.sort(() => Math.random() - 0.5);
     const selected = motivationFindings.slice(0, 3);
     const originFinding = classifyOrigin(origin);
@@ -2285,7 +2359,6 @@
     if (originFinding) allFindings.push(originFinding);
     if (durationFinding) allFindings.push(durationFinding);
 
-    // Recommendation lines vary by score severity
     const recommendations = [
       score < 15 ? 'RELOCATION NOT ADVISED' :
       score < 25 ? 'RELOCATION INADVISABLE' :
@@ -2416,7 +2489,7 @@
   document.querySelectorAll('nav.gov-nav a[data-stub]').forEach(a => {
     a.addEventListener('click', (e) => {
       const key = a.dataset.stub;
-      if (key === 'current') return; // active page
+      if (key === 'current') return;
       openStubModal(key);
     });
   });
@@ -2472,6 +2545,13 @@
   updateIndex();
   updateTimestamp();
   updateSecondary();
+  updateQueueDepth();
+  updateLastRender();
+  setupRetry();
+
+  // Seed a few alerts immediately so the log isn't empty on first paint
+  for (let i = 0; i < 6; i++) pushAlert();
+
   fetchLisbonWeather();
   fetchSeismicData();
   fetchAirQuality();
@@ -2483,6 +2563,10 @@
   setInterval(updateTimestamp, 1000);
   setInterval(updateSecondary, 3500);
   setInterval(checkEscalation, 2000);
+  setInterval(updateQueueDepth, 1500);
+  setInterval(updateLastRender, 30000);
+  setInterval(pushAlert, 1100);  // ~1 alert per second
+  setInterval(updateAlertRate, 1000);
   setInterval(fetchLisbonWeather, 5 * 60 * 1000);
   setInterval(fetchSeismicData, 15 * 60 * 1000);
   setInterval(fetchAirQuality, 10 * 60 * 1000);
