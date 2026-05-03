@@ -91,10 +91,15 @@
     letter-spacing: 0.4px;
     border-right: 1px solid #003d7a;
     white-space: nowrap;
-    cursor: default;
+    cursor: pointer;
   }
   nav.gov-nav a:hover { background: #003d7a; }
   nav.gov-nav a.active { background: #003d7a; }
+  nav.gov-nav a.cta {
+    background: #b00020;
+    color: #fff;
+  }
+  nav.gov-nav a.cta:hover { background: #8a0019; }
   main {
     max-width: 1240px;
     margin: 0 auto;
@@ -129,6 +134,7 @@
     color: #b00020;
     line-height: 1;
     letter-spacing: -2px;
+    transition: opacity 0.15s;
   }
   .answer-confirmed {
     font-family: 'JetBrains Mono', monospace;
@@ -270,206 +276,10 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
   }
-  .grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  .grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  @media (max-width: 720px) {
-    .grid-3, .grid-2 { grid-template-columns: 1fr; }
-  }
   .panel {
     background: #fff;
     border: 1px solid #cfcfc4;
     padding: 16px;
-  }
-  .panel-title {
-    font-size: 11px;
-    color: #555;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-  .panel-value {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 28px;
-    font-weight: 700;
-    color: #003d7a;
-    line-height: 1;
-  }
-  .panel-trend {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    margin-top: 6px;
-  }
-  .trend-down { color: #b00020; }
-  .trend-up { color: #b00020; }
-  .trend-down::before { content: "▼ "; }
-  .trend-up::before { content: "▲ "; }
-  .chart-container {
-    background: #fff;
-    border: 1px solid #cfcfc4;
-    padding: 18px;
-    margin-bottom: 16px;
-  }
-  .chart-container canvas {
-    max-width: 100%;
-    height: 240px;
-  }
-  .ticker {
-    background: #003d7a;
-    color: #fff;
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 0;
-    border-top: 1px solid #002952;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 50;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: stretch;
-    height: 32px;
-  }
-  .ticker-label {
-    background: #b00020;
-    padding: 8px 12px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    z-index: 2;
-  }
-  .ticker-viewport {
-    flex: 1;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  .ticker-track {
-    display: flex;
-    white-space: nowrap;
-    will-change: transform;
-    animation: ticker-scroll 180s linear infinite;
-  }
-  .ticker-track > span {
-    padding-right: 32px;
-    flex-shrink: 0;
-  }
-  .ticker-track .sep {
-    color: #6fa8dc;
-    padding-right: 32px;
-  }
-  @keyframes ticker-scroll {
-    from { transform: translate3d(0, 0, 0); }
-    to { transform: translate3d(-50%, 0, 0); }
-  }
-  body {
-    padding-bottom: 36px;
-  }
-  .ticker-label {
-    background: #b00020;
-    padding: 4px 12px;
-    font-weight: 700;
-    margin-right: 12px;
-    display: inline-block;
-    letter-spacing: 0.5px;
-  }
-  .data-table {
-    background: #fff;
-    border: 1px solid #cfcfc4;
-    padding: 16px;
-    margin-bottom: 16px;
-    overflow-x: auto;
-  }
-  .data-table table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-  }
-  .data-table th {
-    text-align: left;
-    padding: 8px;
-    background: #f0f0e8;
-    border-bottom: 2px solid #003d7a;
-    color: #003d7a;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-    font-size: 11px;
-    font-weight: 600;
-  }
-  .data-table td {
-    padding: 8px;
-    border-bottom: 1px solid #e0e0d4;
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .badge-red {
-    display: inline-block;
-    background: #b00020;
-    color: #fff;
-    padding: 2px 8px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-  }
-  .badge-amber {
-    display: inline-block;
-    background: #d4a017;
-    color: #fff;
-    padding: 2px 8px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-  }
-  .footer {
-    background: #002952;
-    color: #c0d4ec;
-    padding: 24px;
-    margin-top: 32px;
-    font-size: 11px;
-    line-height: 1.7;
-  }
-  .footer-grid {
-    max-width: 1240px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 32px;
-  }
-  @media (max-width: 720px) {
-    .footer-grid { grid-template-columns: 1fr; }
-  }
-  .footer h4 {
-    color: #fff;
-    font-size: 12px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .footer p { margin-bottom: 6px; }
-  .footer .fine-print {
-    border-top: 1px solid #003d7a;
-    padding-top: 16px;
-    margin-top: 24px;
-    color: #7a9bbe;
-    font-size: 10px;
-    max-width: 1240px;
-    margin-left: auto;
-    margin-right: auto;
   }
   .threat-meter {
     background: #fff;
@@ -541,6 +351,14 @@
     gap: 8px;
     margin-bottom: 6px;
   }
+  .panel-title {
+    font-size: 11px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
   .info-btn {
     background: none;
     border: 1px solid #b8b8ad;
@@ -578,6 +396,10 @@
     color: #b00020;
     margin-bottom: 14px;
   }
+  .trend-down { color: #b00020; }
+  .trend-up { color: #b00020; }
+  .trend-down::before { content: "▼ "; }
+  .trend-up::before { content: "▲ "; }
   .hero-chart-wrap {
     flex: 1;
     min-height: 90px;
@@ -666,13 +488,311 @@
     margin-bottom: 3px;
   }
   .trend-improving { color: #4a6b25; }
-  .trend-improving::before { content: ""; }
   .anomaly-note {
     font-size: 10px;
     color: #777;
     line-height: 1.3;
     font-style: italic;
   }
+
+  /* ==== THREAT BOARD ==== */
+  .threat-board {
+    background: #fff;
+    border: 1px solid #cfcfc4;
+    padding: 18px;
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    gap: 18px;
+  }
+  @media (max-width: 860px) {
+    .threat-board { grid-template-columns: 1fr; }
+  }
+  .threat-board-main {
+    border: 1px solid #d4d4c8;
+    background:
+      linear-gradient(rgba(0,61,122,0.03) 1px, transparent 1px),
+      #fafaf5;
+    background-size: 100% 28px;
+    padding: 16px;
+  }
+  .threat-board-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #003d7a;
+  }
+  .threat-board-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #777;
+    margin-top: 2px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .region-stack {
+    display: grid;
+    gap: 8px;
+  }
+  .region-row {
+    display: grid;
+    grid-template-columns: 52px 1fr 64px 92px;
+    gap: 10px;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #d4d4c8;
+    border-left: 5px solid #d4a017;
+    padding: 10px 12px;
+  }
+  @media (max-width: 620px) {
+    .region-row {
+      grid-template-columns: 44px 1fr;
+      gap: 8px 10px;
+    }
+    .region-score { text-align: left !important; grid-column: 2; }
+    .region-badge { grid-column: 2; width: fit-content; }
+  }
+  .region-row.severe {
+    border-left-color: #b00020;
+  }
+  .region-row.active {
+    box-shadow: inset 0 0 0 1px rgba(176,0,32,0.18);
+    animation: rowPulse 2.6s ease-in-out infinite;
+  }
+  @keyframes rowPulse {
+    0%, 100% { background: #fff; }
+    50% { background: #fff6f6; }
+  }
+  .region-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #003d7a;
+    border: 1px solid #003d7a;
+    text-align: center;
+    padding: 4px 0;
+    background: #f4f4f0;
+  }
+  .region-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .region-note {
+    font-size: 10px;
+    color: #777;
+    margin-top: 1px;
+    font-style: italic;
+  }
+  .region-score {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: #003d7a;
+    text-align: right;
+  }
+  .region-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    padding: 4px 6px;
+    background: #d4a017;
+  }
+  .region-row.severe .region-badge {
+    background: #b00020;
+  }
+  .region-row.island .region-code::after {
+    content: "*";
+    color: #b00020;
+  }
+  .threat-board-side {
+    display: grid;
+    gap: 10px;
+  }
+  .side-card {
+    background: #fff;
+    border: 1px solid #cfcfc4;
+    border-top: 4px solid #003d7a;
+    padding: 14px;
+  }
+  .side-card.severe-card {
+    border-top-color: #b00020;
+  }
+  .side-label {
+    font-size: 10px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 700;
+  }
+  .side-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 30px;
+    font-weight: 700;
+    color: #b00020;
+    line-height: 1;
+    margin: 8px 0;
+  }
+  .side-value.small {
+    font-size: 24px;
+    color: #003d7a;
+  }
+  .side-copy {
+    font-size: 11px;
+    color: #555;
+    line-height: 1.55;
+  }
+
+  /* ==== TICKER ==== */
+  .ticker {
+    background: #003d7a;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0;
+    border-top: 1px solid #002952;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: stretch;
+    height: 32px;
+  }
+  .ticker-label {
+    background: #b00020;
+    padding: 8px 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+  }
+  .ticker-viewport {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .ticker-track {
+    display: flex;
+    white-space: nowrap;
+    will-change: transform;
+    animation: ticker-scroll 180s linear infinite;
+  }
+  .ticker-track > span {
+    padding-right: 32px;
+    flex-shrink: 0;
+  }
+  .ticker-track .sep {
+    color: #6fa8dc;
+    padding-right: 32px;
+  }
+  .ticker-track .breaking {
+    color: #ffd166;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  @keyframes ticker-scroll {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  body { padding-bottom: 36px; }
+
+  /* ==== TABLE ==== */
+  .data-table {
+    background: #fff;
+    border: 1px solid #cfcfc4;
+    padding: 16px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+  }
+  .data-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .data-table th {
+    text-align: left;
+    padding: 8px;
+    background: #f0f0e8;
+    border-bottom: 2px solid #003d7a;
+    color: #003d7a;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .data-table td {
+    padding: 8px;
+    border-bottom: 1px solid #e0e0d4;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .badge-red {
+    display: inline-block;
+    background: #b00020;
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+  }
+  .badge-amber {
+    display: inline-block;
+    background: #d4a017;
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+  }
+  .footer {
+    background: #002952;
+    color: #c0d4ec;
+    padding: 24px;
+    margin-top: 32px;
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .footer-grid {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 720px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+  .footer h4 {
+    color: #fff;
+    font-size: 12px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .footer p { margin-bottom: 6px; }
+  .footer .fine-print {
+    border-top: 1px solid #003d7a;
+    padding-top: 16px;
+    margin-top: 24px;
+    color: #7a9bbe;
+    font-size: 10px;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ==== INFO MODAL ==== */
   .info-modal {
     display: none;
     position: fixed;
@@ -735,6 +855,463 @@
     border-top: 1px solid #cfcfc4;
     font-family: 'JetBrains Mono', monospace;
   }
+
+  /* ==== ASSESSMENT MODAL ==== */
+  .assessment-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 25, 60, 0.75);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  .assessment-modal.active { display: flex; }
+  .assessment-content {
+    background: #fff;
+    max-width: 720px;
+    width: 100%;
+    border: 1px solid #cfcfc4;
+    border-top: 4px solid #003d7a;
+    max-height: 92vh;
+    overflow-y: auto;
+    margin: auto;
+  }
+  .assessment-header {
+    background: #003d7a;
+    color: #fff;
+    padding: 14px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .assessment-body {
+    padding: 26px;
+  }
+  .assessment-intro {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #333;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px dotted #ccc;
+  }
+  .form-group {
+    margin-bottom: 18px;
+  }
+  .form-label {
+    display: block;
+    font-size: 11px;
+    color: #003d7a;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .form-input, .form-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #b8b8ad;
+    background: #fafaf5;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #1a1a1a;
+  }
+  .form-input:focus, .form-select:focus {
+    outline: 2px solid #003d7a;
+    outline-offset: -1px;
+    background: #fff;
+  }
+  .form-hint {
+    font-size: 10px;
+    color: #888;
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .form-submit {
+    background: #b00020;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    width: 100%;
+    text-transform: uppercase;
+  }
+  .form-submit:hover { background: #8a0019; }
+  .form-submit:disabled { background: #888; cursor: not-allowed; }
+
+  /* ==== ASSESSMENT REPORT ==== */
+  .report {
+    background: #fffef8;
+    border: 1px solid #cfcfc4;
+    padding: 32px 36px;
+    font-family: 'Source Serif 4', serif;
+    color: #1a1a1a;
+    position: relative;
+    background-image:
+      linear-gradient(rgba(0, 61, 122, 0.015) 1px, transparent 1px);
+    background-size: 100% 22px;
+  }
+  .report::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    bottom: 8px;
+    left: 8px;
+    border: 1px solid #d4d4c8;
+    pointer-events: none;
+  }
+  .report-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 2px solid #003d7a;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+  }
+  .report-seal {
+    width: 48px;
+    height: 48px;
+    border: 2px solid #003d7a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: #fffef8;
+    position: relative;
+  }
+  .report-seal::before {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border: 1px solid #003d7a;
+    border-radius: 50%;
+  }
+  .report-seal span {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    color: #003d7a;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+  .report-title-block .institute {
+    font-size: 10px;
+    color: #555;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+  }
+  .report-title-block h2 {
+    font-family: 'Source Serif 4', serif;
+    color: #003d7a;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .report-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    font-size: 11px;
+    margin-bottom: 22px;
+    padding: 10px 12px;
+    background: #f4f4f0;
+    border-left: 3px solid #003d7a;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .report-meta div span {
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    font-size: 9px;
+    margin-bottom: 2px;
+  }
+  .report-subject-line {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    margin-bottom: 18px;
+    color: #1a1a1a;
+  }
+  .report-subject-line strong {
+    color: #003d7a;
+  }
+  .report-score-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 22px;
+    padding: 18px;
+    background: #fff;
+    border: 1px solid #cfcfc4;
+  }
+  .report-score-label {
+    font-size: 10px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 4px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+  .report-score-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 36px;
+    font-weight: 700;
+    color: #b00020;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .report-score-classification {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #b00020;
+    margin-top: 4px;
+  }
+  .report-h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #003d7a;
+    margin: 18px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #003d7a;
+  }
+  .report-findings {
+    list-style: none;
+    counter-reset: finding;
+  }
+  .report-findings li {
+    counter-increment: finding;
+    position: relative;
+    padding: 10px 0 10px 36px;
+    font-size: 13px;
+    line-height: 1.55;
+    border-bottom: 1px dotted #d4d4c8;
+  }
+  .report-findings li:last-child { border-bottom: none; }
+  .report-findings li::before {
+    content: counter(finding, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #b00020;
+    font-weight: 700;
+    background: #fff;
+    border: 1px solid #b00020;
+    padding: 2px 6px;
+  }
+  .report-determination {
+    margin-top: 18px;
+    padding: 14px;
+    background: #fff;
+    border-left: 4px solid #b00020;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .report-determination strong {
+    display: block;
+    color: #003d7a;
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .report-recommendation {
+    font-family: 'Source Serif 4', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #b00020;
+    text-align: center;
+    margin: 22px 0 14px;
+    letter-spacing: 0.5px;
+  }
+  .report-signature {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 26px;
+    padding-top: 14px;
+    border-top: 1px solid #d4d4c8;
+    font-size: 11px;
+  }
+  .report-signature .sig-block {
+    font-family: 'Source Serif 4', serif;
+  }
+  .report-signature .sig-name {
+    font-style: italic;
+    font-size: 18px;
+    color: #003d7a;
+    border-bottom: 1px solid #003d7a;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+    font-family: 'Source Serif 4', serif;
+  }
+  .report-signature .sig-title {
+    font-size: 10px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    font-family: 'Inter', sans-serif;
+  }
+  .report-stamp {
+    border: 2px solid #b00020;
+    color: #b00020;
+    padding: 6px 14px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    transform: rotate(-6deg);
+    text-transform: uppercase;
+  }
+  .report-actions {
+    display: flex;
+    gap: 8px;
+    padding: 14px 22px;
+    background: #f4f4f0;
+    border-top: 1px solid #cfcfc4;
+  }
+  .report-actions button {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #003d7a;
+    background: #fff;
+    color: #003d7a;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .report-actions button:hover {
+    background: #003d7a;
+    color: #fff;
+  }
+  .report-actions button.primary {
+    background: #003d7a;
+    color: #fff;
+  }
+  .report-actions button.primary:hover {
+    background: #002952;
+  }
+
+  /* ==== STUB PAGE MODAL ==== */
+  .stub-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 25, 60, 0.6);
+    z-index: 150;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .stub-modal.active { display: flex; }
+  .stub-content {
+    background: #fff;
+    max-width: 480px;
+    width: 100%;
+    border: 1px solid #cfcfc4;
+    border-top: 4px solid #003d7a;
+  }
+  .stub-header {
+    background: #003d7a;
+    color: #fff;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .stub-body {
+    padding: 24px 22px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #333;
+  }
+  .stub-body .stub-icon {
+    font-family: 'Source Serif 4', serif;
+    font-size: 48px;
+    color: #d4a017;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .stub-body p { margin-bottom: 10px; }
+  .stub-body .form-ref {
+    font-family: 'JetBrains Mono', monospace;
+    background: #f0f0e8;
+    padding: 1px 5px;
+    border: 1px solid #d4d4c8;
+    font-size: 11px;
+  }
+  .stub-footer {
+    background: #f4f4f0;
+    padding: 10px 18px;
+    font-size: 10px;
+    color: #777;
+    border-top: 1px solid #cfcfc4;
+    font-family: 'JetBrains Mono', monospace;
+    text-align: center;
+  }
+
+  /* ==== ESCALATION OVERLAY (rare) ==== */
+  .escalation-toast {
+    position: fixed;
+    top: 80px;
+    right: 24px;
+    background: #b00020;
+    color: #fff;
+    padding: 14px 18px;
+    border-left: 4px solid #ffd166;
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    z-index: 60;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    max-width: 320px;
+    transform: translateX(380px);
+    transition: transform 0.4s ease;
+  }
+  .escalation-toast.visible { transform: translateX(0); }
+  .escalation-toast strong {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.6px;
+    color: #ffd166;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  @media print {
+    body * { visibility: hidden; }
+    #report-container, #report-container * { visibility: visible; }
+    #report-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+    .report-actions { display: none !important; }
+    .assessment-header { display: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -744,9 +1321,7 @@
 </div>
 
 <header class="masthead">
-  <div class="seal">
-    <span class="seal-text">IRI</span>
-  </div>
+  <div class="seal"><span class="seal-text">IRI</span></div>
   <div class="masthead-text">
     <h1>Portugal Safety Index</h1>
     <div class="sub">Office of Continental Risk Assessment &nbsp;|&nbsp; Public Advisory Bulletin Series</div>
@@ -754,13 +1329,14 @@
 </header>
 
 <nav class="gov-nav">
-  <a class="active">Current Index</a>
-  <a>Historical Data</a>
-  <a>Regional Reports</a>
-  <a>Methodology</a>
-  <a>Press Inquiries</a>
-  <a>Travel Advisories</a>
-  <a>Subscribe to Bulletins</a>
+  <a class="active" data-stub="current">Current Index</a>
+  <a data-stub="historical">Historical Data</a>
+  <a data-stub="regional">Regional Reports</a>
+  <a data-stub="methodology">Methodology</a>
+  <a data-stub="press">Press Inquiries</a>
+  <a data-stub="travel">Travel Advisories</a>
+  <a data-stub="subscribe">Subscribe to Bulletins</a>
+  <a class="cta" id="open-assessment">▸ Personal Assessment</a>
 </nav>
 
 <main>
@@ -768,7 +1344,7 @@
   <div class="answer-box">
     <div class="answer-question">Is Portugal safe?</div>
     <div class="answer-right">
-      <div class="answer-no">NO</div>
+      <div class="answer-no" id="answer-no">NO</div>
       <div class="answer-confirmed">Status confirmed <span id="answer-date">02 May 2026</span> &nbsp;·&nbsp; IRI/CRA-7</div>
     </div>
   </div>
@@ -791,9 +1367,9 @@
       <div class="meta-line">SCALE: 0 (CRITICAL) — 100 (NOMINAL) &nbsp;·&nbsp; SOURCE: IRI/CRA-7</div>
     </div>
     <div class="live-counter">
-      <div class="label"><span class="pulse-dot"></span>LIVE — Adverse Events This Calendar Year</div>
+      <div class="label"><span class="pulse-dot"></span>LIVE — Unverified Iberian Anomalies</div>
       <div class="value" id="adverse-counter">0</div>
-      <div class="footnote">Cumulative count of confirmed structural-risk events recorded across Portuguese territory since 00:00 UTC, 1 January. Reporting verified continuously.</div>
+      <div class="footnote">Anomalies logged during current monitoring session. Events are confirmed against the Institute's standardized anomaly taxonomy and reviewed in the order received.</div>
     </div>
   </section>
 
@@ -894,25 +1470,113 @@
     </div>
   </div>
 
-  <div class="info-modal" id="info-modal">
-    <div class="info-modal-content">
-      <div class="info-modal-header">
-        <span id="info-title">Methodology Note</span>
-        <button class="info-close" onclick="closeModal()">×</button>
+  <h2 class="section-head">Geographic Threat Distribution</h2>
+  <div class="threat-board">
+    <div class="threat-board-main">
+      <div class="threat-board-title">Portuguese Republic Regional Risk Matrix</div>
+      <div class="threat-board-subtitle">
+        Cartographic visualization suspended pending methodological review.
       </div>
-      <div class="info-modal-body" id="info-body"></div>
-      <div class="info-modal-footer">
-        Iberian Risk Institute &nbsp;·&nbsp; Office of Continental Risk Assessment &nbsp;·&nbsp; Methodology revision pending Q3 2026
+
+      <div class="region-stack">
+        <div class="region-row elevated">
+          <div class="region-code">NRT</div>
+          <div class="region-info">
+            <div class="region-name">Norte</div>
+            <div class="region-note">Mountain-adjacent uncertainty cluster</div>
+          </div>
+          <div class="region-score">28.1</div>
+          <div class="region-badge">ELEVATED</div>
+        </div>
+
+        <div class="region-row elevated">
+          <div class="region-code">CTR</div>
+          <div class="region-info">
+            <div class="region-name">Centro</div>
+            <div class="region-note">Interior deviation corridor</div>
+          </div>
+          <div class="region-score">31.6</div>
+          <div class="region-badge">ELEVATED</div>
+        </div>
+
+        <div class="region-row severe active">
+          <div class="region-code">LIS</div>
+          <div class="region-info">
+            <div class="region-name">Lisboa Metropolitan</div>
+            <div class="region-note">Primary administrative dread zone</div>
+          </div>
+          <div class="region-score">19.4</div>
+          <div class="region-badge">SEVERE</div>
+        </div>
+
+        <div class="region-row elevated">
+          <div class="region-code">ALT</div>
+          <div class="region-info">
+            <div class="region-name">Alentejo</div>
+            <div class="region-note">Low-density exposure field</div>
+          </div>
+          <div class="region-score">34.2</div>
+          <div class="region-badge">ELEVATED</div>
+        </div>
+
+        <div class="region-row severe active">
+          <div class="region-code">ALG</div>
+          <div class="region-info">
+            <div class="region-name">Algarve</div>
+            <div class="region-note">Tourism-amplified coastal instability</div>
+          </div>
+          <div class="region-score">22.8</div>
+          <div class="region-badge">SEVERE</div>
+        </div>
+
+        <div class="region-row elevated island">
+          <div class="region-code">AZR</div>
+          <div class="region-info">
+            <div class="region-name">Açores</div>
+            <div class="region-note">Remote Atlantic anomaly sector</div>
+          </div>
+          <div class="region-score">26.7</div>
+          <div class="region-badge">ELEVATED</div>
+        </div>
+
+        <div class="region-row severe island active">
+          <div class="region-code">MAD</div>
+          <div class="region-info">
+            <div class="region-name">Madeira</div>
+            <div class="region-note">Subtropical escalation appendix</div>
+          </div>
+          <div class="region-score">24.3</div>
+          <div class="region-badge">SEVERE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="threat-board-side">
+      <div class="side-card">
+        <div class="side-label">Current Map Status</div>
+        <div class="side-value">WITHHELD</div>
+        <div class="side-copy">
+          Regional geometry has been removed from public display after producing interpretive distress in trial observers.
+        </div>
+      </div>
+
+      <div class="side-card severe-card">
+        <div class="side-label">Severe Regions</div>
+        <div class="side-value">3</div>
+        <div class="side-copy">
+          Lisboa, Algarve, and Madeira are pulsing in internal systems. Public pulsing has been disabled for morale.
+        </div>
+      </div>
+
+      <div class="side-card">
+        <div class="side-label">Methodology</div>
+        <div class="side-value small">RA-7b</div>
+        <div class="side-copy">
+          Risk values combine weather, waves, seismic data, sardine posture, and quiet institutional panic.
+        </div>
       </div>
     </div>
   </div>
-
-  <h2 class="section-head">Index Trend — 30 Day Window</h2>
-  <div class="chart-container">
-    <canvas id="indexChart"></canvas>
-  </div>
-
-
 
   <h2 class="section-head">Regional Sub-Indices</h2>
   <div class="data-table">
@@ -927,55 +1591,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Norte</td>
-          <td>28.1</td>
-          <td><span class="badge-amber">ELEVATED</span></td>
-          <td class="trend-down">1.2</td>
-          <td>14 min ago</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>31.6</td>
-          <td><span class="badge-amber">ELEVATED</span></td>
-          <td class="trend-down">0.8</td>
-          <td>14 min ago</td>
-        </tr>
-        <tr>
-          <td>Lisboa Metropolitan</td>
-          <td>19.4</td>
-          <td><span class="badge-red">SEVERE</span></td>
-          <td class="trend-down">3.1</td>
-          <td>3 min ago</td>
-        </tr>
-        <tr>
-          <td>Alentejo</td>
-          <td>34.2</td>
-          <td><span class="badge-amber">ELEVATED</span></td>
-          <td class="trend-down">0.4</td>
-          <td>22 min ago</td>
-        </tr>
-        <tr>
-          <td>Algarve</td>
-          <td>22.8</td>
-          <td><span class="badge-red">SEVERE</span></td>
-          <td class="trend-down">1.9</td>
-          <td>8 min ago</td>
-        </tr>
-        <tr>
-          <td>Açores</td>
-          <td>26.7</td>
-          <td><span class="badge-amber">ELEVATED</span></td>
-          <td class="trend-down">2.2</td>
-          <td>17 min ago</td>
-        </tr>
-        <tr>
-          <td>Madeira</td>
-          <td>24.3</td>
-          <td><span class="badge-red">SEVERE</span></td>
-          <td class="trend-down">1.6</td>
-          <td>11 min ago</td>
-        </tr>
+        <tr><td>Norte</td><td>28.1</td><td><span class="badge-amber">ELEVATED</span></td><td class="trend-down">1.2</td><td>14 min ago</td></tr>
+        <tr><td>Centro</td><td>31.6</td><td><span class="badge-amber">ELEVATED</span></td><td class="trend-down">0.8</td><td>14 min ago</td></tr>
+        <tr><td>Lisboa Metropolitan</td><td>19.4</td><td><span class="badge-red">SEVERE</span></td><td class="trend-down">3.1</td><td>3 min ago</td></tr>
+        <tr><td>Alentejo</td><td>34.2</td><td><span class="badge-amber">ELEVATED</span></td><td class="trend-down">0.4</td><td>22 min ago</td></tr>
+        <tr><td>Algarve</td><td>22.8</td><td><span class="badge-red">SEVERE</span></td><td class="trend-down">1.9</td><td>8 min ago</td></tr>
+        <tr><td>Açores</td><td>26.7</td><td><span class="badge-amber">ELEVATED</span></td><td class="trend-down">2.2</td><td>17 min ago</td></tr>
+        <tr><td>Madeira</td><td>24.3</td><td><span class="badge-red">SEVERE</span></td><td class="trend-down">1.6</td><td>11 min ago</td></tr>
       </tbody>
     </table>
   </div>
@@ -988,29 +1610,99 @@
 
 </main>
 
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <h4>Iberian Risk Institute</h4>
-      <p>An independent advisory body operating under cooperative agreement with regional information bureaus across the Iberian Peninsula. The Institute maintains continuous monitoring infrastructure and publishes risk telemetry as a public service.</p>
-      <p style="margin-top: 8px;">Established 1987 &nbsp;·&nbsp; Lisboa · Madrid · Coimbra</p>
+<!-- ==== INFO MODAL ==== -->
+<div class="info-modal" id="info-modal">
+  <div class="info-modal-content">
+    <div class="info-modal-header">
+      <span id="info-title">Methodology Note</span>
+      <button class="info-close" onclick="closeInfoModal()">×</button>
     </div>
-    <div>
-      <h4>Office Hours</h4>
-      <p>Monday — Friday<br>09:00 — 17:30 WET</p>
-      <p>Press Bureau: ext. 2204</p>
-    </div>
-    <div>
-      <h4>Compliance</h4>
-      <p>Reg. EC 1907/2006</p>
-      <p>ISO/IEC 27001:2022 (pending)</p>
-      <p>Bulletin Series ISSN 2735-XXXX</p>
+    <div class="info-modal-body" id="info-body"></div>
+    <div class="info-modal-footer">
+      Iberian Risk Institute &nbsp;·&nbsp; Office of Continental Risk Assessment &nbsp;·&nbsp; Methodology revision pending Q3 2026
     </div>
   </div>
-  <div class="fine-print">
-    © 1987–<span id="year">2026</span> Iberian Risk Institute. All findings are advisory in nature. Real-time indicators are derived from public datasets including USGS seismic telemetry and Open-Meteo atmospheric services. Demographic decline modeling uses standard cohort projection methodology. This site is operated as a parody. The Iberian Risk Institute is a fictional entity. No information presented should be treated as advisory in nature. Real-time data is sourced from public APIs and editorially reframed.
+</div>
+
+<!-- ==== STUB MODAL (for unimplemented nav items) ==== -->
+<div class="stub-modal" id="stub-modal">
+  <div class="stub-content">
+    <div class="stub-header">
+      <span id="stub-title">Section Unavailable</span>
+      <button class="info-close" onclick="closeStubModal()">×</button>
+    </div>
+    <div class="stub-body" id="stub-body"></div>
+    <div class="stub-footer" id="stub-footer">Iberian Risk Institute &nbsp;·&nbsp; Office of Continental Risk Assessment</div>
   </div>
-</footer>
+</div>
+
+<!-- ==== ASSESSMENT MODAL ==== -->
+<div class="assessment-modal" id="assessment-modal">
+  <div class="assessment-content" id="assessment-content">
+    <div class="assessment-header">
+      <span id="assessment-title">Personal Relocation Risk Assessment</span>
+      <button class="info-close" onclick="closeAssessmentModal()">×</button>
+    </div>
+    <div id="assessment-form-wrap">
+      <div class="assessment-body">
+        <div class="assessment-intro">
+          <p>The Office of Continental Risk Assessment offers personalized advisory bulletins to individuals contemplating relocation to the Portuguese Republic. Submission of this form generates a confidential assessment for the named subject. Findings are non-binding and reflect current telemetry.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="form-name">Subject Full Name</label>
+          <input type="text" class="form-input" id="form-name" placeholder="Subject's full legal name" maxlength="60" autocomplete="off"/>
+          <div class="form-hint">For inclusion in bulletin records. Required.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="form-origin">Subject's Current Jurisdiction</label>
+          <input type="text" class="form-input" id="form-origin" placeholder="City, country of current residence" maxlength="80" autocomplete="off"/>
+          <div class="form-hint">City and country of current residence. Optional but improves accuracy.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="form-motivation">Stated Motivation for Relocation</label>
+          <select class="form-select" id="form-motivation">
+            <option value="">— Select category —</option>
+            <option value="career">Career or professional opportunity</option>
+            <option value="climate">Climate or weather considerations</option>
+            <option value="romantic">Romantic or interpersonal reasons</option>
+            <option value="escape">Desire to escape current circumstances</option>
+            <option value="family">Family relocation or custody arrangement</option>
+            <option value="retirement">Retirement</option>
+            <option value="digital_nomad">Remote work / digital nomad lifestyle</option>
+            <option value="spiritual">Spiritual or self-discovery purposes</option>
+            <option value="other">Other / unclassified</option>
+          </select>
+          <div class="form-hint">Subject's stated reason. Selection determines weighting of risk factors.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="form-duration">Intended Duration of Stay</label>
+          <select class="form-select" id="form-duration">
+            <option value="">— Select duration —</option>
+            <option value="brief">Less than 30 days</option>
+            <option value="medium">1 to 6 months</option>
+            <option value="extended">6 months to 2 years</option>
+            <option value="permanent">Permanent or indefinite</option>
+          </select>
+          <div class="form-hint">Required for cumulative exposure calculations.</div>
+        </div>
+
+        <button class="form-submit" id="form-submit">Generate Assessment Bulletin</button>
+      </div>
+    </div>
+    <div id="assessment-report-wrap" style="display:none;">
+      <div id="report-container"></div>
+      <div class="report-actions">
+        <button id="report-back">◂ New Assessment</button>
+        <button id="report-print" class="primary">Print / Save as PDF</button>
+        <button id="report-close">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="ticker">
   <span class="ticker-label">LIVE FEED</span>
@@ -1022,64 +1714,76 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <script>
   // ============================================================
-  // REAL-WORLD CONSTANTS (relabeled for satirical purposes)
+  // CONSTANTS — repurposed real-world data, satirically relabeled
   // ============================================================
-  // India crude birth rate: 16.15 per 1000 people (World Bank, 2023)
-  // India population: ~1.43 billion
-  // → ~23.1 million births/year → ~0.732 births/second
-  const ADVERSE_RATE_PER_SEC = 0.732;
+  const ADVERSE_RATE_PER_SEC = 0.732;          // India birth rate, relabeled
+  const POP_BASELINE = 10329000;               // Real Portugal population
+  const POP_DECREMENT_PER_SEC = 0.324;         // India death rate, relabeled
+  const REPUBLIC_PROCLAMATION = new Date('1910-10-05T00:00:00Z').getTime();
 
-  // Portugal population baseline (~10.33 million, real)
-  // Decrement at India's death rate (~28,000/day → ~0.324/second)
-  const POP_BASELINE = 10329000;
-  const POP_DECREMENT_PER_SEC = 0.324;
-
-  // Start of year reference for "events this year" counter
-  const YEAR_START = new Date(new Date().getFullYear(), 0, 1).getTime();
+  // Session start timestamp — escalation is dwell-time driven
+  const SESSION_START = Date.now();
 
   // ============================================================
-  // LIVE COUNTER — "Adverse Events This Year"
-  // (Actually: India birth rate applied to elapsed time since Jan 1)
+  // ESCALATION SCHEDULE
+  // The site grows quietly more concerned the longer you stay.
+  // - Index drifts downward over time (subtle)
+  // - Threat marker creeps right (subtle)
+  // - "STILL NO" flicker on the answer at ~75s (medium)
+  // - Two BREAKING bulletins inserted at 90s and 180s (medium)
+  // - Adverse counter rate ticks up slightly over time (subtle)
+  // ============================================================
+  let escalationLevel = 0;
+  let breakingItems = [];
+
+  function escalationFactor() {
+    // Caps at ~5 minutes; returns 0..1
+    const elapsedSec = (Date.now() - SESSION_START) / 1000;
+    return Math.min(1, elapsedSec / 300);
+  }
+
+  // ============================================================
+  // LIVE COUNTER — session-based, ticks roughly once per 1.37s
+  // (real-world rate, relabeled as "Unverified Iberian Anomalies")
   // ============================================================
   function updateAdverseCounter() {
-    const now = Date.now();
-    const elapsedSec = (now - YEAR_START) / 1000;
-    const count = Math.floor(elapsedSec * ADVERSE_RATE_PER_SEC);
+    const elapsedSec = (Date.now() - SESSION_START) / 1000;
+    const inflatedRate = ADVERSE_RATE_PER_SEC * (1 + escalationFactor() * 0.04);
+    const count = Math.floor(elapsedSec * inflatedRate);
     document.getElementById('adverse-counter').textContent = count.toLocaleString();
   }
 
   // ============================================================
-  // POPULATION TICKER — starts at real Portugal pop, ticks down
+  // POPULATION
   // ============================================================
-  const populationStart = POP_BASELINE;
-  const startTimestamp = Date.now();
+  const popHistory = [];
   function updatePopulation() {
-    const elapsedSec = (Date.now() - startTimestamp) / 1000;
-    const current = Math.floor(populationStart - (elapsedSec * POP_DECREMENT_PER_SEC));
+    const elapsedSec = (Date.now() - SESSION_START) / 1000;
+    const current = Math.floor(POP_BASELINE - (elapsedSec * POP_DECREMENT_PER_SEC));
     document.getElementById('pop-value').textContent = current.toLocaleString();
-    history.pop.push(current);
-    if (history.pop.length > 60) history.pop.shift();
-    drawSparkline('popSparkline', history.pop, '#003d7a');
+    popHistory.push(current);
+    if (popHistory.length > 60) popHistory.shift();
+    drawSparkline('popSparkline', popHistory, '#003d7a');
   }
 
   // ============================================================
-  // SAFETY INDEX — pseudo-random walk, anchored low
-  // Drifts slightly each second, always staying in "concerning" range
+  // SAFETY INDEX — drifts downward with escalation
   // ============================================================
   let psiValue = 23.4;
   function updateIndex() {
     const drift = (Math.random() - 0.55) * 0.4;
-    psiValue = Math.max(15, Math.min(35, psiValue + drift));
+    // Escalation pulls the floor down
+    const floor = 15 - escalationFactor() * 4;
+    psiValue = Math.max(floor, Math.min(35, psiValue + drift - escalationFactor() * 0.05));
     document.getElementById('psi-value').textContent = psiValue.toFixed(1);
     const deltaPct = ((25.58 - psiValue) / 25.58 * 100).toFixed(2);
     document.getElementById('psi-delta').textContent = `${deltaPct} over rolling 24-hour window`;
-    // Threat marker tracks the inverse (low index = high threat = right side)
-    const markerPos = Math.max(5, Math.min(95, 100 - (psiValue * 2.5)));
+    const markerPos = Math.max(5, Math.min(98, 100 - (psiValue * 2.5) + escalationFactor() * 5));
     document.getElementById('threat-marker').style.left = markerPos + '%';
   }
 
   // ============================================================
-  // TIMESTAMP — updates every second, gives "live system" feel
+  // TIMESTAMP
   // ============================================================
   function updateTimestamp() {
     const now = new Date();
@@ -1091,18 +1795,11 @@
     document.getElementById('ts').textContent = `Last updated: ${formatted}  ·  Source: IRI/CRA Continuous Telemetry`;
   }
 
-  // Sparkline history buffers — last 30 readings each
-  const history = {
-    pop: [],
-    wind: [],
-    quake: [],
-    aqi: [],
-    sea: []
-  };
+  // ============================================================
+  // SPARKLINE
+  // ============================================================
+  const histories = { wind: [], quake: [], aqi: [], sea: [] };
 
-  // ============================================================
-  // SPARKLINE — minimal canvas line drawer, no Chart.js needed
-  // ============================================================
   function drawSparkline(canvasId, data, color) {
     const canvas = document.getElementById(canvasId);
     if (!canvas || data.length < 2) return;
@@ -1123,11 +1820,9 @@
     data.forEach((v, i) => {
       const x = (i / (data.length - 1)) * w;
       const y = h - ((v - min) / range) * (h - 2) - 1;
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
     });
     ctx.stroke();
-    // Fill below line
     ctx.lineTo(w, h);
     ctx.lineTo(0, h);
     ctx.closePath();
@@ -1136,7 +1831,7 @@
   }
 
   // ============================================================
-  // REAL DATA — Lisbon weather (Open-Meteo, no API key needed)
+  // EXTERNAL FEEDS
   // ============================================================
   async function fetchLisbonWeather() {
     try {
@@ -1146,18 +1841,15 @@
       document.getElementById('wind-value').textContent = wind.toFixed(1) + ' km/h';
       const trend = wind > 15 ? 'severe atmospheric posture' : wind > 8 ? 'elevated movement detected' : 'persistent low-grade activity';
       document.getElementById('wind-trend').textContent = trend;
-      history.wind.push(wind);
-      if (history.wind.length > 30) history.wind.shift();
-      drawSparkline('windSparkline', history.wind, '#b00020');
+      histories.wind.push(wind);
+      if (histories.wind.length > 30) histories.wind.shift();
+      drawSparkline('windSparkline', histories.wind, '#b00020');
     } catch (e) {
       document.getElementById('wind-value').textContent = '—';
       document.getElementById('wind-trend').textContent = 'sensor data unavailable';
     }
   }
 
-  // ============================================================
-  // REAL DATA — USGS earthquakes (past 30 days, Iberian region)
-  // ============================================================
   async function fetchSeismicData() {
     try {
       const url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=' +
@@ -1168,15 +1860,12 @@
       const count = data.features.length;
       document.getElementById('quake-value').textContent = count.toLocaleString();
       document.getElementById('quake-trend').textContent = count > 10 ? 'instability confirmed' : 'sustained activity logged';
-      // Build sparkline from per-day counts
       const dailyCounts = new Array(30).fill(0);
       const now = Date.now();
       data.features.forEach(f => {
         const t = f.properties.time;
         const daysAgo = Math.floor((now - t) / (24*60*60*1000));
-        if (daysAgo >= 0 && daysAgo < 30) {
-          dailyCounts[29 - daysAgo]++;
-        }
+        if (daysAgo >= 0 && daysAgo < 30) dailyCounts[29 - daysAgo]++;
       });
       drawSparkline('quakeSparkline', dailyCounts, '#b00020');
     } catch (e) {
@@ -1185,23 +1874,17 @@
     }
   }
 
-  // ============================================================
-  // REAL DATA — Lisbon air quality (Open-Meteo CAMS, no API key)
-  // Relabeled as "Respiratory Threat Index"
-  // ============================================================
   async function fetchAirQuality() {
     try {
       const res = await fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=38.72&longitude=-9.14&current=european_aqi,pm2_5&hourly=european_aqi&past_days=1');
       const data = await res.json();
       const aqi = data.current.european_aqi;
-      const pm = data.current.pm2_5;
       document.getElementById('aqi-value').textContent = aqi.toFixed(0);
       const trend = aqi > 60 ? 'respiratory exposure flagged' :
                     aqi > 40 ? 'persistent particulate signature' :
                     aqi > 20 ? 'sub-threshold contamination' :
                     'baseline particulate burden';
       document.getElementById('aqi-trend').textContent = trend;
-      // Use last 30 hourly AQI values for sparkline
       const hourly = data.hourly.european_aqi.slice(-30).filter(v => v !== null);
       if (hourly.length > 1) drawSparkline('aqiSparkline', hourly, '#b00020');
     } catch (e) {
@@ -1210,16 +1893,11 @@
     }
   }
 
-  // ============================================================
-  // REAL DATA — Sea surface near Cascais (Open-Meteo Marine)
-  // Relabeled as "Maritime Instability"
-  // ============================================================
   async function fetchMarineData() {
     try {
       const res = await fetch('https://marine-api.open-meteo.com/v1/marine?latitude=38.69&longitude=-9.42&current=wave_height,sea_surface_temperature&hourly=wave_height&past_days=1');
       const data = await res.json();
       const wave = data.current.wave_height;
-      const sst = data.current.sea_surface_temperature;
       document.getElementById('sea-value').textContent = wave.toFixed(2) + ' m';
       const trend = wave > 2.5 ? 'severe wave action recorded' :
                     wave > 1.5 ? 'destabilizing swell detected' :
@@ -1235,91 +1913,27 @@
   }
 
   // ============================================================
-  // ANOMALY STRIP — drifting absurd metrics
+  // ANOMALY STRIP
   // ============================================================
-  // Portuguese monarchy abolished by proclamation, 5 October 1910
-  const REPUBLIC_PROCLAMATION = new Date('1910-10-05T00:00:00Z').getTime();
-
-  let pdnValue = 12.4;
-  let fadoValue = -8.2;
-  let sarValue = 5.2;
+  let pdnValue = 12.4, fadoValue = -8.2, sarValue = 5.2;
   function updateSecondary() {
     pdnValue += (Math.random() - 0.5) * 0.2;
     fadoValue += (Math.random() - 0.5) * 0.15;
     sarValue += (Math.random() - 0.4) * 0.05;
-    const pdnEl = document.getElementById('pdn-value');
-    pdnEl.textContent = (pdnValue >= 0 ? '▲ ' : '▼ ') + Math.abs(pdnValue).toFixed(1) + '%';
-    const fadoEl = document.getElementById('fado-value');
-    fadoEl.textContent = (fadoValue >= 0 ? '▲ ' : '▼ ') + Math.abs(fadoValue).toFixed(1) + '%';
+    document.getElementById('pdn-value').textContent = (pdnValue >= 0 ? '▲ ' : '▼ ') + Math.abs(pdnValue).toFixed(1) + '%';
+    document.getElementById('fado-value').textContent = (fadoValue >= 0 ? '▲ ' : '▼ ') + Math.abs(fadoValue).toFixed(1) + '%';
     document.getElementById('sar-value').textContent = sarValue.toFixed(1);
-    // Days without sovereign guidance — actual days since 5 Oct 1910
     const days = Math.floor((Date.now() - REPUBLIC_PROCLAMATION) / (24 * 60 * 60 * 1000));
     document.getElementById('cob-value').textContent = days.toLocaleString();
   }
 
   // ============================================================
-  // CHART — 30 days of synthesized "historical" index data
-  // Trends downward overall to support the bit
+  // GEOGRAPHIC THREAT BOARD
+  // Static board. Literal map removed because it looked like a wounded sock puppet.
   // ============================================================
-  function buildChart() {
-    const labels = [];
-    const data = [];
-    let v = 35;
-    const today = new Date();
-    for (let i = 29; i >= 0; i--) {
-      const d = new Date(today);
-      d.setDate(d.getDate() - i);
-      labels.push(d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }));
-      v += (Math.random() - 0.6) * 1.5;
-      v = Math.max(18, Math.min(42, v));
-      data.push(v.toFixed(1));
-    }
-    const ctx = document.getElementById('indexChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Composite Safety Index',
-          data: data,
-          borderColor: '#003d7a',
-          backgroundColor: 'rgba(0, 61, 122, 0.08)',
-          borderWidth: 2,
-          fill: true,
-          tension: 0.25,
-          pointRadius: 2,
-          pointBackgroundColor: '#003d7a'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: '#003d7a',
-            titleFont: { family: 'JetBrains Mono', size: 11 },
-            bodyFont: { family: 'JetBrains Mono', size: 11 }
-          }
-        },
-        scales: {
-          y: {
-            min: 15,
-            max: 50,
-            grid: { color: 'rgba(0,0,0,0.05)' },
-            ticks: { font: { family: 'JetBrains Mono', size: 10 }, color: '#555' }
-          },
-          x: {
-            grid: { display: false },
-            ticks: { font: { family: 'JetBrains Mono', size: 10 }, color: '#555', maxRotation: 0, autoSkip: true, maxTicksLimit: 10 }
-          }
-        }
-      }
-    });
-  }
 
   // ============================================================
-  // TICKER — rotating bureaucratic-horror incidents
+  // TICKER
   // ============================================================
   const tickerItems = [
     'BULLETIN 2026-PT-0428: Composite index falls 2.18 points over 24h window',
@@ -1348,20 +1962,79 @@
     'ASTRONOMICAL: Lunar phase classified as concerning; tidal vulnerability elevated',
     'PRESS BUREAU: Inquiries regarding atypical mortality events referred to Section 7'
   ];
+
+  // Items appended dynamically as session progresses
+  const escalationBulletins = [
+    { time: 90, text: 'BREAKING: Composite index revised downward following routine recalibration' },
+    { time: 180, text: 'BREAKING: Lisboa Metropolitan reclassified — citizens advised to remain calm' },
+    { time: 270, text: 'BREAKING: Sardine Aggression Rating now exceeds two standard deviations from baseline' }
+  ];
+
   function buildTicker() {
     const el = document.getElementById('ticker-content');
     let html = '';
-    // Repeat for seamless scroll
+    const allItems = tickerItems.concat(breakingItems.map(b => `[BREAKING] ${b}`));
     for (let r = 0; r < 2; r++) {
-      tickerItems.forEach(item => {
-        html += `<span>${item}</span><span class="sep">●</span>`;
+      allItems.forEach(item => {
+        const cls = item.startsWith('[BREAKING]') ? 'breaking' : '';
+        html += `<span class="${cls}">${item}</span><span class="sep">●</span>`;
       });
     }
     el.innerHTML = html;
   }
 
   // ============================================================
-  // INFO MODALS — bureaucratic methodology blurbs
+  // ESCALATION TIMER — fires bulletins, flickers answer
+  // ============================================================
+  function showEscalationToast(label, body) {
+    const existing = document.querySelector('.escalation-toast');
+    if (existing) existing.remove();
+    const toast = document.createElement('div');
+    toast.className = 'escalation-toast';
+    toast.innerHTML = `<strong>${label}</strong>${body}`;
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('visible'));
+    setTimeout(() => {
+      toast.classList.remove('visible');
+      setTimeout(() => toast.remove(), 500);
+    }, 6000);
+  }
+
+  function flickerAnswer() {
+    const el = document.getElementById('answer-no');
+    const original = el.textContent;
+    let count = 0;
+    const flicker = setInterval(() => {
+      el.textContent = count % 2 === 0 ? 'STILL NO' : original;
+      count++;
+      if (count >= 5) {
+        clearInterval(flicker);
+        el.textContent = original;
+      }
+    }, 180);
+  }
+
+  function checkEscalation() {
+    const elapsed = (Date.now() - SESSION_START) / 1000;
+
+    // Flicker answer at ~75s
+    if (elapsed > 75 && escalationLevel < 1) {
+      escalationLevel = 1;
+      flickerAnswer();
+    }
+
+    // Insert breaking bulletins at scheduled times
+    escalationBulletins.forEach(b => {
+      if (elapsed > b.time && !breakingItems.includes(b.text)) {
+        breakingItems.push(b.text);
+        buildTicker();
+        showEscalationToast('BULLETIN UPDATE', b.text);
+      }
+    });
+  }
+
+  // ============================================================
+  // INFO MODALS
   // ============================================================
   const methodologies = {
     pop: {
@@ -1393,38 +2066,382 @@
              <p>Maritime risk is reviewed quarterly by the Faro Office.</p>`
     }
   };
-  function openModal(key) {
+  function openInfoModal(key) {
     const m = methodologies[key];
     if (!m) return;
     document.getElementById('info-title').textContent = m.title;
     document.getElementById('info-body').innerHTML = m.body;
     document.getElementById('info-modal').classList.add('active');
   }
-  function closeModal() {
+  function closeInfoModal() {
     document.getElementById('info-modal').classList.remove('active');
   }
-  document.addEventListener('click', e => {
-    if (e.target.classList.contains('info-btn')) {
-      openModal(e.target.dataset.info);
-    }
-    if (e.target.id === 'info-modal') closeModal();
-  });
 
   // ============================================================
-  // DWELL BEEP — single quiet hospital-monitor beep at 60s
+  // STUB MODAL (for unimplemented nav)
   // ============================================================
-  // Browsers block audio until first user interaction.
-  // We wait for one (click/scroll/keypress) before starting the timer.
+  const stubPages = {
+    historical: {
+      title: 'Historical Data Archive',
+      body: `<div class="stub-icon">⚠</div>
+             <p>The Historical Data Archive is presently undergoing scheduled migration to the Institute's secondary records facility in Coimbra.</p>
+             <p>Public retrieval is anticipated to resume <strong>Q3 2026</strong>, pending successful re-indexing of the 1987–2019 paper holdings.</p>
+             <p>Researchers requiring expedited access may submit Form <span class="form-ref">HD-3a</span> in person during posted office hours.</p>`,
+      footer: 'Form HD-3a available at Lisboa, Madrid, and Coimbra reception'
+    },
+    regional: {
+      title: 'Regional Reports',
+      body: `<div class="stub-icon">⚠</div>
+             <p>Regional Sub-Reports are compiled monthly by the Institute's seven regional offices and published on a staggered schedule.</p>
+             <p>The current rotation places the next public release at <strong>27 May 2026</strong>, beginning with the Alentejo bulletin.</p>
+             <p>To receive regional advisories by post, submit Form <span class="form-ref">RR-12</span> with proof of jurisdictional residency.</p>`,
+      footer: 'Regional Office hours vary; consult local bureau'
+    },
+    methodology: {
+      title: 'Methodology & Sources',
+      body: `<div class="stub-icon">⚠</div>
+             <p>The complete methodology document — comprising Sections 1 through 4.7(c) — is available for inspection at the Institute's Lisboa reading room.</p>
+             <p>An abridged digital version is currently under editorial review. Provisional publication is targeted for <strong>Q3 2026</strong>.</p>
+             <p>Methodological inquiries may be directed to the Office of Continental Risk Assessment via Form <span class="form-ref">M-1b</span>.</p>`,
+      footer: 'Reading room access by appointment only'
+    },
+    press: {
+      title: 'Press Inquiries',
+      body: `<div class="stub-icon">⚠</div>
+             <p>The Institute's Press Bureau accepts inquiries from credentialed media organizations during posted office hours.</p>
+             <p>Initial contact must be made via Form <span class="form-ref">P-4</span>, accompanied by recent press credentials and a stamped self-addressed envelope.</p>
+             <p>Response time is approximately <strong>14 to 21 business days</strong>.</p>`,
+      footer: 'Press Bureau: ext. 2204 · Mon–Fri 09:00–17:30 WET'
+    },
+    travel: {
+      title: 'Travel Advisories',
+      body: `<div class="stub-icon">⚠</div>
+             <p>The Institute does not currently publish formal travel advisories. The Composite Safety Index, published continuously on this site, is the Institute's standing public guidance.</p>
+             <p>Persons contemplating travel to the Portuguese Republic may consult the <strong>Personal Assessment</strong> tool in the navigation bar for a confidential, individualized bulletin.</p>
+             <p>The Institute does not endorse or discourage travel.</p>`,
+      footer: 'See Personal Assessment for individualized guidance'
+    },
+    subscribe: {
+      title: 'Bulletin Subscriptions',
+      body: `<div class="stub-icon">⚠</div>
+             <p>The Institute publishes the <em>IRI Bulletin Series</em> quarterly. Subscriptions are issued in print only.</p>
+             <p>To request enrollment, submit Form <span class="form-ref">SUB-2026</span> by post, accompanied by:</p>
+             <p>(a) two passport-format photographs; (b) a stamped self-addressed envelope; (c) a brief statement of professional or personal interest.</p>
+             <p>Processing time: <strong>6 to 10 weeks</strong>.</p>`,
+      footer: 'Bulletin Series ISSN 2735-XXXX'
+    },
+    current: null  // active page, no-op
+  };
+
+  function openStubModal(key) {
+    const s = stubPages[key];
+    if (!s) return;
+    document.getElementById('stub-title').textContent = s.title;
+    document.getElementById('stub-body').innerHTML = s.body;
+    document.getElementById('stub-footer').textContent = s.footer || 'Iberian Risk Institute · Office of Continental Risk Assessment';
+    document.getElementById('stub-modal').classList.add('active');
+  }
+  function closeStubModal() {
+    document.getElementById('stub-modal').classList.remove('active');
+  }
+
+  // ============================================================
+  // PERSONAL ASSESSMENT — generator
+  // ============================================================
+  // Findings keyed by motivation. Each motivation has 4 deadpan,
+  // bureaucratically-worded findings that pretend to know things.
+  // Variations within each category to reduce repetition.
+  const FINDINGS = {
+    career: [
+      'Subject\'s stated motivation classified as Category 2 (Professional). Historical outcome data: subjects in this category exhibit a 64% reversion rate within 18 months.',
+      'Assessment indicates subject is likely to encounter the term "tax resident" in a context they are not prepared for.',
+      'Probability that subject\'s remote employment arrangement will survive contact with Portuguese broadband infrastructure: 0.47.',
+      'Subject is advised that "we have an office in Lisbon" frequently denotes a coworking membership held by one (1) employee.'
+    ],
+    climate: [
+      'Subject\'s expectations regarding "year-round mild weather" are not supported by January telemetry from the interior.',
+      'Subject is informed that the Algarve summer routinely exceeds 38°C and that air conditioning is not a standard residential fixture.',
+      'Atmospheric Hostility readings indicate subject will experience the word "wind" in ways previously unfamiliar.',
+      'Probability subject relocates a second time within 3 years citing "the heat": 0.58.'
+    ],
+    romantic: [
+      'Subject\'s stated motivation classified as Category 3 (Romantic). Historical outcome data: unfavorable.',
+      'The Institute notes that no romantic relocation in the recorded sample (n=2,847) has produced the outcome stated in subject\'s submission.',
+      'Subject is reminded that the partner who suggested Portugal will, statistically, be the partner who suggests leaving Portugal.',
+      'Provisional finding: subject has not asked the partner sufficient follow-up questions.'
+    ],
+    escape: [
+      'Subject\'s stated motivation classified as Category 5 (Avoidant). The Institute notes that geographic relocation is not a recognized treatment modality.',
+      'Pre-existing circumstances exhibit a documented tendency to accompany subjects across international borders.',
+      'The Institute observes that "starting over" remains unverified as an attainable state in any jurisdiction surveyed.',
+      'Subject is gently informed that they will, in fact, still be themselves upon arrival.'
+    ],
+    family: [
+      'Subject\'s stated motivation classified as Category 4 (Domestic). Cross-jurisdictional family arrangements are flagged for elevated procedural complexity.',
+      'The Institute notes that Hague Convention proceedings average 14 to 22 months and rarely conclude in the manner anticipated by either party.',
+      'Subject is advised that Portuguese family courts maintain independent assessment standards and do not defer to assertions made in the petitioning jurisdiction.',
+      'Probability that "a fresh start in Portugal" resolves the underlying interpersonal dispute: 0.04.'
+    ],
+    retirement: [
+      'Subject\'s stated motivation classified as Category 7 (Retirement). The Institute notes that "the slower pace" includes the administrative pace.',
+      'Subject is advised that obtaining a Número de Identificação Fiscal will require multiple visits and may be the most challenging engagement of subject\'s adult life.',
+      'Probability subject misjudges the heating requirements of a stone house in February: 0.71.',
+      'The Institute observes that "we\'ll just visit the family twice a year" historically resolves to 0.6 visits per year.'
+    ],
+    digital_nomad: [
+      'Subject\'s stated motivation classified as Category 6 (Itinerant Professional). The Institute monitors this cohort with elevated interest.',
+      'Subject is advised that the D8 visa is not, in fact, "easy."',
+      'Local resentment regarding rental market displacement is classified as a baseline environmental factor and not subject to mitigation.',
+      'The Institute notes that subject\'s laptop will not, on its own, integrate subject into Portuguese society.'
+    ],
+    spiritual: [
+      'Subject\'s stated motivation classified as Category 8 (Self-Discovery). The Institute does not assess outcomes in this category.',
+      'Subject is informed that the desired transformation has not been observed to occur as a function of latitude.',
+      'Subject\'s subsequent Instagram output is projected to increase by 340% in the first 60 days, then collapse.',
+      'Probability subject returns home with a tattoo in Portuguese they cannot translate: 0.62.'
+    ],
+    other: [
+      'Subject\'s stated motivation could not be classified within standard taxonomy. Provisional Category 9 (Unspecified) assigned.',
+      'The Institute notes that subjects unable to articulate their motivation in advance frequently struggle to articulate it in retrospect as well.',
+      'Subject is advised to complete Form RA-7b at first opportunity to facilitate proper categorization.',
+      'Probability subject describes the relocation as "complicated" within 6 months: 0.83.'
+    ]
+  };
+
+  // Findings keyed by duration (added to motivation findings)
+  const DURATION_FINDINGS = {
+    brief: 'Stay duration classified as <em>brief</em>. Cumulative exposure to administrative procedure expected to remain sub-threshold.',
+    medium: 'Stay duration classified as <em>medium</em>. Subject is likely to encounter the residency permit application process and form an opinion regarding it.',
+    extended: 'Stay duration classified as <em>extended</em>. The Institute observes that subjects in this bracket exhibit a 0.61 probability of attempting to renew a permit during a national holiday.',
+    permanent: 'Stay duration classified as <em>permanent or indefinite</em>. The Institute notes that "permanent" is a self-reported category and is rarely verified by outcome.'
+  };
+
+  function classifyOrigin(origin) {
+    if (!origin) return null;
+    const o = origin.toLowerCase();
+    if (/california|ca,|los angeles|san francisco/i.test(o))
+      return 'Subject\'s current jurisdiction is noted. The Institute observes that subjects relocating from California exhibit elevated expectations regarding "lifestyle" which are infrequently met.';
+    if (/new york|nyc|brooklyn|manhattan/i.test(o))
+      return 'Subject\'s current jurisdiction is noted. The Institute advises subject that Portuguese pace of service is not a customer service failure but a structural feature.';
+    if (/florida|fl,|miami/i.test(o))
+      return 'Subject\'s current jurisdiction is noted. Subject\'s humidity tolerance is provisionally classified as adequate.';
+    if (/texas|tx,|austin|houston|dallas/i.test(o))
+      return 'Subject\'s current jurisdiction is noted. Subject is advised that Portuguese spice tolerance norms differ substantially from those of the subject\'s home jurisdiction.';
+    if (/london|england|uk|britain/i.test(o))
+      return 'Subject\'s current jurisdiction is noted. The Institute observes that British subjects relocating to Portugal frequently describe the move as "the right time" and rarely substantiate this claim.';
+    if (/canada|toronto|vancouver/i.test(o))
+      return 'Subject\'s current jurisdiction is noted. Adaptation projected to be smoother than average; humility regarding outcomes nonetheless recommended.';
+    if (/germany|deutschland|berlin|munich/i.test(o))
+      return 'Subject\'s current jurisdiction is noted. The Institute advises subject that Portuguese punctuality norms will require adjustment in both directions.';
+    return `Subject's current jurisdiction (${origin.length > 40 ? origin.slice(0, 40) + '…' : origin}) has been logged. No specific advisory applies.`;
+  }
+
+  function calculateScore(motivation) {
+    // Motivation-weighted base score, with mild randomness so two
+    // identical inputs produce slightly different scores. All scores
+    // remain in the "concerning" range (the bit demands it).
+    const baseScores = {
+      career: 26.4, climate: 28.7, romantic: 14.2, escape: 11.8,
+      family: 17.9, retirement: 24.6, digital_nomad: 22.3,
+      spiritual: 16.7, other: 19.4
+    };
+    const base = baseScores[motivation] || 21.0;
+    const jitter = (Math.random() - 0.5) * 4;
+    return Math.max(8.0, Math.min(36.0, base + jitter));
+  }
+
+  function classifyScore(score) {
+    if (score < 15) return { label: 'CRITICAL', color: '#7a000f' };
+    if (score < 25) return { label: 'SEVERE', color: '#b00020' };
+    if (score < 35) return { label: 'ELEVATED CONCERN', color: '#d4a017' };
+    return { label: 'GUARDED', color: '#a87c0c' };
+  }
+
+  function generateBulletinNumber(name) {
+    // Deterministic-ish from name + date
+    const today = new Date();
+    const dateStr = today.toISOString().slice(0,10).replace(/-/g,'');
+    const hash = (name || 'anon').split('').reduce((a,c) => a + c.charCodeAt(0), 0);
+    const suffix = String(hash % 10000).padStart(4, '0');
+    return `IRI-PA-${dateStr}-${suffix}`;
+  }
+
+  function buildReport(formData) {
+    const { name, origin, motivation, duration } = formData;
+    const score = calculateScore(motivation);
+    const classification = classifyScore(score);
+    const bulletinNum = generateBulletinNumber(name);
+    const today = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+
+    // Pick 3 findings from motivation pool + origin + duration
+    const motivationFindings = (FINDINGS[motivation] || FINDINGS.other).slice();
+    // Shuffle and take 3
+    motivationFindings.sort(() => Math.random() - 0.5);
+    const selected = motivationFindings.slice(0, 3);
+    const originFinding = classifyOrigin(origin);
+    const durationFinding = DURATION_FINDINGS[duration];
+
+    const allFindings = selected.slice();
+    if (originFinding) allFindings.push(originFinding);
+    if (durationFinding) allFindings.push(durationFinding);
+
+    // Recommendation lines vary by score severity
+    const recommendations = [
+      score < 15 ? 'RELOCATION NOT ADVISED' :
+      score < 25 ? 'RELOCATION INADVISABLE' :
+                   'RELOCATION ADVISED AGAINST',
+    ];
+
+    const determinations = {
+      career: 'The Institute finds that subject\'s professional motivations are insufficient to offset documented structural risk indicators within the Portuguese Republic.',
+      climate: 'The Institute finds that climatological expectations cited in subject\'s submission are not supported by available regional telemetry.',
+      romantic: 'The Institute finds that subjects in Category 3 (Romantic) are advised to consult both their support network and Form RA-7b before proceeding.',
+      escape: 'The Institute finds that the relocation, as proposed, is unlikely to address the underlying conditions cited in subject\'s submission.',
+      family: 'The Institute finds that subject\'s domestic arrangement requires legal consultation in both jurisdictions before proceeding.',
+      retirement: 'The Institute finds that subject\'s retirement objectives may be partially attainable, contingent upon subject\'s tolerance for procedural duration.',
+      digital_nomad: 'The Institute finds that subject\'s lifestyle assumptions warrant recalibration prior to commitment.',
+      spiritual: 'The Institute does not issue determinations for Category 8 submissions.',
+      other: 'The Institute finds that subject\'s motivation requires further specification before a determination may be issued.'
+    };
+
+    return `
+      <div class="report" id="report">
+        <div class="report-header">
+          <div class="report-seal"><span>IRI</span></div>
+          <div class="report-title-block">
+            <div class="institute">Iberian Risk Institute · Office of Continental Risk Assessment</div>
+            <h2>Personal Relocation Risk Assessment</h2>
+          </div>
+        </div>
+
+        <div class="report-meta">
+          <div><span>Bulletin No.</span>${bulletinNum}</div>
+          <div><span>Issued</span>${today}</div>
+          <div><span>Classification</span>Confidential / Subject Use</div>
+          <div><span>Authority</span>IRI/CRA-7 §4.2(b)</div>
+        </div>
+
+        <div class="report-subject-line">
+          Re: <strong>${escapeHtml(name)}</strong>${origin ? ` of ${escapeHtml(origin)}` : ''}
+        </div>
+
+        <div class="report-score-block">
+          <div>
+            <div class="report-score-label">Composite Personal Risk Index</div>
+            <div class="report-score-value">${score.toFixed(1)}</div>
+            <div class="report-score-classification" style="color: ${classification.color};">${classification.label}</div>
+          </div>
+          <div>
+            <div class="report-score-label">Scale</div>
+            <p style="font-size:11px; color:#555; line-height:1.5; margin-top:2px;">0 (CRITICAL) — 100 (NOMINAL)<br><br>Subject's score is calculated against the Institute's standard relocation risk model, weighted by stated motivation, current jurisdiction, and intended duration of stay.</p>
+          </div>
+        </div>
+
+        <div class="report-h3">Findings</div>
+        <ol class="report-findings">
+          ${allFindings.map(f => `<li>${f}</li>`).join('')}
+        </ol>
+
+        <div class="report-h3">Determination</div>
+        <div class="report-determination">
+          <strong>Office of Continental Risk Assessment</strong>
+          ${determinations[motivation] || determinations.other}
+        </div>
+
+        <div class="report-recommendation">${recommendations[0]}</div>
+
+        <div class="report-signature">
+          <div class="sig-block">
+            <div class="sig-name">M. Albuquerque</div>
+            <div class="sig-title">Director, Office of Continental Risk Assessment</div>
+          </div>
+          <div class="report-stamp">Confidential</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
+
+  function openAssessmentModal() {
+    document.getElementById('assessment-modal').classList.add('active');
+    document.getElementById('assessment-form-wrap').style.display = 'block';
+    document.getElementById('assessment-report-wrap').style.display = 'none';
+  }
+  function closeAssessmentModal() {
+    document.getElementById('assessment-modal').classList.remove('active');
+  }
+
+  function handleSubmit() {
+    const name = document.getElementById('form-name').value.trim();
+    const origin = document.getElementById('form-origin').value.trim();
+    const motivation = document.getElementById('form-motivation').value;
+    const duration = document.getElementById('form-duration').value;
+
+    if (!name) {
+      alert('Subject Full Name is required.');
+      return;
+    }
+    if (!motivation) {
+      alert('Stated Motivation is required for assessment categorization.');
+      return;
+    }
+    if (!duration) {
+      alert('Intended Duration of Stay is required.');
+      return;
+    }
+
+    const reportHtml = buildReport({ name, origin, motivation, duration });
+    document.getElementById('report-container').innerHTML = reportHtml;
+    document.getElementById('assessment-form-wrap').style.display = 'none';
+    document.getElementById('assessment-report-wrap').style.display = 'block';
+    document.getElementById('assessment-content').scrollTop = 0;
+  }
+
+  // ============================================================
+  // EVENT WIRING
+  // ============================================================
+  document.addEventListener('click', e => {
+    if (e.target.classList.contains('info-btn')) openInfoModal(e.target.dataset.info);
+    if (e.target.id === 'info-modal') closeInfoModal();
+    if (e.target.id === 'stub-modal') closeStubModal();
+    if (e.target.id === 'assessment-modal') closeAssessmentModal();
+  });
+
+  document.querySelectorAll('nav.gov-nav a[data-stub]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const key = a.dataset.stub;
+      if (key === 'current') return; // active page
+      openStubModal(key);
+    });
+  });
+
+  document.getElementById('open-assessment').addEventListener('click', openAssessmentModal);
+  document.getElementById('form-submit').addEventListener('click', handleSubmit);
+  document.getElementById('report-back').addEventListener('click', () => {
+    document.getElementById('assessment-form-wrap').style.display = 'block';
+    document.getElementById('assessment-report-wrap').style.display = 'none';
+    document.getElementById('assessment-content').scrollTop = 0;
+  });
+  document.getElementById('report-print').addEventListener('click', () => window.print());
+  document.getElementById('report-close').addEventListener('click', closeAssessmentModal);
+
+  // ============================================================
+  // BEEP — single quiet hospital-monitor pulse at 60s
+  // ============================================================
   let beepArmed = false;
-  let beepTimer = null;
   function playBeep() {
     try {
       const ctx = new (window.AudioContext || window.webkitAudioContext)();
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = 'sine';
-      osc.frequency.value = 880; // A5 — hospital-monitor pitch
-      // Envelope: quick attack, gentle release. Quiet (peak 0.06).
+      osc.frequency.value = 880;
       gain.gain.setValueAtTime(0, ctx.currentTime);
       gain.gain.linearRampToValueAtTime(0.06, ctx.currentTime + 0.01);
       gain.gain.linearRampToValueAtTime(0.06, ctx.currentTime + 0.18);
@@ -1433,16 +2450,13 @@
       gain.connect(ctx.destination);
       osc.start(ctx.currentTime);
       osc.stop(ctx.currentTime + 0.3);
-    } catch (e) {
-      // Audio context blocked or not available — fail silently
-    }
+    } catch (e) {}
   }
   function armBeep() {
     if (beepArmed) return;
     beepArmed = true;
-    beepTimer = setTimeout(playBeep, 60000);
+    setTimeout(playBeep, 60000);
   }
-  // Arm on any of these signals — first user interaction
   ['click', 'scroll', 'keydown', 'touchstart'].forEach(evt => {
     window.addEventListener(evt, armBeep, { once: true, passive: true });
   });
@@ -1450,10 +2464,9 @@
   // ============================================================
   // INIT
   // ============================================================
-  document.getElementById('year').textContent = new Date().getFullYear();
   document.getElementById('answer-date').textContent = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
   buildTicker();
-  buildChart();
   updateAdverseCounter();
   updatePopulation();
   updateIndex();
@@ -1464,12 +2477,12 @@
   fetchAirQuality();
   fetchMarineData();
 
-  // Live update intervals
-  setInterval(updateAdverseCounter, 200);
+  setInterval(updateAdverseCounter, 1000);
   setInterval(updatePopulation, 1000);
   setInterval(updateIndex, 2000);
   setInterval(updateTimestamp, 1000);
   setInterval(updateSecondary, 3500);
+  setInterval(checkEscalation, 2000);
   setInterval(fetchLisbonWeather, 5 * 60 * 1000);
   setInterval(fetchSeismicData, 15 * 60 * 1000);
   setInterval(fetchAirQuality, 10 * 60 * 1000);
