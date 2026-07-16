@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2030 World Cup — Official Visitor Guidance | Iberian Risk Institute</title>
+<meta name="description" content="Official guidance for ticketed visitors attending 2030 FIFA World Cup fixtures in Portugal. Incident history, accommodation, transport, and coastal contingency planning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F2EC;
+  --paper-deep:#ECE9E0;
+  --ink:#22303B;
+  --ink-soft:#4A5560;
+  --pt-green:#0B6B3A;
+  --pt-red:#9E1B1B;
+  --stamp:#2C4A73;
+  --rule:#CDC9BE;
+  --ocean-1:#D2DEE5;
+  --ocean-2:#C3D3DC;
+  --land:#F0ECDF;
+  --land-shadow:#C9C5B6;
+  --adjacent:#E2DFD6;
+  --flood:#3D6E8F;
+  --donkey:#5C4B33;
+  --serif-display:"Libre Caslon Text", Georgia, serif;
+  --serif-body:"Source Serif 4", Georgia, serif;
+  --mono:"IBM Plex Mono", Consolas, monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif-body);font-size:17px;line-height:1.6}
+a{color:var(--stamp)}
+
+.masthead{border-bottom:3px double var(--ink);padding:26px 20px 18px}
+.masthead-inner{max-width:860px;margin:0 auto;display:flex;gap:20px;align-items:center;position:relative}
+.crest{flex:0 0 60px}
+.masthead h1{font-family:var(--serif-display);font-size:clamp(20px,3.4vw,29px);font-weight:700}
+.masthead .org{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--pt-green);margin-bottom:4px}
+.masthead .directive{font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin-top:5px}
+
+.progress-wrap{max-width:860px;margin:0 auto;padding:12px 20px 0;display:flex;align-items:baseline;gap:14px}
+.progress-label{font-family:var(--mono);font-size:12px;color:var(--ink-soft);white-space:nowrap}
+.progress-track{flex:1;height:3px;background:var(--rule);position:relative;top:-4px}
+.progress-fill{height:3px;background:var(--pt-green);width:0;transition:width .5s ease}
+
+main{max-width:860px;margin:0 auto;padding:8px 20px 70px}
+section{display:none;animation:appear .4s ease}
+section.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.sec-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--stamp);margin:30px 0 8px}
+h2{font-family:var(--serif-display);font-size:clamp(24px,4vw,33px);font-weight:700;line-height:1.2;margin-bottom:16px}
+h3{font-family:var(--serif-display);font-size:18px;font-weight:700;margin:24px 0 8px}
+p{margin-bottom:13px;max-width:70ch}
+.note{border-left:4px solid var(--pt-green);background:var(--paper-deep);padding:11px 15px;margin:18px 0;font-size:15.5px}
+.warning{border-left:4px solid var(--pt-red);background:#F2E7E3;padding:11px 15px;margin:18px 0;font-size:15.5px}
+.footnote{font-size:13.5px;color:var(--ink-soft);border-top:1px solid var(--rule);margin-top:26px;padding-top:10px}
+
+.tbl-wrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:14.5px;background:#FBFAF6}
+caption{caption-side:top;text-align:left;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);padding-bottom:8px}
+th{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-align:left;color:var(--paper);background:var(--ink);padding:8px 12px}
+td{padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+td.mono,.mono{font-family:var(--mono);font-size:13.5px}
+.status-ok{color:var(--pt-green);font-family:var(--mono);font-size:13px}
+.status-warn{color:#8A6D1F;font-family:var(--mono);font-size:13px}
+.status-bad{color:var(--pt-red);font-family:var(--mono);font-size:13px}
+
+.sec-nav{margin-top:38px;display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid var(--rule);padding-top:20px}
+button{font-family:var(--mono);font-size:14px;cursor:pointer}
+.btn-continue{background:var(--ink);color:var(--paper);border:none;padding:13px 24px;letter-spacing:.04em}
+.btn-continue:hover{background:var(--stamp)}
+.btn-back{background:none;border:none;color:var(--ink-soft);text-decoration:underline;padding:8px 0}
+.btn-back:hover{color:var(--ink)}
+
+/* ---------- Map ---------- */
+.map-frame{border:1px solid var(--ink);background:var(--ocean-1);margin:20px 0 10px;position:relative;box-shadow:0 2px 0 var(--rule)}
+.map-frame.shaking{animation:shake .55s linear}
+@keyframes shake{
+  0%,100%{transform:translate(0,0)}
+  15%{transform:translate(-5px,3px)}30%{transform:translate(4px,-4px)}
+  45%{transform:translate(-4px,-2px)}60%{transform:translate(5px,3px)}
+  75%{transform:translate(-3px,2px)}90%{transform:translate(2px,-2px)}
+}
+.map-controls{display:flex;flex-wrap:wrap;gap:16px;align-items:center;font-family:var(--mono);font-size:13px;background:var(--paper-deep);border:1px solid var(--rule);padding:10px 14px;margin-top:12px}
+.map-controls label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);margin-top:10px;align-items:center}
+.legend span{display:flex;align-items:center;gap:6px}
+.contingency{margin-top:24px;border:1px solid var(--rule);background:#FBFAF6;padding:16px 18px}
+.contingency h3{margin-top:0}
+.btn-projection{background:none;border:1px solid var(--ink);color:var(--ink);padding:11px 20px;letter-spacing:.03em;margin-top:8px}
+.btn-projection:hover:not(:disabled){background:var(--ink);color:var(--paper)}
+.btn-projection:disabled{border-color:var(--rule);color:var(--ink-soft);cursor:not-allowed;text-decoration:line-through}
+#projStatus{font-family:var(--mono);font-size:13px;color:var(--ink-soft);margin-top:10px;min-height:20px}
+
+svg text{font-family:var(--mono)}
+.lbl{font-size:11px;fill:var(--ink)}
+.lbl-soft{font-size:10px;fill:var(--ink-soft)}
+.lbl-city{font-size:10px;fill:var(--ink-soft);letter-spacing:.08em}
+.lbl-water{font-size:11px;fill:#5F7A8A;letter-spacing:.28em}
+
+.bob{animation:bob 3.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+.bob-raft{animation:raftbob 3.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes raftbob{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-3px) rotate(1.2deg)}}
+
+/* ---------- Exercises ---------- */
+.exercise{margin-top:24px;border:1px solid var(--rule);background:#FBFAF6;padding:16px 18px}
+.exercise h3{margin-top:0}
+.ex-status{font-family:var(--mono);font-size:13px;color:var(--ink-soft);margin-top:10px;min-height:20px}
+.ex-q{font-family:var(--mono);font-size:14px;margin:6px 0 10px}
+.opt-row{display:flex;gap:10px;flex-wrap:wrap}
+.btn-option{background:none;border:1px solid var(--ink);color:var(--ink);padding:9px 16px;letter-spacing:.03em}
+.btn-option:hover:not(:disabled){background:var(--ink);color:var(--paper)}
+.btn-option:disabled{border-color:var(--rule);color:var(--ink-soft);cursor:not-allowed}
+.san-stage{border:1px dashed var(--rule);background:#F7F5EE;margin-top:8px}
+#sanSvg{touch-action:none;display:block}
+.cert{margin-top:14px;border:2px double var(--ink);background:var(--paper);padding:16px 130px 16px 18px;font-family:var(--mono);font-size:13px;position:relative;line-height:2}
+.cert .cert-head{font-size:15px;letter-spacing:.2em;border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:8px}
+.cert-stamp{position:absolute;top:20px;right:16px;border:3px double var(--pt-green);color:var(--pt-green);border-radius:50%;width:92px;height:92px;display:flex;align-items:center;justify-content:center;transform:rotate(-12deg);letter-spacing:.1em;font-size:12px}
+.cert .cert-en{font-size:11.5px;color:var(--ink-soft);border-top:1px solid var(--rule);margin-top:8px;padding-top:6px;line-height:1.6}
+.toast{position:fixed;bottom:18px;right:18px;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:13px;padding:10px 16px;opacity:0;transition:opacity .4s;pointer-events:none;z-index:50}
+.toast.show{opacity:1}
+.off2{position:absolute;right:0;top:4px;transform:rotate(-8deg);border:3px double var(--pt-red);color:var(--pt-red);font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;padding:8px 12px;opacity:0;transition:opacity .6s;pointer-events:none;text-align:center}
+.off2.visible{opacity:.9}
+#mapNote{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);margin-top:8px;min-height:18px}
+#unit9,#lostBridge,#adv31,#raftUnit,#crest{cursor:pointer}
+@media (max-width:560px){.cert{padding-right:18px}.cert-stamp{position:static;transform:rotate(-6deg);margin-top:10px}}
+
+footer{border-top:3px double var(--ink);padding:24px 20px 56px}
+.footer-inner{max-width:860px;margin:0 auto;font-family:var(--mono);font-size:12px;color:var(--ink-soft);line-height:1.9}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  section{animation:none}
+  .map-frame.shaking{animation:none}
+  .bob,.bob-raft{animation:none}
+}
+@media (max-width:560px){body{font-size:16px}.masthead-inner{gap:14px}.crest{flex-basis:46px}}
+</style>
+</head>
+<body>
+
+<!-- Global icon sprite (referenced across the page) -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <g id="donkeyIcon">
+      <rect x="5" y="8" width="15" height="8" rx="4" fill="var(--donkey)"/>
+      <rect x="6.5" y="14" width="2" height="7" rx="1" fill="var(--donkey)"/>
+      <rect x="10.5" y="14" width="2" height="7" rx="1" fill="var(--donkey)"/>
+      <rect x="14.5" y="14" width="2" height="7" rx="1" fill="var(--donkey)"/>
+      <rect x="17.5" y="14" width="2" height="7" rx="1" fill="var(--donkey)"/>
+      <circle cx="21.5" cy="7.5" r="3.6" fill="var(--donkey)"/>
+      <rect x="23" y="6.4" width="5.4" height="3.6" rx="1.8" fill="var(--donkey)"/>
+      <rect x="18.6" y="0.6" width="1.7" height="5.4" rx="0.85" fill="var(--donkey)" transform="rotate(-16 19.5 3)"/>
+      <rect x="22.4" y="0.6" width="1.7" height="5.4" rx="0.85" fill="var(--donkey)" transform="rotate(16 23.2 3)"/>
+      <path d="M5.5 9.5 q-3.2 1.5 -2.6 5.2" stroke="var(--donkey)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    </g>
+    <g id="houseIcon">
+      <path d="M0 6.5 L6.5 0 L13 6.5 V13 H0 Z" fill="#2C4A73" stroke="#FBFAF6" stroke-width="1"/>
+      <rect x="4.8" y="7.6" width="3.4" height="5.4" fill="#F4F2EC"/>
+    </g>
+    <g id="stadiumIcon">
+      <ellipse cx="10" cy="6.5" rx="10" ry="6.5" fill="#0B6B3A" stroke="#FBFAF6" stroke-width="1"/>
+      <ellipse cx="10" cy="6.5" rx="6" ry="3.4" fill="#BFE3CD"/>
+      <line x1="10" y1="3.1" x2="10" y2="9.9" stroke="#0B6B3A" stroke-width="1"/>
+      <circle cx="10" cy="6.5" r="1.1" fill="none" stroke="#0B6B3A" stroke-width=".8"/>
+    </g>
+    <g id="advIcon">
+      <path d="M7 0 L14 12.5 H0 Z" fill="#9E1B1B" stroke="#FBFAF6" stroke-width="1"/>
+      <rect x="6.2" y="3.8" width="1.6" height="4.6" fill="#F4F2EC"/>
+      <rect x="6.2" y="9.6" width="1.6" height="1.6" fill="#F4F2EC"/>
+    </g>
+    <g id="bridgeIcon">
+      <path d="M0 8 h30" stroke="#5C6B78" stroke-width="2"/>
+      <path d="M3 8 q12 -13 24 0" stroke="#5C6B78" stroke-width="2" fill="none"/>
+      <line x1="6" y1="8" x2="6" y2="13" stroke="#5C6B78" stroke-width="1.6"/>
+      <line x1="24" y1="8" x2="24" y2="13" stroke="#5C6B78" stroke-width="1.6"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <svg class="crest" id="crest" viewBox="0 0 64 64" width="60" height="60" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="none" stroke="#0B6B3A" stroke-width="2.5"/>
+      <circle cx="32" cy="32" r="24" fill="none" stroke="#22303B" stroke-width="1"/>
+      <path d="M32 14 L36 26 L48 26 L38 33 L42 45 L32 38 L22 45 L26 33 L16 26 L28 26 Z" fill="none" stroke="#22303B" stroke-width="1.6"/>
+      <circle cx="32" cy="32" r="4" fill="#9E1B1B"/>
+    </svg>
+    <div>
+      <div class="org">Iberian Risk Institute · Tournament Directorate</div>
+      <h1>2030 World Cup — Official Visitor Guidance</h1>
+      <div class="directive">Directive WC30/PT‑114 (Rev. 5) · Applies to all ticketed persons · Carry at all times</div>
+    </div>
+    <div class="off2" id="off2">ESTE DOCUMENTO<br>É OFICIAL<br>FORM OFF‑2</div>
+  </div>
+</header>
+
+<div class="progress-wrap" aria-hidden="true">
+  <span class="progress-label" id="progressLabel">Section 1 of 4</span>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<main>
+
+<!-- ============ SECTION 1 ============ -->
+<section id="s1" class="active">
+  <div class="sec-eyebrow">Section 1 · Incident Awareness</div>
+  <h2>Know Your Disasters</h2>
+  <p>Portugal is pleased to receive 1.4 million tournament visitors and asks only that they arrive informed. Every visiting fan is required to be aware of the national incident register before travel. Familiarity is checked at the border by a short oral quiz. The quiz is in Portuguese.</p>
+  <div class="tbl-wrap">
+  <table>
+    <caption>Table 1.1 — National Incident Register (extract, visitor‑relevant entries)</caption>
+    <thead>
+      <tr><th>Year</th><th>Incident</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">2011</td><td>The Great Cork Shortage. National strategic reserve unsealed; 40 million bottles stood open for nine days.</td><td class="status-ok">RESOLVED. BOTTLES RESEALED.</td></tr>
+      <tr><td class="mono">2014</td><td>The Sardine Surge, Porto. The June catch exceeded the city's capacity to grill it. Smoke visible from Spain, which complained.</td><td class="status-warn">RECURRING (JUNE)</td></tr>
+      <tr><td class="mono">2017</td><td>The Azulejo Avalanche, Lisbon. 60,000 decorative tiles came off in one night and were reattached in the wrong order. The city remains navigable but incorrect.</td><td class="status-warn">ONGOING</td></tr>
+      <tr><td class="mono">2019</td><td>The Bridge Counting Error. Porto was found to have one bridge fewer than declared. An inquiry into where it went continues.</td><td class="status-bad" id="bridgeStatus">UNRESOLVED</td></tr>
+      <tr><td class="mono">2023</td><td>The Fog Repossession. Galicia reclaimed the morning fog under treaty. Mornings now arrive unannounced.</td><td class="status-warn">SEASONAL</td></tr>
+      <tr><td class="mono">2028</td><td>The Trial Tsunami (administrative). Conducted entirely on paper as a readiness exercise. Paperwork performed well.</td><td class="status-bad">FULL EXERCISE SCHEDULED: 2030</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="footnote">Entry 2028 is addressed in Section 4, where visitors may run the full exercise themselves. Once.</p>
+
+  <div class="exercise">
+    <h3>1.2 — Border Familiarity Quiz (practice)</h3>
+    <p style="font-size:15.5px">The border quiz is administered in Portuguese. So is the practice quiz. This is part of the experience. Translations are available at any parish office.</p>
+    <p class="ex-q" id="quizQ"></p>
+    <div class="opt-row" id="quizOpts"></div>
+    <div class="ex-status" id="quizStatus"></div>
+  </div>
+
+  <div class="sec-nav">
+    <span></span>
+    <button class="btn-continue" data-next="s2">Acknowledge and proceed to Section 2 →</button>
+  </div>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section id="s2">
+  <div class="sec-eyebrow">Section 2 · Accommodation &amp; Sanitation</div>
+  <h2>Your Bed, Your Bedmate, Your Bucket</h2>
+  <p>Hotel inventory is reserved for officials, sponsors, and the donkeys of Section 3. All visitors are therefore assigned to an existing bed in a private household under the Resident Bed Integration Scheme. The bed remains in use by its owner. That is the integration.</p>
+  <p>You will be paired with a <strong>Designated Resident Bedmate</strong> by an algorithm weighing shoulder width, thermal output, and declared snoring class. The algorithm does not accept preferences. It has never been wrong, in the sense that its outputs have never been reviewed.</p>
+  <div class="tbl-wrap">
+  <table>
+    <caption>Table 2.1 — Common configurations</caption>
+    <thead><tr><th>Code</th><th>Arrangement</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">A</td><td>Double bed, head‑to‑toe with one adult resident</td><td>Orientation reverses nightly to equalise wall access.</td></tr>
+      <tr><td class="mono">B</td><td>Single bed, alternating four‑hour shifts</td><td>The bed will be warm. This is normal and should not be reported.</td></tr>
+      <tr><td class="mono">D</td><td>Convertible kitchen bench, shared with resident grandmother</td><td>The grandmother has the window side. The grandmother has always had the window side.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>Sanitation orientation</h3>
+  <p>Most host dwellings have plumbing in the historical sense. Within 48 hours of arrival, your bedmate delivers the national waste‑removal orientation: vessel etiquette, night scheduling, and the municipal cart, which passes once daily and does not stop. Graduates receive certificate SAN‑3, checked at stadium turnstiles.</p>
+  <div class="warning"><strong>Important.</strong> Do not interpret the presence of a toilet as evidence of its connection to anything.</div>
+
+  <div class="exercise">
+    <h3>2.2 — Practical Module SAN‑A (demonstration)</h3>
+    <p style="font-size:15.5px">A practical demonstration of Module SAN‑A is provided below, delivered in Portuguese, as it will be in the home. Completion is required before Section 3.<sup>*</sup></p>
+    <div class="san-stage">
+      <svg id="sanSvg" viewBox="0 0 600 200" width="100%" aria-label="Practical exercise: place the brown oval into the bag.">
+        <text x="20" y="30" font-size="15" fill="#22303B">Coloque o objeto castanho no saco.</text>
+        <g id="sanBag" transform="translate(478,88)">
+          <path d="M-9 -16 q9 -11 18 0 l15 66 q-24 13 -48 0 z" fill="#C8B98F" stroke="#8A7A52" stroke-width="1.5"/>
+          <path d="M-11 -12 h22" stroke="#8A7A52" stroke-width="2.4"/>
+          <text x="-15" y="72" font-size="11" fill="#4A5560">SACO</text>
+        </g>
+        <ellipse id="sanOval" cx="95" cy="115" rx="27" ry="17" fill="#6B4A2F" stroke="#4E3722" stroke-width="1.5" style="cursor:grab"/>
+      </svg>
+    </div>
+    <div class="ex-status" id="sanStatus"></div>
+    <div id="san3" hidden>
+      <div class="cert">
+        <div class="cert-head">CERTIFICADO SAN‑3</div>
+        PORTADOR: VISITANTE<br>
+        QUALIFICAÇÃO: REMOÇÃO PESSOAL DE RESÍDUOS<br>
+        EMITIDO POR: O SEU COMPANHEIRO DE CAMA DESIGNADO<br>
+        VÁLIDO: PERÍODO DO TORNEIO
+        <div class="cert-stamp">APROVADO</div>
+        <div class="cert-en">Present at all stadium turnstiles. Lamination voids the certificate. The Institute does not know why.</div>
+      </div>
+    </div>
+    <p class="footnote" style="border:none;margin-top:10px;padding-top:0"><sup>*</sup> Section 3 does not check.</p>
+  </div>
+
+  <div class="sec-nav">
+    <button class="btn-back" data-prev="s1">← Return to Section 1</button>
+    <button class="btn-continue" data-next="s3">Acknowledge and proceed to Section 3 →</button>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section id="s3">
+  <div class="sec-eyebrow">Section 3 · Transport</div>
+  <h2>The Equine Transit Network</h2>
+  <p>All stadium travel is by accredited donkey. Private vehicles are prohibited within 40 km of venues on match days, and rail is suspended so it does not compete unfairly with the donkeys. Your donkey is linked to your bed assignment; in many households it is also the household's donkey, and visitors should not discuss route grievances in its stable.</p>
+  <p>Donkeys hold statutory right of way in perpetuity, a provision that predates the tournament, the republic, and most roads. Departures occur when the donkey is ready. "Ready" is determined by the donkey.</p>
+  <div class="tbl-wrap">
+  <table>
+    <caption>Table 3.1 — Service board · fares payable in coin or verified carrot weight</caption>
+    <thead><tr><th>Route</th><th>Time</th><th>Fare</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Évora HC‑4 → Lisbon Stadium Precinct</td><td class="mono">9 h 40 m</td><td class="mono">€3.10 / 2.3 kg carrots</td><td class="status-ok">ON TIME</td></tr>
+      <tr><td>Viseu HC‑7 → Estádio do Dragão</td><td class="mono">8 h 05 m</td><td class="mono">€2.40 / 1.8 kg carrots</td><td class="status-warn">+45 MIN — GRAZING</td></tr>
+      <tr><td>Beja HC‑9 → Lisbon Stadium Precinct</td><td class="mono">11 h 20 m</td><td class="mono">€3.30 / 2.4 kg carrots</td><td class="status-bad">DONKEY DECLINED</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="footnote">Night services do not operate; the donkeys are asleep. Suspended services resume when the donkey reconsiders. The Institute does not forecast this.</p>
+
+  <div class="exercise">
+    <h3>3.2 — Departure Readiness Check (live)</h3>
+    <p style="font-size:15.5px">Visitors may consult their assigned donkey below. Readiness is determined by the donkey. The consultation is conducted in Portuguese, as the donkey prefers.</p>
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      <svg width="58" height="44" viewBox="0 0 30 23" aria-hidden="true"><use href="#donkeyIcon"/></svg>
+      <button class="btn-projection" id="consultBtn" style="margin-top:0">Consultar o burro</button>
+    </div>
+    <div class="ex-status" id="consultStatus"></div>
+  </div>
+
+  <div class="sec-nav">
+    <button class="btn-back" data-prev="s2">← Return to Section 2</button>
+    <button class="btn-continue" data-next="s4">Acknowledge and proceed to Section 4 →</button>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<section id="s4">
+  <div class="sec-eyebrow">Section 4 · Planning Resources</div>
+  <h2>Tournament Planning Map</h2>
+  <p>Housing clusters, stadium routes, donkey paths, and current advisories. Hover any marker for details. The map is interactive; the geography is not.</p>
+
+  <div class="map-frame" id="mapFrame">
+    <svg id="theMap" viewBox="0 0 720 900" width="100%" role="img" aria-label="Planning map of Portugal showing housing clusters, stadiums, donkey routes, advisories, and a projected object entry corridor in the Atlantic Ocean.">
+      <defs>
+        <linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="var(--ocean-1)"/>
+          <stop offset="100%" stop-color="var(--ocean-2)"/>
+        </linearGradient>
+        <radialGradient id="impactGlow">
+          <stop offset="0%" stop-color="#FFF6D8" stop-opacity="1"/>
+          <stop offset="60%" stop-color="#F2B24C" stop-opacity=".8"/>
+          <stop offset="100%" stop-color="#F2B24C" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="meteorTrail" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#F2B24C" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#E8873A" stop-opacity=".95"/>
+        </linearGradient>
+
+        <path id="ptLand" d="M258 88 L292 78 L336 84 L378 76 L414 92 L436 106
+          L446 158 L432 226 L460 296 L448 366 L468 438 L442 512 L458 588 L446 652 L456 700
+          L400 716 L346 710 L300 714 L262 710 L224 720
+          L232 690 L244 632 L250 586 L224 586 L233 556 L256 546 L240 534 L219 531
+          L228 500 L209 478 L221 442 L219 390 L227 332 L239 284 L242 226 L240 180 L252 132 Z"/>
+
+        <clipPath id="landClip"><use href="#ptLand"/></clipPath>
+
+        <!-- Wave squiggle -->
+        <path id="squig" d="M0 0 q6 -5 12 0 q6 5 12 0 q6 -5 12 0" stroke="#AEC3CE" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </defs>
+
+      <!-- Ocean -->
+      <rect x="0" y="0" width="720" height="900" fill="url(#oceanGrad)"/>
+      <g opacity=".8">
+        <use href="#squig" x="46" y="120"/>
+        <use href="#squig" x="110" y="240"/>
+        <use href="#squig" x="40" y="330"/>
+        <use href="#squig" x="60" y="600"/>
+        <use href="#squig" x="130" y="700"/>
+        <use href="#squig" x="60" y="800"/>
+        <use href="#squig" x="300" y="820"/>
+        <use href="#squig" x="480" y="866"/>
+      </g>
+      <text class="lbl-water" x="52" y="190">A T L A N T I C</text>
+      <text class="lbl-water" x="70" y="212">O C E A N</text>
+
+      <!-- Graticule -->
+      <g stroke="#B7C7D1" stroke-width=".7" stroke-dasharray="2 6">
+        <line x1="0" y1="270" x2="720" y2="270"/>
+        <line x1="0" y1="530" x2="720" y2="530"/>
+      </g>
+      <text class="lbl-soft" x="6" y="264" opacity=".8">41°N</text>
+      <text class="lbl-soft" x="6" y="524" opacity=".8">38.7°N</text>
+
+      <!-- Compass rose -->
+      <g transform="translate(74,74)">
+        <circle r="24" fill="none" stroke="#5F7A8A" stroke-width="1"/>
+        <path d="M0 -22 L5 0 L0 22 L-5 0 Z" fill="#5F7A8A"/>
+        <path d="M-22 0 L0 -4 L22 0 L0 4 Z" fill="#9FB4BF"/>
+        <text x="-4" y="-30" font-size="12" fill="#5F7A8A">N</text>
+      </g>
+
+      <!-- Adjacent jurisdiction -->
+      <path d="M436 106 L500 58 L720 58 L720 842 L520 842 L470 748 L456 700 L446 652 L458 588 L442 512 L468 438 L448 366 L460 296 L432 226 L446 158 Z" fill="var(--adjacent)" stroke="#B9B5A9" stroke-width="1"/>
+      <text class="lbl-soft" x="545" y="436">ADJACENT JURISDICTION</text>
+      <text class="lbl-soft" x="545" y="452">(out of scope)</text>
+      <g id="lostBridge" transform="translate(590,706)" opacity=".55"><rect x="-8" y="-10" width="46" height="32" fill="transparent"/><use href="#bridgeIcon"/><title>UNREGISTERED BRIDGE — subject of inquiry</title></g>
+
+      <!-- Land shadow + land -->
+      <use href="#ptLand" transform="translate(4,5)" fill="var(--land-shadow)" opacity=".55"/>
+      <use href="#ptLand" fill="var(--land)" stroke="#22303B" stroke-width="1.5"/>
+
+      <!-- City reference -->
+      <g>
+        <circle cx="240" cy="284" r="2.2" fill="var(--ink-soft)"/>
+        <text class="lbl-city" x="248" y="288">PORTO</text>
+        <circle cx="241" cy="536" r="2.2" fill="var(--ink-soft)"/>
+        <text class="lbl-city" x="250" y="540">LISBOA</text>
+        <circle cx="400" cy="708" r="2.2" fill="var(--ink-soft)"/>
+        <text class="lbl-city" x="392" y="700">FARO</text>
+      </g>
+
+      <!-- Donkey routes -->
+      <g id="layer-routes">
+        <g stroke="#6B5B3E" stroke-width="2" stroke-dasharray="6 5" fill="none">
+          <path d="M352 268 C 318 272, 285 276, 252 282"><title>Route: HC‑7 Viseu → Estádio do Dragão · 8 h 05 m · +45 min (grazing)</title></path>
+          <path d="M352 560 C 316 548, 280 542, 250 536"><title>Route: HC‑4 Évora → Lisbon Stadium Precinct · 9 h 40 m · on time</title></path>
+          <path d="M362 628 C 322 600, 282 560, 250 540"><title>Route: HC‑9 Beja → Lisbon Stadium Precinct · SUSPENDED — donkey declined</title></path>
+          <path d="M246 600 C 242 578, 242 558, 242 544"><title>Route: HC‑1 Coastal → Lisbon Stadium Precinct · see advisories</title></path>
+        </g>
+        <g fill="#6B5B3E">
+          <circle cx="300" cy="272" r="3"><title>Watering Interval 7</title></circle>
+          <circle cx="300" cy="548" r="3"><title>Watering Interval 12</title></circle>
+          <circle cx="306" cy="586" r="3"><title>Watering Interval 12‑B (contemplative pause)</title></circle>
+        </g>
+        <!-- Donkeys in service -->
+        <g class="bob"><use href="#donkeyIcon" transform="translate(306,246) scale(0.95)"/><title>ETN Unit 7 — in service (grazing +45 min)</title></g>
+        <g class="bob"><use href="#donkeyIcon" transform="translate(276,514) scale(0.95)"/><title>ETN Unit 4 — in service, on time</title></g>
+        <g id="unit9"><circle cx="345" cy="646" r="17" fill="transparent"/><use href="#donkeyIcon" transform="translate(332,636) scale(0.95) scale(-1,1) translate(-28,0)"/><title>ETN Unit 9 — declined</title></g>
+      </g>
+
+      <!-- Housing clusters -->
+      <g id="layer-housing">
+        <use href="#houseIcon" transform="translate(404,124)"><title>HC‑2 Bragança — Configurations A, D</title></use>
+        <use href="#houseIcon" transform="translate(352,262)"><title>HC‑7 Viseu — Configurations A, B</title></use>
+        <use href="#houseIcon" transform="translate(352,554)"><title>HC‑4 Évora — Configurations A, B</title></use>
+        <use href="#houseIcon" transform="translate(360,622)"><title>HC‑9 Beja — Configurations B, D</title></use>
+        <use href="#houseIcon" id="hc1house" transform="translate(240,596)"><title>HC‑1 Coastal — paired hammocks. See advisories.</title></use>
+        <text class="lbl" x="420" y="134">HC‑2</text>
+        <text class="lbl" x="368" y="272">HC‑7</text>
+        <text class="lbl" x="368" y="564">HC‑4</text>
+        <text class="lbl" x="376" y="632">HC‑9</text>
+        <text class="lbl" id="hc1lbl" x="196" y="622">HC‑1</text>
+      </g>
+
+      <!-- Stadiums -->
+      <g id="layer-stadiums">
+        <use href="#stadiumIcon" transform="translate(238,272)"><title>Estádio do Dragão, Porto</title></use>
+        <use href="#stadiumIcon" id="lisbonStadium" transform="translate(232,524)"><title>Lisbon Stadium Precinct (2 venues)</title></use>
+        <text class="lbl" x="262" y="270" id="portoLbl">DRAGÃO</text>
+        <text class="lbl" x="256" y="522" id="lisbonLbl">LISBON PRECINCT</text>
+      </g>
+
+      <!-- Advisories -->
+      <g id="layer-advisories">
+        <use href="#advIcon" transform="translate(238,676)"><title>Advisory 14 — Cliff instability, Algarve viewing areas</title></use>
+        <use href="#advIcon" transform="translate(300,684)"><title>Advisory 22 — Unfenced well field (household water source)</title></use>
+        <use href="#advIcon" id="adv31" transform="translate(214,404)"><title>Advisory 31 — Aggressive geese (seasonal)</title></use>
+      </g>
+
+      <!-- Object corridor -->
+      <g id="layer-object">
+        <ellipse cx="95" cy="430" rx="72" ry="42" fill="none" stroke="#9E1B1B" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <circle cx="95" cy="430" r="4" fill="#9E1B1B"><title>Object 2030‑QF7 — projected entry point</title></circle>
+        <text class="lbl-soft" x="34" y="494">OBJECT 2030‑QF7</text>
+        <text class="lbl-soft" x="34" y="508">PROJECTED ENTRY CORRIDOR</text>
+        <text class="lbl-soft" x="34" y="522">PROBABILITY: ELEVATED</text>
+      </g>
+
+      <!-- Scale bar -->
+      <g transform="translate(46,856)" stroke="#4A5560" fill="#4A5560">
+        <line x1="0" y1="0" x2="150" y2="0" stroke-width="1.5"/>
+        <line x1="0" y1="-5" x2="0" y2="5" stroke-width="1.5"/>
+        <line x1="75" y1="-4" x2="75" y2="4" stroke-width="1.2"/>
+        <line x1="150" y1="-5" x2="150" y2="5" stroke-width="1.5"/>
+        <text class="lbl-soft" x="-3" y="18" stroke="none">0</text>
+        <text class="lbl-soft" x="66" y="18" stroke="none">1.5</text>
+        <text class="lbl-soft" x="126" y="18" stroke="none">3</text>
+        <text class="lbl-soft" x="160" y="4" stroke="none">DONKEY‑HOURS</text>
+      </g>
+
+      <!-- Advisory 31, at large -->
+      <g id="goose" opacity="0" style="pointer-events:none">
+        <g id="gooseBody">
+          <ellipse cx="0" cy="0" rx="9" ry="5.5" fill="#F6F3EA" stroke="#22303B" stroke-width="1"/>
+          <path d="M7 -2 q5 -6 6 -10" stroke="#F6F3EA" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+          <circle cx="13.5" cy="-12.5" r="3" fill="#F6F3EA" stroke="#22303B" stroke-width=".8"/>
+          <path d="M16.2 -13.4 l5.4 1.4 -5.4 1.6 z" fill="#D97E28"/>
+          <line x1="-2" y1="5" x2="-4.5" y2="10" stroke="#D97E28" stroke-width="1.7"/>
+          <line x1="2" y1="5" x2="4.5" y2="10" stroke="#D97E28" stroke-width="1.7"/>
+        </g>
+        <text id="honk" x="4" y="-24" font-size="12" fill="#9E1B1B" opacity="0">HONK.</text>
+      </g>
+
+      <!-- Cinematic layer -->
+      <g id="fx" pointer-events="none">
+        <line id="meteorTrailLine" x1="-60" y1="40" x2="-60" y2="40" stroke="url(#meteorTrail)" stroke-width="5" stroke-linecap="round" opacity="0"/>
+        <circle id="meteor" cx="-60" cy="40" r="7" fill="#E8873A" opacity="0"/>
+        <circle id="flash" cx="95" cy="430" r="0" fill="url(#impactGlow)" opacity="0"/>
+        <g id="rings" stroke="#4E7C99" fill="none">
+          <circle class="ring" cx="95" cy="430" r="0" stroke-width="4" opacity="0"/>
+          <circle class="ring" cx="95" cy="430" r="0" stroke-width="3" opacity="0"/>
+          <circle class="ring" cx="95" cy="430" r="0" stroke-width="2" opacity="0"/>
+        </g>
+        <circle id="waveFront" cx="95" cy="430" r="0" fill="none" stroke="#2E5E80" stroke-width="10" opacity="0"/>
+        <g clip-path="url(#landClip)">
+          <circle id="floodCircle" cx="95" cy="430" r="0" fill="var(--flood)" opacity="0"/>
+          <circle id="floodCircleS" cx="80" cy="660" r="0" fill="var(--flood)" opacity="0"/>
+        </g>
+        <text id="inundationLbl" class="lbl-water" x="118" y="650" opacity="0" fill="#2E5E80">INUNDATION ZONE (PROJECTED)</text>
+
+        <!-- Emergency Equine Flotation Unit -->
+        <g id="raftUnit" transform="translate(150,552)" opacity="0" pointer-events="auto">
+          <g class="bob-raft">
+            <use href="#donkeyIcon" transform="translate(3,-14) scale(0.9)"/>
+            <rect x="0" y="7" width="38" height="5.5" rx="2.75" fill="#8A6F4D" stroke="#5C4B33" stroke-width=".8"/>
+            <line x1="2" y1="9.8" x2="36" y2="9.8" stroke="#6B5638" stroke-width="1"/>
+            <line x1="33" y1="7" x2="33" y2="-12" stroke="#5C4B33" stroke-width="1.4"/>
+            <path d="M33 -12 h9 l-2.6 2.8 2.6 2.8 h-9 z" fill="#9E1B1B"/>
+          </g>
+          <path d="M-8 16 q5 -4 10 0" stroke="#9FB8C4" stroke-width="1.4" fill="none"/>
+          <path d="M36 17 q5 -4 10 0" stroke="#9FB8C4" stroke-width="1.4" fill="none"/>
+          <title>Emergency Equine Flotation Unit 1 — IN SERVICE · fares unchanged</title>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="map-controls">
+    <strong style="font-family:var(--mono);letter-spacing:.08em">MAP LAYERS</strong>
+    <label><input type="checkbox" data-layer="layer-housing" checked> Housing</label>
+    <label><input type="checkbox" data-layer="layer-routes" checked> Donkey routes</label>
+    <label><input type="checkbox" data-layer="layer-advisories" checked> Advisories</label>
+    <label><input type="checkbox" data-layer="layer-object" checked> Object corridor</label>
+  </div>
+  <div class="legend">
+    <span><svg width="14" height="14" viewBox="0 0 13 13"><use href="#houseIcon"/></svg> Housing cluster</span>
+    <span><svg width="21" height="14" viewBox="0 0 20 13"><use href="#stadiumIcon"/></svg> Stadium</span>
+    <span><svg width="15" height="14" viewBox="0 0 14 13"><use href="#advIcon"/></svg> Advisory</span>
+    <span><svg width="28" height="20" viewBox="0 0 30 22"><use href="#donkeyIcon"/></svg> Donkey in service</span>
+  </div>
+  <div id="mapNote"></div>
+
+  <div class="contingency">
+    <h3>4.1 — Coastal Contingency Projection</h3>
+    <p style="font-size:15.5px">Per Incident Register entry 2028, the full tsunami readiness exercise is now available to visitors. Object 2030‑QF7 carries an elevated probability of Atlantic entry during the tournament window. To conserve modelling resources, <strong>one execution is permitted per visitor</strong>.</p>
+    <button class="btn-projection" id="runProjection">Run coastal contingency projection</button>
+    <div id="projStatus"></div>
+  </div>
+
+  <div class="sec-nav">
+    <button class="btn-back" data-prev="s3">← Return to Section 3</button>
+    <span class="mono" style="font-size:12px;color:var(--ink-soft)">END OF GUIDANCE · WC30/PT‑114</span>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    IBERIAN RISK INSTITUTE · TOURNAMENT DIRECTORATE<br>
+    Directive WC30/PT‑114 (Rev. 5) · This document is official. Enquiries regarding the official status of this document may be submitted on Form OFF‑2, which is also official.<br>
+    <a href="/">← Return to isportugalsafe.org</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Sequential sections ---------- */
+  var order = ["s1","s2","s3","s4"];
+  var fill = document.getElementById("progressFill");
+  var label = document.getElementById("progressLabel");
+
+  function show(id){
+    order.forEach(function(s){
+      document.getElementById(s).classList.toggle("active", s === id);
+    });
+    var n = order.indexOf(id) + 1;
+    label.textContent = "Section " + n + " of " + order.length;
+    fill.style.width = (n / order.length * 100) + "%";
+    window.scrollTo({top:0, behavior: prefersReduced ? "auto" : "smooth"});
+  }
+  document.querySelectorAll("[data-next]").forEach(function(b){
+    b.addEventListener("click", function(){ show(b.dataset.next); });
+  });
+  document.querySelectorAll("[data-prev]").forEach(function(b){
+    b.addEventListener("click", function(){ show(b.dataset.prev); });
+  });
+  fill.style.width = (1/order.length*100) + "%";
+
+  /* ---------- Layer toggles ---------- */
+  document.querySelectorAll("[data-layer]").forEach(function(cb){
+    cb.addEventListener("change", function(){
+      var g = document.getElementById(cb.dataset.layer);
+      if(g) g.style.display = cb.checked ? "" : "none";
+    });
+  });
+
+  /* ---------- Cinematic projection (runs once) ---------- */
+  var ran = false;
+  var btn = document.getElementById("runProjection");
+  var status = document.getElementById("projStatus");
+  var mapFrame = document.getElementById("mapFrame");
+
+  function tween(dur, step, done){
+    var t0 = performance.now();
+    function tick(now){
+      var p = Math.min((now - t0) / dur, 1);
+      step(p);
+      if(p < 1) requestAnimationFrame(tick);
+      else if(done) done();
+    }
+    requestAnimationFrame(tick);
+  }
+  function easeIn(p){ return p*p*p; }
+  function easeOut(p){ return 1 - Math.pow(1-p, 3); }
+  function setStatus(t){ status.textContent = t; }
+
+  btn.addEventListener("click", function(){
+    if(ran) return;
+    ran = true;
+    btn.disabled = true;
+    btn.textContent = "Projection expended";
+
+    var D = prefersReduced ? 0.45 : 1;
+    var ix = 95, iy = 430;
+    var meteor = document.getElementById("meteor");
+    var trail = document.getElementById("meteorTrailLine");
+    var flash = document.getElementById("flash");
+    var rings = document.querySelectorAll(".ring");
+    var wave = document.getElementById("waveFront");
+    var flood = document.getElementById("floodCircle");
+    var inLbl = document.getElementById("inundationLbl");
+    var raft = document.getElementById("raftUnit");
+
+    setStatus("Projection initialising. Object acquired.");
+
+    /* Phase 1 — meteor descent */
+    setTimeout(function(){
+      meteor.setAttribute("opacity","1");
+      trail.setAttribute("opacity","1");
+      var sx=-60, sy=40;
+      tween(1600*D, function(p){
+        var e = easeIn(p);
+        var x = sx + (ix - sx)*e, y = sy + (iy - sy)*e;
+        meteor.setAttribute("cx",x); meteor.setAttribute("cy",y);
+        trail.setAttribute("x1", sx + (ix - sx)*Math.max(0,e-0.18));
+        trail.setAttribute("y1", sy + (iy - sy)*Math.max(0,e-0.18));
+        trail.setAttribute("x2",x); trail.setAttribute("y2",y);
+      }, impact);
+    }, 700*D);
+
+    /* Phase 2 — impact */
+    function impact(){
+      meteor.setAttribute("opacity","0");
+      trail.setAttribute("opacity","0");
+      setStatus("Atlantic entry confirmed.");
+      if(!prefersReduced){
+        mapFrame.classList.add("shaking");
+        setTimeout(function(){ mapFrame.classList.remove("shaking"); }, 600);
+      }
+      tween(900*D, function(p){
+        flash.setAttribute("r", 90*easeOut(p));
+        flash.setAttribute("opacity", String(1-p));
+      });
+      rings.forEach(function(r,i){
+        setTimeout(function(){
+          tween(2400*D, function(p){
+            r.setAttribute("r", 30 + 300*easeOut(p));
+            r.setAttribute("opacity", String(0.7*(1-p)));
+          });
+        }, i*350*D);
+      });
+      setTimeout(waveRun, 500*D);
+    }
+
+    /* Phase 3 — displacement wave */
+    function waveRun(){
+      setStatus("Displacement wave in transit. Estimated coastal arrival: imminent.");
+      wave.setAttribute("opacity","0.9");
+      tween(3000*D, function(p){
+        var e = easeOut(p);
+        wave.setAttribute("r", 20 + 330*e);
+        wave.setAttribute("stroke-width", String(10 - 6*e));
+        if(p > 0.8) wave.setAttribute("opacity", String(0.9*(1-(p-0.8)/0.2)));
+      }, floodRun);
+    }
+
+    /* Phase 4 — inundation */
+    function floodRun(){
+      setStatus("Coastal contact. Inundation modelling in progress.");
+      var floodS = document.getElementById("floodCircleS");
+      flood.setAttribute("opacity","0.55");
+      tween(2600*D, function(p){
+        flood.setAttribute("r", 215*easeOut(p));
+      }, settle);
+      setTimeout(function(){
+        floodS.setAttribute("opacity","0.55");
+        tween(2200*D, function(p){
+          floodS.setAttribute("r", 235*easeOut(p));
+        });
+      }, 700*D);
+    }
+
+    /* Phase 5 — settle, reassign, deploy flotation unit */
+    function settle(){
+      tween(900*D, function(p){
+        inLbl.setAttribute("opacity", String(p));
+      });
+      document.getElementById("hc1lbl").textContent = "HC‑1 — REASSIGNED";
+      document.getElementById("lisbonLbl").textContent = "LISBON PRECINCT — UNDER REVIEW";
+      setStatus("Projection complete. Coastal allocations reassigned inland.");
+      setTimeout(function(){
+        tween(1000*D, function(p){
+          raft.setAttribute("opacity", String(p));
+        });
+        setStatus("Projection complete. Coastal allocations reassigned inland. Emergency Equine Flotation Units are in service. Fares unchanged. This projection cannot be repeated.");
+      }, 1400*D);
+    }
+  });
+
+  /* ==================================================================
+     Exercises & easter eggs
+     ================================================================== */
+
+  /* ---------- 1.2 Border Familiarity Quiz ---------- */
+  var quizData = [
+    {q:"Em que ano ocorreu o Erro de Contagem de Pontes?", o:["2017","2019","2023"], a:1},
+    {q:"O que foi recuperado pela Galiza em 2023?", o:["O nevoeiro","As sardinhas","Uma ponte"], a:0},
+    {q:"Quantas garrafas ficaram abertas durante a Grande Escassez de Cortiça?", o:["4 milhões","40 milhões","Nenhuma"], a:1}
+  ];
+  var quizQ = document.getElementById("quizQ");
+  var quizOpts = document.getElementById("quizOpts");
+  var quizStatus = document.getElementById("quizStatus");
+  var quizDone = false;
+
+  function loadQuiz(){
+    if(quizDone) return;
+    var item = quizData[Math.floor(Math.random()*quizData.length)];
+    quizQ.textContent = item.q;
+    quizOpts.innerHTML = "";
+    item.o.forEach(function(opt, i){
+      var b = document.createElement("button");
+      b.className = "btn-option";
+      b.textContent = opt;
+      b.addEventListener("click", function(){ answer(i === item.a); });
+      quizOpts.appendChild(b);
+    });
+  }
+  function setQuizDisabled(v){
+    quizOpts.querySelectorAll("button").forEach(function(b){ b.disabled = v; });
+  }
+  function answer(correct){
+    if(correct){
+      quizDone = true;
+      setQuizDisabled(true);
+      quizStatus.textContent = "Correto. Pode entrar.";
+      return;
+    }
+    setQuizDisabled(true);
+    quizStatus.textContent = "Incorreto. Volte para o fim da fila.";
+    setTimeout(function(){
+      var start = 41204;
+      tween(prefersReduced ? 1800 : 5200, function(p){
+        var pos = Math.max(1, Math.round(start * (1 - easeOutQ(p))));
+        quizStatus.textContent = "POSIÇÃO NA FILA: " + pos.toLocaleString("pt-PT");
+      }, function(){
+        quizStatus.textContent = "Pode tentar novamente.";
+        loadQuiz();
+      });
+    }, 1100);
+  }
+  function easeOutQ(p){ return 1 - Math.pow(1-p, 3); }
+  loadQuiz();
+
+  /* ---------- 2.2 Module SAN-A: object → bag ---------- */
+  (function(){
+    var svg = document.getElementById("sanSvg");
+    var oval = document.getElementById("sanOval");
+    var status = document.getElementById("sanStatus");
+    var done = false, misses = 0;
+    var home = {x:95, y:115};
+    var bagCenter = {x:478, y:120};
+
+    function svgPoint(evt){
+      var pt = svg.createSVGPoint();
+      pt.x = evt.clientX; pt.y = evt.clientY;
+      return pt.matrixTransform(svg.getScreenCTM().inverse());
+    }
+    var dragging = false;
+    oval.addEventListener("pointerdown", function(e){
+      if(done) return;
+      dragging = true;
+      oval.setPointerCapture(e.pointerId);
+      oval.style.cursor = "grabbing";
+    });
+    oval.addEventListener("pointermove", function(e){
+      if(!dragging || done) return;
+      var p = svgPoint(e);
+      oval.setAttribute("cx", Math.max(28, Math.min(572, p.x)));
+      oval.setAttribute("cy", Math.max(50, Math.min(180, p.y)));
+    });
+    oval.addEventListener("pointerup", function(e){
+      if(!dragging || done) return;
+      dragging = false;
+      oval.style.cursor = "grab";
+      var x = +oval.getAttribute("cx"), y = +oval.getAttribute("cy");
+      var d = Math.hypot(x - bagCenter.x, y - bagCenter.y);
+      if(d < 52){
+        done = true;
+        oval.style.cursor = "default";
+        var sx = x, sy = y;
+        tween(prefersReduced ? 200 : 550, function(p){
+          var e2 = easeOutQ(p);
+          oval.setAttribute("cx", sx + (bagCenter.x - sx)*e2);
+          oval.setAttribute("cy", sy + (bagCenter.y + 10 - sy)*e2);
+          oval.setAttribute("rx", 27*(1-e2*0.95));
+          oval.setAttribute("ry", 17*(1-e2*0.95));
+        }, function(){
+          oval.setAttribute("opacity","0");
+          status.textContent = "Muito bem.";
+          setTimeout(function(){
+            status.textContent = "Muito bem. Repetição 1 de 1 concluída. Certificado SAN‑3 emitido.";
+            document.getElementById("san3").hidden = false;
+          }, 1100);
+        });
+      } else {
+        misses++;
+        oval.setAttribute("cx", home.x);
+        oval.setAttribute("cy", home.y);
+        if(misses >= 3){
+          status.textContent = "O saco não se move. Mova o objeto.";
+        }
+      }
+    });
+  })();
+
+  /* ---------- 3.2 Departure Readiness Check ---------- */
+  (function(){
+    var btn = document.getElementById("consultBtn");
+    var status = document.getElementById("consultStatus");
+    var consults = 0, busy = false;
+    var pool = [
+      {w:35, t:"O burro não está pronto."},
+      {w:20, t:"O burro está a pastar. Estimativa: +45 minutos."},
+      {w:15, t:"O burro está a contemplar. Não interrompa."},
+      {w:15, t:"O burro declinou."},
+      {w:15, t:"O burro está pronto. Embarque pela esquerda."}
+    ];
+    function pick(){
+      var total = pool.reduce(function(s,r){return s+r.w;},0);
+      var r = Math.random()*total;
+      for(var i=0;i<pool.length;i++){ r -= pool[i].w; if(r<=0) return pool[i].t; }
+      return pool[0].t;
+    }
+    btn.addEventListener("click", function(){
+      if(busy || btn.disabled) return;
+      busy = true;
+      consults++;
+      status.textContent = "A consultar…";
+      setTimeout(function(){
+        busy = false;
+        var hour = new Date().getHours();
+        if(hour >= 22 || hour < 6){
+          status.textContent = "Os burros estão a dormir. Volte de manhã.";
+          return;
+        }
+        if(consults >= 6){
+          status.textContent = "O burro pediu para não ser consultado novamente.";
+          btn.disabled = true;
+          btn.textContent = "Consulta encerrada";
+          return;
+        }
+        status.textContent = pick();
+      }, prefersReduced ? 300 : 1200);
+    });
+  })();
+
+  /* ---------- Map easter eggs ---------- */
+  var mapNote = document.getElementById("mapNote");
+  function note(t){ mapNote.textContent = t; }
+
+  var unit9Clicks = 0;
+  document.getElementById("unit9").addEventListener("click", function(){
+    unit9Clicks++;
+    note(unit9Clicks === 1
+      ? "Unit 9 was consulted. Unit 9 declined again."
+      : "Unit 9 has maintained its decision.");
+  });
+
+  document.getElementById("raftUnit").addEventListener("click", function(){
+    if(+this.getAttribute("opacity") < 0.5) return;
+    note("Flotation Unit 1 reports: \"Sem atrasos.\" It is currently the only service on time.");
+  });
+
+  var bridgeFound = false;
+  document.getElementById("lostBridge").addEventListener("click", function(){
+    if(bridgeFound) return;
+    bridgeFound = true;
+    this.setAttribute("opacity","1");
+    note("The bridge has been located. The inquiry now concerns how it got there.");
+    var cell = document.getElementById("bridgeStatus");
+    cell.textContent = "LOCATED. WRONG COUNTRY.";
+    cell.className = "status-warn";
+  });
+
+  /* Goose sprint */
+  (function(){
+    var gooseRuns = 0, running = false;
+    var goose = document.getElementById("goose");
+    var honk = document.getElementById("honk");
+    document.getElementById("adv31").addEventListener("click", function(){
+      if(running) return;
+      if(gooseRuns >= 3){
+        note("Advisory 31 has been escalated.");
+        return;
+      }
+      running = true;
+      gooseRuns++;
+      goose.setAttribute("opacity","1");
+      tween(prefersReduced ? 700 : 1700, function(p){
+        var x = 175 + 250*p;
+        var y = 398 + 34*p + Math.sin(p*22)*2.2;
+        goose.setAttribute("transform","translate("+x+","+y+")");
+        honk.setAttribute("opacity", (p>0.3 && p<0.75) ? "1" : "0");
+      }, function(){
+        goose.setAttribute("opacity","0");
+        running = false;
+        note(gooseRuns >= 3 ? "Advisory 31 has been escalated." : "Advisory 31 remains in effect.");
+      });
+    });
+  })();
+
+  /* ---------- Obrigado ---------- */
+  (function(){
+    var buf = "";
+    var toast = document.createElement("div");
+    toast.className = "toast";
+    toast.textContent = "De nada.";
+    document.body.appendChild(toast);
+    var toastTimer = null;
+    document.addEventListener("keydown", function(e){
+      if(e.key.length !== 1) return;
+      buf = (buf + e.key.toLowerCase()).slice(-8);
+      if(buf === "obrigado"){
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function(){ toast.classList.remove("show"); }, 2500);
+      }
+    });
+  })();
+
+  /* ---------- Crest: Form OFF-2 ---------- */
+  (function(){
+    var clicks = 0;
+    document.getElementById("crest").addEventListener("click", function(){
+      clicks++;
+      if(clicks === 5){
+        document.getElementById("off2").classList.add("visible");
+      }
+    });
+  })();
+})();
+</script>
+</body>
+</html>
