@@ -1420,6 +1420,7 @@
   <a data-stub="press">Press Inquiries</a>
   <a data-stub="travel">Travel Advisories</a>
   <a data-stub="subscribe">Subscribe to Bulletins</a>
+  <a href="/worldcup2030/">2030 World Cup Information</a>
   <a class="cta" id="open-assessment">▸ Personal Assessment</a>
 </nav>
 
@@ -1437,7 +1438,7 @@
     <div class="alert-icon">!</div>
     <div>
       <strong>ADVISORY IN EFFECT &nbsp;·&nbsp; Bulletin <span id="bulletin-num">2026-PT-0428</span></strong>
-      <p>The Portugal Safety Index is currently rated <strong>ELEVATED CONCERN</strong>. Citizens and visiting persons are advised to consult regional sub-indices before relocation. Continuous monitoring is in effect.</p>
+      <p>The Portugal Safety Index is currently rated <strong>ELEVATED CONCERN</strong>. Citizens and visiting persons are advised to consult regional sub-indices before relocation. A thermal addendum (Bulletin 2026-PT-0507) is in effect for all districts; this is the third such addendum in six weeks, and the Institute has classified the recurrence as a pattern. Continuous monitoring is in effect.</p>
     </div>
   </div>
 
@@ -1840,8 +1841,12 @@
       const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=38.72&longitude=-9.14&current=wind_speed_10m,temperature_2m');
       const data = await res.json();
       const wind = data.current.wind_speed_10m;
+      const temp = data.current.temperature_2m;
       document.getElementById('wind-value').textContent = wind.toFixed(1) + ' km/h';
-      const trend = wind > 15 ? 'severe atmospheric posture' : wind > 8 ? 'elevated movement detected' : 'persistent low-grade activity';
+      let trend;
+      if (temp >= 38) trend = `thermal load ${temp.toFixed(0)}°C — regime confirmed`;
+      else if (temp >= 32) trend = `thermal load ${temp.toFixed(0)}°C — advisory posture`;
+      else trend = wind > 15 ? 'severe atmospheric posture' : wind > 8 ? 'elevated movement detected' : 'persistent low-grade activity';
       document.getElementById('wind-trend').textContent = trend;
       histories.wind.push(wind);
       if (histories.wind.length > 30) histories.wind.shift();
@@ -1953,7 +1958,12 @@
     { msg: 'unattributed organized activity', severe: false },
     { msg: 'tidal vulnerability flagged', severe: false },
     { msg: 'geothermal posture review', severe: false },
-    { msg: 'fado venue closure logged', severe: false }
+    { msg: 'fado venue closure logged', severe: false },
+    { msg: 'thermal baseline breach', severe: true },
+    { msg: 'pavement softening event', severe: false },
+    { msg: 'shade capacity saturated', severe: false },
+    { msg: 'sea breeze underperformance', severe: false },
+    { msg: 'tropical night logged', severe: false }
   ];
 
   let queueDepth = 14837;
@@ -2026,25 +2036,32 @@
   const tickerItems = [
     'BULLETIN 2026-PT-0428: Composite index falls 2.18 points over 24h window',
     'SINTRA: Unconfirmed cryptozoological reports under review by Coimbra Office',
-    "ALICANTE: Cruise Ship's deadly Hantavirus spreading across the region",
+    'THERMAL DESK: Third heat event in six weeks confirmed; recurrence formally classified as a pattern',
+    'ALENTEJO: Interior daytime highs exceed 42°C; interior provisionally reclassified as exterior',
+    'NATIONAL: Tropical nights persist — overnight cooling cycle has failed to reset since June',
     'COASTAL SECTOR: Unidentified aerial phenomenon logged near Cascais, 02:14 WET',
     'CUSTOMS: 14 kg unprocessed cork intercepted at Faro terminal, undeclared',
     'LISBOA: Atmospheric posture remains in elevated category for 11th consecutive day',
+    'IBERIAN CORRIDOR: Heat dome remains structurally stable; departure not forecast',
     'FINANCIAL: Indicators of irregular commercial flow logged, 6 entities under observation',
     'NORTE: Pavement integrity surveys ongoing in 47 municipalities',
     'ALGARVE: Marine fauna behavioral indicators flagged for review',
     'ADVISORY: Citizens reporting nocturnal animal sightings advised to file Form RA-7b',
+    'COASTAL: Sea breezes recorded at insufficient strength; the ocean is under review',
     'AÇORES: Geothermal activity within nominal range; monitoring continues',
     'TRANSMONTANO: Lobisomem-class incident reports cross-referenced against full moon calendar',
     'TECHNICAL: Sensor 14-B in Faro recalibrated following anomalous readings',
     'PORTO: Unattributed organized commercial activity logged at 4 dock facilities',
     'PUBLIC NOTICE: Pastéis de Nata classified as ambient hazard, level 2',
+    'WILDFIRE DESK: Smoke plumes visible from orbit; orbit has been notified',
     'INSTITUTE: Director affirms continued faith in measurement framework',
     'COIMBRA: Cryptid sighting database expanded; submissions reviewed quarterly',
     'BRAGA: 22 kg of mislabeled bacalhau seized; investigation ongoing',
     'CENTRO: Historical baseline deviation now exceeds 1.4 standard deviations',
     'METHODOLOGY UPDATE: Sardine Aggression Rating now weighted at 4.2% of composite',
     'TRAVEL ADVISORY: No',
+    'TOURNAMENT DESK: 2030 World Cup visitor guidance now in effect — see Directive WC30/PT-114',
+    'TOURNAMENT DESK: Equine Transit Network reports heat-related grazing delays on all routes',
     'MADEIRA: Subtropical risk factors reassessed; index lowered',
     'ÉVORA: Region temporarily marked DATA RESTRICTED — consult Office',
     'ASTRONOMICAL: Lunar phase classified as concerning; tidal vulnerability elevated',
@@ -2053,7 +2070,7 @@
   ];
 
   const escalationBulletins = [
-    { time: 90, text: 'BREAKING: Confirmed positive Hantavirus in Alicante region' },
+    { time: 90, text: 'BREAKING: Lisboa overnight low fails to fall below 20°C for ninth consecutive night — night reclassified' },
     { time: 180, text: 'BREAKING: Lisboa Metropolitan reclassified — citizens advised to remain calm' },
     { time: 270, text: 'BREAKING: Sardine Aggression Rating now exceeds two standard deviations from baseline' }
   ];
@@ -2131,7 +2148,7 @@
       title: 'Atmospheric Hostility — Lisboa',
       body: `<p>Atmospheric Hostility for the Lisboa metropolitan sensor field is reported as wind speed at <code>10m AGL</code>, sampled continuously and updated against the Institute's atmospheric posture taxonomy.</p>
              <p>Readings are sourced from CAMS-affiliated forecast products via Open-Meteo telemetry. Threshold classifications are reviewed annually by the Office of Continental Risk Assessment.</p>
-             <p>Persistent low-grade activity is the most common observed state and should not be confused with absence of risk.</p>`
+             <p>During declared thermal regimes, the panel reports thermal load in place of wind posture. The wind has not been dismissed; it has been deprioritized.</p>`
     },
     quake: {
       title: 'Seismic Activity — Iberian Region',
@@ -2202,6 +2219,7 @@
       body: `<div class="stub-icon">⚠</div>
              <p>The Institute does not currently publish formal travel advisories. The Composite Safety Index, published continuously on this site, is the Institute's standing public guidance.</p>
              <p>Persons contemplating travel to the Portuguese Republic may consult the <strong>Personal Assessment</strong> tool in the navigation bar for a confidential, individualized bulletin.</p>
+             <p>Persons attending the 2030 World Cup are directed to the <strong>2030 World Cup Information</strong> section, where binding visitor guidance is in effect.</p>
              <p>The Institute does not endorse or discourage travel.</p>`,
       footer: 'See Personal Assessment for individualized guidance'
     },
