@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visitor Journey Simulation (Form IRI-T4) | Iberian Risk Institute</title>
+<meta name="description" content="Prospective visitors to Portugal are required to complete a simulated journey before arrival. Results are binding.">
+<meta property="og:title" content="Visitor Journey Simulation">
+<meta property="og:description" content="Form IRI-T4. Pre-arrival risk rehearsal for prospective visitors to the Portuguese Republic.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  [hidden] { display: none !important; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f4f4f0; color: #1a1a1a; line-height: 1.5; font-size: 14px; }
+  .gov-banner { background: #003d7a; color: #fff; font-size: 11px; padding: 4px 16px; text-align: center; letter-spacing: 0.3px; }
+  .masthead { background: #fff; border-bottom: 3px solid #003d7a; padding: 18px 24px; display: flex; align-items: center; gap: 18px; }
+  .masthead a { text-decoration: none; display: contents; }
+  .seal { width: 56px; height: 56px; border: 2px solid #003d7a; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #fff; position: relative; }
+  .seal::before { content: ""; position: absolute; inset: 4px; border: 1px solid #003d7a; border-radius: 50%; }
+  .seal-text { font-family: 'Source Serif 4', serif; font-weight: 700; color: #003d7a; font-size: 18px; letter-spacing: 1px; }
+  .masthead-text h1 { font-family: 'Source Serif 4', serif; font-size: 22px; font-weight: 700; color: #003d7a; letter-spacing: 0.2px; }
+  .masthead-text .sub { font-size: 12px; color: #555; margin-top: 2px; letter-spacing: 0.3px; }
+  nav.gov-nav { background: #002952; padding: 0 24px; display: flex; overflow-x: auto; }
+  nav.gov-nav a { color: #fff; text-decoration: none; padding: 10px 16px; font-size: 12px; font-weight: 500; letter-spacing: 0.4px; border-right: 1px solid #003d7a; white-space: nowrap; }
+  nav.gov-nav a:hover, nav.gov-nav a.active { background: #003d7a; }
+  nav.gov-nav a.cta { background: #b00020; }
+  main { max-width: 1040px; margin: 0 auto; padding: 24px; }
+
+  .crumbs { font-size: 12px; color: #666; margin-bottom: 10px; }
+  .crumbs a { color: #003d7a; }
+  .doc-title { font-family: 'Source Serif 4', serif; font-size: 28px; color: #003d7a; line-height: 1.2; }
+  .doc-ref { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #666; margin: 4px 0 14px; }
+  .lede { max-width: 760px; font-size: 15px; color: #333; margin-bottom: 8px; }
+  .notice { background: #fff8e1; border: 1px solid #e8d48a; border-left: 6px solid #c99a00; padding: 10px 14px; font-size: 13px; margin: 14px 0 20px; max-width: 760px; }
+
+  .section { background: #fff; border: 1px solid #cfcfc4; margin-bottom: 16px; }
+  .section-head { background: #eef2f7; border-bottom: 1px solid #cfcfc4; padding: 10px 16px; display: flex; gap: 12px; align-items: baseline; }
+  .section-head .letter { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #fff; background: #003d7a; padding: 2px 7px; }
+  .section-head h2 { font-family: 'Source Serif 4', serif; font-size: 17px; color: #002952; }
+  .section-body { padding: 16px; }
+  .section.locked { opacity: 0.45; pointer-events: none; }
+
+  .avatars { display: flex; gap: 14px; flex-wrap: wrap; }
+  .avatar-card { border: 2px solid #cfcfc4; background: #f7f8f4; padding: 10px 14px 12px; cursor: pointer; text-align: center; font: inherit; width: 150px; }
+  .avatar-card canvas { width: 96px; height: 144px; image-rendering: pixelated; display: block; margin: 0 auto 6px; }
+  .avatar-card .lbl { font-size: 12px; font-weight: 600; color: #002952; }
+  .avatar-card .code { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #777; }
+  .avatar-card:hover { border-color: #7d93b3; }
+  .avatar-card.selected { border-color: #003d7a; background: #e7eef8; box-shadow: inset 0 0 0 1px #003d7a; }
+
+  .countries { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; }
+  .country { border: 1px solid #cfcfc4; background: #f7f8f4; padding: 8px 10px; text-align: left; cursor: pointer; font: inherit; display: flex; align-items: center; gap: 8px; }
+  .country canvas { width: 40px; height: 20px; image-rendering: pixelated; flex: none; }
+  .country .nm { font-size: 13px; font-weight: 600; color: #002952; }
+  .country:hover { border-color: #7d93b3; }
+  .country.selected { border-color: #003d7a; background: #e7eef8; box-shadow: inset 0 0 0 1px #003d7a; }
+  .provisions { margin-top: 12px; font-size: 13px; color: #333; min-height: 20px; }
+  .provisions b { color: #002952; }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .btn { font: inherit; font-size: 13px; font-weight: 600; padding: 10px 18px; border: 1px solid #003d7a; background: #003d7a; color: #fff; cursor: pointer; letter-spacing: 0.3px; }
+  .btn:hover { background: #002952; }
+  .btn:disabled { background: #9aa8b8; border-color: #9aa8b8; cursor: default; }
+  .btn.secondary { background: #fff; color: #003d7a; }
+  .btn.secondary:hover { background: #eef2f7; }
+  .btn.danger { background: #b00020; border-color: #b00020; }
+  .small { font-size: 12px; color: #666; }
+
+  .viewport-wrap { position: relative; background: #0d1a2a; border: 1px solid #002952; }
+  #sim { display: block; width: 100%; height: auto; image-rendering: pixelated; image-rendering: crisp-edges; aspect-ratio: 16 / 9; }
+  .viewport-bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 10px; background: #002952; color: #c0d4ec; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+  .viewport-bar button { font: inherit; background: none; border: 1px solid #3d5f8a; color: #c0d4ec; padding: 2px 8px; cursor: pointer; }
+  .viewport-bar button:hover { background: #003d7a; }
+
+  .verdict { border: 1px solid #cfcfc4; border-left: 8px solid #b00020; background: #fff; padding: 18px 20px; margin-top: 16px; }
+  .verdict[hidden] { display: none; }
+  .verdict .kicker { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b00020; letter-spacing: 1px; text-transform: uppercase; }
+  .verdict .result { font-family: 'Source Serif 4', serif; font-size: clamp(22px, 4vw, 34px); font-weight: 700; color: #b00020; line-height: 1.15; margin: 6px 0 12px; }
+  .verdict dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; font-size: 13px; margin-bottom: 14px; }
+  .verdict dt { color: #666; }
+  .verdict dd { color: #1a1a1a; }
+  .verdict .stamp { display: inline-block; border: 3px solid #b00020; color: #b00020; font-family: 'JetBrains Mono', monospace; font-weight: 700; padding: 4px 10px; transform: rotate(-4deg); letter-spacing: 2px; margin-bottom: 12px; }
+
+  .footer { background: #002952; color: #c0d4ec; padding: 24px; margin-top: 32px; font-size: 11px; line-height: 1.7; text-align: center; }
+  @media (max-width: 640px) {
+    main { padding: 16px 12px; }
+    .masthead { padding: 12px 14px; }
+    .avatar-card { width: calc(50% - 7px); }
+    .verdict dl { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="gov-banner">
+  An official information service of the Iberian Risk Institute &nbsp;·&nbsp; Established 1987 &nbsp;·&nbsp; Lisboa · Madrid
+</div>
+
+<header class="masthead">
+  <a href="/">
+    <div class="seal"><span class="seal-text">IRI</span></div>
+    <div class="masthead-text">
+      <h1>Portugal Safety Index</h1>
+      <div class="sub">Office of Continental Risk Assessment &nbsp;|&nbsp; Public Advisory Bulletin Series</div>
+    </div>
+  </a>
+</header>
+
+<nav class="gov-nav">
+  <a href="/">Current Index</a>
+  <a href="/travel/" class="active">Travel Advisories</a>
+  <a href="/worldcup2030/">2030 World Cup Information</a>
+</nav>
+
+<main>
+  <div class="crumbs"><a href="/">Home</a> › Travel Advisories › Form IRI-T4</div>
+  <h2 class="doc-title">Visitor Journey Simulation</h2>
+  <div class="doc-ref">FORM IRI-T4 · PRE-ARRIVAL RISK REHEARSAL · REV. 11</div>
+  <p class="lede">Prospective visitors to the Portuguese Republic are required to complete a simulated journey before arrival. The simulation models your traveller, your route and your provisions, and returns an assessment. Results are binding.</p>
+  <div class="notice"><b>Notice:</b> The Institute does not simulate return journeys.</div>
+
+  <section class="section" id="sec-a">
+    <div class="section-head"><span class="letter">A</span><h2>Traveller Representation</h2></div>
+    <div class="section-body">
+      <p class="small" style="margin-bottom:10px">Select the representation that most closely resembles you. Resemblance is not verified.</p>
+      <div class="avatars">
+        <button type="button" class="avatar-card" data-kind="m"><canvas width="16" height="24"></canvas><div class="lbl">Traveller, Type M</div><div class="code">REP-0451-M</div></button>
+        <button type="button" class="avatar-card" data-kind="f"><canvas width="16" height="24"></canvas><div class="lbl">Traveller, Type F</div><div class="code">REP-0451-F</div></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section locked" id="sec-b">
+    <div class="section-head"><span class="letter">B</span><h2>Country of Departure</h2></div>
+    <div class="section-body">
+      <p class="small" style="margin-bottom:10px">Provisions are issued according to country of departure. Provisions are mandatory and non-transferable.</p>
+      <div class="countries" id="countries"></div>
+      <div class="provisions" id="provisions"></div>
+    </div>
+  </section>
+
+  <section class="section locked" id="sec-c">
+    <div class="section-head"><span class="letter">C</span><h2>Simulated Journey</h2></div>
+    <div class="section-body">
+      <div class="actions" id="start-row">
+        <button type="button" class="btn" id="start-btn">Begin Simulated Journey</button>
+        <span class="small">Estimated duration: under one minute. Do not close this window.</span>
+      </div>
+      <div class="viewport-wrap" id="viewport" hidden>
+        <canvas id="sim" width="320" height="180"></canvas>
+        <div class="viewport-bar">
+          <span id="sim-status">SIMULATION IDLE</span>
+          <span>
+            <button type="button" id="sound-btn">SOUND: ON</button>
+            <button type="button" id="skip-btn">EXPEDITE</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="verdict" id="verdict" hidden>
+        <div class="kicker">Assessment result · binding</div>
+        <div class="result">Not safe to visit at this time.</div>
+        <div class="stamp">REJECTED</div>
+        <dl>
+          <dt>Reference</dt><dd id="v-ref"></dd>
+          <dt>Traveller</dt><dd id="v-trav"></dd>
+          <dt>Departure</dt><dd id="v-dep"></dd>
+          <dt>Distance travelled</dt><dd id="v-dist"></dd>
+          <dt>Provisions</dt><dd id="v-prov"></dd>
+          <dt>Cause</dt><dd>Portugal.</dd>
+          <dt>Next review</dt><dd>Indefinitely deferred.</dd>
+        </dl>
+        <div class="actions">
+          <button type="button" class="btn" id="rerun-btn">Re-run Simulation</button>
+          <button type="button" class="btn secondary" id="change-btn">Change Country of Departure</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="footer">
+  Iberian Risk Institute &nbsp;·&nbsp; Office of Continental Risk Assessment &nbsp;·&nbsp; Travel Advisories Division<br>
+  Simulations are illustrative and binding. The Institute accepts no liability for provisions lost in transit.
+</div>
+
+<script src="assets.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
